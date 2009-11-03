@@ -1,0 +1,96 @@
+#summary Writing a simple agent
+
+= Introduction =
+Writing agents for The Marionette Collective is simple, we'll write a simple _echo_ agent as well as a cli tool to communicate with it that supports discovery, filtering and more.
+
+The agent will send back everything that got sent to it, not overly useful but enough to demonstrate the concepts.
+
+== The Agent ==
+Agents go into a directory configured in the _server.cfg_ using the _libdir_ directive.  You should have _mcollective/agents_ directory under that.
+
+Create a file echo.rb with the following, I'll walk through each part:
+
+{{{
+module MCollective
+    module Agent
+        class Echo
+            attr_reader :timeout, :meta
+
+            def initialize
+                @timeout = 5
+                @meta = {:license => "Apache License, Version 2",
+                         :author => "R.I.Pienaar <rip@devco.net>",
+                         :version => "1.0"}
+            end
+
+            def handlemsg(msg, stomp)
+                msg[:body]
+            end
+
+            def help
+            <<-EOH
+            Echo Agent
+            ==========
+
+            Simple agent that just sends the body of any request back
+            EOH
+            end
+        end
+    end
+end
+}}}
+
+=== Agent name ===
+Each agent should be wrapped in a module and class as below, this will create an agent called _agent_ and should live in a file called _agents/echo.rb_.
+
+{{{
+module MCollective
+    module Agent
+        class Echo
+        end
+    end
+end
+}}}
+
+=== Initialization ===
+Every agent needs to specify a timeout and meta data.  The timeout gets used by the app server to kill off agents that is taking too long to finish.
+
+Meta data contains some information about the licence, author and version of the agent.  Right now the information is free-form but I suggest supplying at the very least the details below as we'll start enforcing the existence of it in future.
+
+{{{
+            attr_reader :timeout, :meta
+
+            def initialize
+                @timeout = 1
+                @meta = {:license => "Apache License, Version 2",
+                         :author => "R.I.Pienaar <rip@devco.net>",
+                         :version => "1.0"}
+            end
+}}}
+
+=== Handling incoming messages ===
+You do not need to be concerned with filtering, authentication, authorization etc when writing agents - the app server takes care of all of that for you.
+
+Whenever a message for your agent pass all the checks it will be passed to you via the _handlemsg_ method.
+
+{{{
+            def handlemsg(msg, stomp)
+                msg[:body]
+            end
+}}}
+
+The msg will be a hash with several keys giving you information about sender, hashes, time it was sent and so forth, in our case we just want to know about the body and we're sending it right back as a return value.
+
+=== Online Help ===
+We keep help information, not used right now but future version of the code will have a simple way to get help for each agent, the intent is that inputs, outputs and behavior to all agents would be described in this.
+
+{{{
+            def help
+            <<-EOH
+            Echo Agent
+            ==========
+
+            Simple agent that just sends the body of any request back
+            EOH
+            end
+}}}
