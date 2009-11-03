@@ -120,10 +120,11 @@ We provide a client library that abstracts away a lot of the work in writing sim
 
 require 'mcollective'
 
-oparser = MCollective::Optionparser.new({:verbose => true}, "filter")
+oparser = MCollective::Optionparser.new({}, "filter")
 
 options = oparser.parse{|parser, options|
     parser.define_head "Tester for the echo agent"
+    parser.banner = "Usage: sh-echo [options] msg"
 }
 
 if ARGV.length > 0
@@ -148,4 +149,67 @@ rescue Exception => e
 end
 
 client.display_stats(stats, options)
+}}}
+
+We can test it works as below:
+
+{{{
+% ./mc-echo --config etc/client.cfg "hello world"
+Determining the amount of hosts matching filter for 2 seconds .... 1
+
+                devel.your.com> hello world
+
+Finished processing 1 / 1 hosts in 45.02 ms
+}}}
+
+Verbose statistics:
+
+{{{
+Determining the amount of hosts matching filter for 2 seconds .... 1
+
+                devel.your.com> hello world
+
+---- stomp call summary ----
+           Nodes: 1 / 1
+      Start Time: Tue Nov 03 23:28:34 +0000 2009
+  Discovery Time: 2002.27ms
+      Agent Time: 45.84ms
+      Total Time: 2048.11ms
+}}}
+
+Discovery and filtering:
+
+{{{
+% ./mc-echo --config etc/client.cfg "hello world" --with-fact country=au
+./lib/mcollective/client.rb:127:in `discovered_req': No matching clients found (RuntimeError)
+
+% ./mc-echo --config etc/client.cfg "hello world" --with-fact country=uk
+Determining the amount of hosts matching filter for 2 seconds .... 1
+
+                devel.your.com> hello world
+
+Finished processing 1 / 1 hosts in 38.77 ms
+}}}
+
+Standard Help:
+
+{{{
+% ./mc-echo --help 
+Usage: sh-echo [options] msg 
+Tester for the echo agent
+
+Common Options
+    -c, --config FILE                Load configuratuion from file rather than default
+        --dt SECONDS                 Timeout for doing discovery
+        --discovery-timeout
+    -t, --timeout SECONDS            Timeout for calling remote agents
+    -q, --quiet                      Do not be verbose
+    -v, --verbose                    Be verbose
+    -h, --help                       Display this screen
+
+Host Filters
+        --wf, --with-fact fact=val   Match hosts with a certain fact
+        --wc, --with-class CLASS     Match hosts with a certain puppet class
+        --wa, --with-agent AGENT     Match hosts with a certain agent
+        --wi, --with-identity IDENT  Match hosts with a certain configured identity
 }}}
