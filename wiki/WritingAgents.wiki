@@ -1,7 +1,7 @@
 #summary Writing a simple agent
 
 = Introduction =
-Writing agents for The Marionette Collective is simple, we'll write a simple _echo_ agent as well as a cli tool to communicate with it that supports discovery, filtering and more.
+Writing agents for mcollective is simple, we'll write a simple _echo_ agent as well as a cli tool to communicate with it that supports discovery, filtering and more.
 
 The agent will send back everything that got sent to it, not overly useful but enough to demonstrate the concepts.
 
