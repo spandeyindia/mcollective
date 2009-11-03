@@ -1,0 +1,161 @@
+#summary Getting started guide for initial release
+
+= Getting Started =
+
+== Requirements ==
+We try to keep the requirements on external Gems to a minimum, you only need:
+
+  * A Stomp server, tested against [http://activemq.apache.org/ ActiveMQ]
+  * Ruby
+  * Rubygems
+  * [http://stomp.codehaus.org/Ruby+Client Ruby Stomp Client]
+
+== ActiveMQ ==
+I've developed this against ActiveMQ.  It should work against other Stomp servers but I suspect if you choose one without username and password support you might have problems, please let me know if that's the case and I'll refactor the code around that.
+
+Full details on setting up and configuring ActiveMQ is out of scope for this, below should help you get stomp and a user going though. For their excellent full docs please see  http://activemq.apache.org/
+
+=== Configuring Stomp ===
+First you should configure ActiveMQ to listen on the Stomp protocol
+
+{{{
+    <transportConnectors>
+       <transportConnector name="stomp"   uri="stomp://your.fqdn:6163"/>
+    </transportConnectors>
+}}}
+
+And then you should add a user or two, to keep it simple we'll just add one user, the template file will hopefully make it obvious where this goes, it should be in the _broker_ block:
+
+{{{
+    <plugins>
+      <simpleAuthenticationPlugin>
+        <users>
+          <authenticationUser username="mcollective" password="marionette" groups="systemusers,everyone"/>
+        </users>
+      </simpleAuthenticationPlugin>
+
+      <authorizationPlugin>
+        <map>
+          <authorizationMap>
+            <authorizationEntries>
+              <authorizationEntry topic="mcollective.>" write="systemusers" read="systemusers" admin="systemusers" />
+              <authorizationEntry topic="ActiveMQ.Advisory.>" read="everyone,all" write="everyone,all" admin="everyone,all"/>
+            </authorizationEntries>
+          </authorizationMap>
+        </map>
+      </authorizationPlugin>
+    </plugins>
+}}}
+
+This creates a user _mcollective_ with the password _marionette_ and give it access to read/write/admin _/topic/mcollective.*_.
+
+
+== Marionette Collective ==
+=== Download and Extract ===
+Grab a copy of the Marionette Collective and the Plugins and copy it all into one subdir, something like:
+
+{{{
+/home/you/marionette-collective
+|-- mcollective
+|   |-- etc
+|   `-- lib
+|       `-- mcollective
+`-- mcollective-plugins
+    `-- mcollective
+        |-- agent
+        |-- connector
+        |-- facts
+        `-- security
+}}}
+
+=== Configure ===
+You'll need to tweak some configs in _mcollective/etc/client.cfg_:
+
+{{{
+topicprefix = /topic/mcollective
+daemonize = 0
+libdir = ../mcollective-plugins
+logfile = /dev/null
+loglevel = debug
+identity = devel.your.com
+
+# Plugins 
+securityprovider = psk
+plugin.psk = sChookephe
+
+connector = stomp
+plugin.stomp.host = stomp.your.com
+plugin.stomp.port = 6163
+plugin.stomp.user = mcollective
+plugin.stomp.password = marionette
+
+factsource = yaml
+plugin.yaml = etc/facts.yaml
+}}}
+
+Copy the same file to _mcollective/etc/server.cfg_ changing just the following:
+
+{{{
+logfile = /dev/stderr
+}}}
+
+Replace the _plugin.stomp.host_ with your server running ActiveMQ and replace the _plugin.psk_ with a Pre-Shared Key of your own.
+
+=== Create Facts ===
+By default - and for this setup - we'll use a simple YAML file for a fact source, later on you can use Reductive Labs Facter or something else.
+
+Create _etc/facts.yaml_ along these lines:
+
+{{{
+---
+location: devel
+country: uk
+}}}
+
+=== Start the Server ===
+You should first arrange for Ruby to look in your current directory for libraries and code:
+
+{{{
+% export RUBYLIB=.:lib
+% ./mcollectived.rb --config etc/server.cfg 
+D, [2009-11-03T22:05:30.478569 #28944] DEBUG -- : 28944 mcollectived.rb:43: Starting in the foreground
+D, [2009-11-03T22:05:30.724946 #28944] DEBUG -- : 28944 agents.rb:29:in `loadagent': Attempting to load agent discovery from ../mcollective-plugins/mcollective/agent/discovery.rb
+D, [2009-11-03T22:05:30.736341 #28944] DEBUG -- : 28944 stomp.rb:71:in `subscribe': Subscribing to /topic/mcollective.discovery/command
+D, [2009-11-03T22:05:30.736850 #28944] DEBUG -- : 28944 stomp.rb:59:in `receive': Waiting for a message from Stomp
+}}}
+
+You should see lots of debug messages like that, if you see the last one the server is good to go.
+
+The server will run in the foreground and you can just _^c_ it to exit.
+
+=== Test from a client ===
+In another terminal do the following:
+
+{{{
+% export RUBYLIB=.:lib
+% ./mc-ping --config etc/client.cfg
+devel.your.com                           time=74.41 ms
+
+---- ping statistics ----
+1 replies max: 74.41 min: 74.41 avg: 74.41
+}}}
+
+This sent a simple 'hello' packet out to the network and if you started up several of the _mcollectived.rb_ processes on several machines you would have seen several replies, be sure to give each a unique _identity_ in the config.
+
+At this point you can start exploring the discovery features for example:
+
+{{{
+% ./mc-find-hosts --config etc/client.cfg --with-fact country=uk
+devel.your.com
+}}}
+
+This searches all systems currently active for ones with a fact _country=uk_, it got the data from the yaml file you made earlier.
+
+If you're a puppet user and the nodes are setup with classes with _classes.txt_ in _/var/lib/puppet_ then you can search for nodes with a specific class on them - the locations will configurable soon:
+
+{{{
+% ./mc-find-hosts --config etc/client.cfg --with-class common::linux
+devel.your.com
+}}}
+
+See the _--help_ option to the various _mc-*_ script for available options.  You can now look at some of the available plugins and play around, you might need to run the server process as root if you want to play with services etc.
