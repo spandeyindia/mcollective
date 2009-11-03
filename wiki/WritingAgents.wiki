@@ -6,7 +6,7 @@ Writing agents for The Marionette Collective is simple, we'll write a simple _ec
 The agent will send back everything that got sent to it, not overly useful but enough to demonstrate the concepts.
 
 == The Agent ==
-Agents go into a directory configured in the _server.cfg_ using the _libdir_ directive.  You should have _mcollective/agents_ directory under that.
+Agents go into a directory configured in the _server.cfg_ using the _libdir_ directive.  You should have _mcollective/agents_ directory under that, restart the daemon when you've put it there.
 
 Create a file echo.rb with the following, I'll walk through each part:
 
@@ -93,4 +93,59 @@ We keep help information, not used right now but future version of the code will
             Simple agent that just sends the body of any request back
             EOH
             end
+}}}
+
+Once you have it running you can test your agent works as below, we'll send the word _hello_ to the agent and we'll see if we get it back:
+
+{{{
+% ./mc-call-agent --config etc/client.cfg --agent echo --arg hello
+Determining the amount of hosts matching filter for 2 seconds .... 1
+
+devel.your.com>
+"hello"
+
+---- stomp call summary ----
+           Nodes: 1 / 1
+      Start Time: Tue Nov 03 23:18:40 +0000 2009
+  Discovery Time: 2001.65ms
+      Agent Time: 44.17ms
+      Total Time: 2045.82ms
+}}}
+
+== The Client ==
+We provide a client library that abstracts away a lot of the work in writing simple attractive cli frontends to your agents.
+
+{{{
+#!/usr/bin/ruby
+
+require 'mcollective'
+
+oparser = MCollective::Optionparser.new({:verbose => true}, "filter")
+
+options = oparser.parse{|parser, options|
+    parser.define_head "Tester for the echo agent"
+}
+
+if ARGV.length > 0
+    msg = ARGV.shift
+else
+    puts("Please specify a message to send")
+    exit 1
+end
+
+begin
+    options[:filter]["agent"] = "echo"
+
+    client = MCollective::Client.new(options[:config])
+
+    stats = client.discovered_req(msg, "echo", options) do |resp|
+        next if resp == nil
+
+        printf("%30s> %s\n", resp[:senderid], resp[:body])
+    end
+rescue Exception => e
+    raise
+end
+
+client.display_stats(stats, options)
 }}}
