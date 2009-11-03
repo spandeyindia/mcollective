@@ -145,7 +145,8 @@ begin
         printf("%30s> %s\n", resp[:senderid], resp[:body])
     end
 rescue Exception => e
-    raise
+    puts("Failed to contact any agents: #{e}")
+    exit 1
 end
 
 client.display_stats(stats, options)
