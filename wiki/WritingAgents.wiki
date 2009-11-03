@@ -165,6 +165,7 @@ Finished processing 1 / 1 hosts in 45.02 ms
 Verbose statistics:
 
 {{{
+% ./mc-echo --config etc/client.cfg "hello world" -v
 Determining the amount of hosts matching filter for 2 seconds .... 1
 
                 devel.your.com> hello world
