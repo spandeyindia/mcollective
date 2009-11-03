@@ -183,7 +183,8 @@ Discovery and filtering:
 
 {{{
 % ./mc-echo --config etc/client.cfg "hello world" --with-fact country=au
-./lib/mcollective/client.rb:127:in `discovered_req': No matching clients found (RuntimeError)
+
+Failed to contact any agents: No matching clients found
 
 % ./mc-echo --config etc/client.cfg "hello world" --with-fact country=uk
 Determining the amount of hosts matching filter for 2 seconds .... 1
