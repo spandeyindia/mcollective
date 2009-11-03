@@ -42,7 +42,7 @@ end
 }}}
 
 === Agent name ===
-Each agent should be wrapped in a module and class as below, this will create an agent called _agent_ and should live in a file called _agents/echo.rb_.
+Each agent should be wrapped in a module and class as below, this will create an agent called _echo_ and should live in a file called _agents/echo.rb_.
 
 {{{
 module MCollective
