@@ -114,7 +114,7 @@ devel.your.com>
 }}}
 
 == The Client ==
-We provide a client library that abstracts away a lot of the work in writing simple attractive cli frontends to your agents.
+We provide a client library that abstracts away a lot of the work in writing simple attractive cli frontends to your agents that supports discovery, filtering, generates help etc.
 
 {{{
 #!/usr/bin/ruby
