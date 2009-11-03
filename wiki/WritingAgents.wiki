@@ -13,6 +13,7 @@ Create a file echo.rb with the following, I'll walk through each part:
 {{{
 module MCollective
     module Agent
+        # Simple echo agent
         class Echo
             attr_reader :timeout, :meta
 
