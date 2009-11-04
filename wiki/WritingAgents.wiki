@@ -115,7 +115,7 @@ We keep help information, not used right now but future version of the code will
 }}}
 
 == The Client ==
-We provide a client library that abstracts away a lot of the work in writing simple attractive cli frontends to your agents that supports discovery, filtering, generates help etc.
+We provide a client library that abstracts away a lot of the work in writing simple attractive cli frontends to your agents that supports discovery, filtering, generates help etc.  The client lib is functional but we will improve/refactor the options parsing a bit in future.
 
 {{{
 #!/usr/bin/ruby
