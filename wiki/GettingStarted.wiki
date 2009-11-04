@@ -52,21 +52,7 @@ This creates a user _mcollective_ with the password _marionette_ and give it acc
 
 == Marionette Collective ==
 === Download and Extract ===
-Grab a copy of the Marionette Collective and the Plugins and copy it all into one subdir, something like:
-
-{{{
-/home/you/marionette-collective
-|-- mcollective
-|   |-- etc
-|   `-- lib
-|       `-- mcollective
-`-- mcollective-plugins
-    `-- mcollective
-        |-- agent
-        |-- connector
-        |-- facts
-        `-- security
-}}}
+Grab a copy of the Marionette Collective and the Plugins and copy it all into one subdir, we'll only set up the default plugins for now enabling very basic stuff, more on plugins later
 
 === Configure ===
 You'll need to tweak some configs in _mcollective/etc/client.cfg_:
@@ -74,7 +60,7 @@ You'll need to tweak some configs in _mcollective/etc/client.cfg_:
 {{{
 topicprefix = /topic/mcollective
 daemonize = 0
-libdir = ../mcollective-plugins
+libdir = plugins
 logfile = /dev/null
 loglevel = debug
 identity = devel.your.com
