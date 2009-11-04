@@ -52,7 +52,7 @@ This creates a user _mcollective_ with the password _marionette_ and give it acc
 
 == Marionette Collective ==
 === Download and Extract ===
-Grab a copy of the Marionette Collective and the Plugins and copy it all into one subdir, we'll only set up the default plugins for now enabling very basic stuff, more on plugins later
+Grab a copy of the Marionette Collective extract into one subdir, we'll only set up the default plugins for now enabling very basic stuff, more on plugins later
 
 === Configure ===
 You'll need to tweak some configs in _mcollective/etc/client.cfg_:
