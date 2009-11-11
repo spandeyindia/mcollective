@@ -56,7 +56,7 @@ This creates a user _mcollective_ with the password _marionette_ and give it acc
 Grab a copy of the mcollective [http://code.google.com/p/mcollective/source/checkout from svn], we'll only set up the default plugins for now enabling very basic stuff, more on plugins later
 
 === Configure ===
-You'll need to tweak some configs in _mcollective/etc/client.cfg_:
+You'll need to tweak some configs in _mcollective/etc/client.cfg_, a full reference of config settings can be found here [ConfigurationReference]:
 
 {{{
 topicprefix = /topic/mcollective
