@@ -7,6 +7,7 @@ There are 2 configuration files, one for the client and one for the server, thes
 Configuration is a simple _key = val_ style configuration file.
 
 == Common Options ==
+||*Key*||*Sample*||*Description*||
 ||topicprefix||/topic/mcollective||Prefix that gets used for all messages||
 ||logfile||/var/log/mcollective.log||Where to log||
 ||loglevel||debug||Can be info, warn, debug, fatal, error||
@@ -20,6 +21,7 @@ Configuration is a simple _key = val_ style configuration file.
 == Server Configuration ==
 The server configuration file should be read only readable
 
+||*Key*||*Sample*||*Description*||
 ||daemonize||1||Runs the server in the background||
 ||factsource||Facter||Which fact plugin to use||
 ||registration||Agentlist||Registration plugin to use||
@@ -37,6 +39,7 @@ Each plugin's documentation should tell you what options are availble.
 
 Common plugin options are:
 
+||*Key*||*Sample*||*Description*||
 ||plugin.stomp.host||stomp.your.com||Host to connect too||
 ||plugin.stomp.port||6163||Port to connecto too||
 ||plugin.stomp.user||mcollective||User to connect as||
