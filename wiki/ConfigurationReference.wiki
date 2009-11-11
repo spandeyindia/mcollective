@@ -1,0 +1,58 @@
+#summary Reference for the config file
+
+= Configuration Files =
+There are 2 configuration files, one for the client and one for the server, these default to _/etc/mcollective/service.cfg_ and _/etc/mcollective/client.cfg_.
+
+Configuration is a simple _key = val_ style configuration file.
+
+== Common Options ==
+||topicprefix||/topic/mcollective||Prefix that gets used for all messages||
+||logfile||/var/log/mcollective.log||Where to log||
+||loglevel||debug||Can be info, warn, debug, fatal, error||
+||identity||dev1.your.com||Identifier for this node, doesn't need to be unique, defaults to fqdn if unset||
+||keeplogs||10||The amount of logs to keep||
+||max_log_size||10240||Max size in bytes for log files before rotation happens||
+||libdir||/usr/libexec/mcollective||Where to look for plugins||
+||connector||Stomp||Which _connector_ plugin to use for communication||
+||securityprovider||Psk||Which security model to use||
+
+== Server Configuration ==
+The server configuration file should be read only readable
+
+||daemonize||1||Runs the server in the background||
+||factsource||Facter||Which fact plugin to use||
+||registration||Agentlist||Registration plugin to use||
+||registerinterval||120||How many seconds to sleep between registration messages, setting this to zero disables registration||
+
+
+== Plugin Configuration ==
+You can add free form config options for plugins, they take the general form like:
+
+{{{
+plugin.pluginname.option = value
+}}}
+
+Each plugin's documentation should tell you what options are availble.
+
+Common plugin options are:
+
+||plugin.stomp.host||stomp.your.com||Host to connect too||
+||plugin.stomp.port||6163||Port to connecto too||
+||plugin.stomp.user||mcollective||User to connect as||
+||plugin.stomp.password||password||Password to use||
+||plugin.yaml||/etc/mcollective/facts.yaml||Where the yaml fact source finds facts from||
+||plugin.psk||123456789||The pre-shared key to use for the Psk security provider||
+
+== Client Setup ==
+It's recommended that you do not set host, user, password and Psk in the client configuration file since these files are generally world readable unlike the server one that should be root readable only.
+
+You can set various Environment variables per user to supply these values:
+
+{{{
+export STOMP_USER=use
+export STOMP_PASSWORD=password
+export STOMP_SERVER=stomp.your.com
+export MCOLLECTIVE_PSK=123456789
+}}}
+
+The client library will use these and so you can give each user who use the admin utilities their own username and rights.
