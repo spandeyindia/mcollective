@@ -3,12 +3,12 @@
 
 = Introduction =
 
-The default setup uses a YAML file typically stored in _/etc/mcollective/facts.yaml_ to read facts.  There are however many fact systems like Reductive Labs Facter and Opscode Ohai or you can come up with your own.  The facts plugin type lets you write code to access these.
+The default setup uses a YAML file typically stored in _/etc/mcollective/facts.yaml_ to read facts.  There are however many fact systems like Reductive Labs Facter and Opscode Ohai or you can come up with your own.  The facts plugin type lets you write code to access these tools.
 
 Facts at the moment should be simple _variable = value_ style flat Hashes, if you have a hierarchical fact system like Ohai you can flatten them into _var.subvar = value_ style variables.
 
 = Details =
-Implementing a facts plugin is made simple if you inherit from _MCollective::Facts::Base_, in that case you just need to provide 1 method, the YAML code can be seen below:
+Implementing a facts plugin is made simple by inheriting from _MCollective::Facts::Base_, in that case you just need to provide 1 method, the YAML plugin code can be seen below:
 
 {{{
 module MCollective
@@ -29,7 +29,7 @@ end
 
 You can see that all you have to do is provide _self.get_facts_ which should return a Hash as described above.
 
-There's a sample using Reductive Labs Facter on the plugins project if you wish to see other examples.
+There's a sample using Reductive Labs Facter on the plugins project if you wish to see an example that queries an external fact source.
 
 Once you've written your plugin you can save it in the plugins directory and configure mcollective to use it:
 
