@@ -8,7 +8,7 @@ This page documents the various terms used in relation to mcollective.
 <wiki:toc max_depth="2" />
 
 == Server ==
-The mcollective daemon, an app server for hosting plugins and managing the connection to your middleware.
+The mcollective daemon, an app server for hosting Agents and managing the connection to your Middleware.
 
 == Node ==
 The Computer or Operating System that the Server runs on.
