@@ -1,0 +1,29 @@
+#summary Registering nodes to a central inventory
+#labels registration
+
+= Introduction =
+
+We support the ability for each node to register with a central inventory, we don't use the inventory internally for anything it's there are a framework to enable you to build inventory systems or WebUI's.
+
+= Details =
+
+Registration plugins are easy to write and you can configure your nodes to use your own or the provided one.
+
+The one we provide simply sends a list of agents to the inventory, it is called _agentlist_ and can be found in the [http://code.google.com/p/mcollective/source/browse/trunk/plugins/mcollective/registration/agentlist.rb plugins directory].
+
+To configure it to be used you just need the following in your config:
+
+{{{
+registerinterval = 300
+registration = Agentlist
+}}}
+
+This will cause the plugin to be called every 300 seconds.
+
+We do not provide the receiving end of this in the core mcollective, you only need to write an agent called _registration_ and do whatever you want with the data you receive from all the nodes.  You can find [http://code.google.com/p/mcollective-plugins/wiki/AgentRegistrationMonitor a simple monitoring system] built using this method at mcollective-plugins as an example.
+
+You need to note a few things about these agents:
+
+ * They need to be fast, you'll receive a lot of registration messages if your agent will talk to a database that is slow you'll run into problems
+ * They should not return anything other than _nil_, the mcollective server will interpret _nil_ from an agent as an indication that you do not want to send back any reply.  Replying to registration requests is almost always undesired.
+
