@@ -37,10 +37,12 @@ Multiple collectives can be built sharing the same Middleware but kept separate 
 == Agent == 
 A block of Ruby code that performs a specific role, the main reason for mcollective's existence is to host agents.  Agents can perform tasks like manipulate firewalls, services, packages etc. See [http://en.wikipedia.org/wiki/Software_agent Wikpedia].
 
+Docs to write your own can be seen in [WritingAgents]
+
 == Facts ==
 Discreet bits of information about your nodes. Examples could be the domain name, country, role, operating system release etc.
 
-Facts are provided by plugins of the type _MCollective::Facts_.
+Facts are provided by plugins of the type _MCollective::Facts_, you can read about writing your own in [WritingFactsPlugins]
 
 == Registration ==
 Servers can send regular messages to an agent called _registration_.  The code that sends the registration messages are plugins of the type _MCollective::Registration_
