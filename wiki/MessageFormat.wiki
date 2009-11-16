@@ -1,0 +1,96 @@
+#summary Details of the encoded message format
+#labels Phase-Implementation
+
+= Introduction =
+
+The messages that gets put on the middleware attempts to contain everything that mcollective needs to function, avoiding where possible special features in the Middle Ware.  This will hopefully make it easier to create Connector plugins for other middleware.
+
+At present the task of encoding and decoding messages lies with the _MCollective::Security::'*'_ classes, see the provided PSK security plugin as an example.
+
+Abstracting the encoding away from the security plugins is a goal for future refactorings, till then each security plugin will need to at least conform to the following structure.  
+
+<wiki:toc max_depth="3" />
+
+== Requests sent to agents ==
+A sample request that gets sent to the connector can be seen here, each component is described below:
+
+{{{
+{:filter=>
+  {"puppet_class"=>"common::linux",
+   "fact"=>{:fact=>"country", :value=>"uk"},
+   "agent"=>"package"},
+ :senderid=>"devel.your.com",
+ :msgtarget=>"/topic/mcollective.discovery/command",
+ :body=>body,
+ :hash=>"2d437f2904980ac32d4ebb7ca1fd740b",
+ :msgtime=>1258406924,
+ :requestid=>"0b54253cb5d04eb8b26ea75bbf468cbc"}
+}}}
+
+=== :filter ===
+The filter will be evaluated by each node, if it passes the node will dispatch the message to an agent.
+
+You can see all these types of filter in action in the _MCollection::Optionparser_ class.
+
+A large list of filters wo
+Valid filter types are:
+
+==== Puppet Class ====
+
+This will look in your puppet _classes.txt_ for a matching class.
+
+{{{
+filter["puppet_class"] = "common::linux"
+}}}
+
+
+==== MCollective Agent ====
+
+This will look through the list of known agents and match against that.
+
+{{{
+filter["agent"] = "package"
+}}}
+
+==== Facts ====
+
+Since facts are key => value pairs this is a bit more complex than normal as you need to build a nested Hash.
+
+{{{
+filter["fact"] = {:fact => "country", :value => "uk"}
+}}}
+
+
+==== Identity ====
+
+The identity is the configured identity in the server config file, many hosts can have the same identity it's just another level of filter doesn't really mean much like a hostname that would need to be unique.
+
+{{{
+filter["identity"] = "foo.bar.com"
+}}}
+
+=== :senderid ===
+
+The value of _identity_ in the configuration file.
+
+=== :msgtarget ===
+
+The Middleware topic or channel the message is being sent to
+
+=== :body ===
+
+The contents of the body will vary by what ever the security provider choose to impliment, the PSK security provider simply Marshal encodes the body into a serialized format ready for transmission.
+
+This ensures that variable types etc remain in tact end to end.  Other security providers might use JSON etc, the decoding of this is also handled by the security provider so its totally up to the provider to decide.
+
+=== :hash ===
+
+This is an example of something specific to the security provider, this is used only by the PSK provider so it's optional and specific to the PSK provider
+
+=== :msgtime ===
+
+The unix timestamp that the message was sent at.
+
+=== :requestid ===
+
+This is a unique id for each message that gets sent, replies will have the same id attached to them for validation.
