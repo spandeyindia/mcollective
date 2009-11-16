@@ -1,6 +1,8 @@
 #summary Details of the encoded message format
 #labels Phase-Implementation
 
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 The messages that gets put on the middleware attempts to contain everything that mcollective needs to function, avoiding where possible special features in the Middle Ware.  This will hopefully make it easier to create Connector plugins for other middleware.
@@ -8,8 +10,6 @@ The messages that gets put on the middleware attempts to contain everything that
 At present the task of encoding and decoding messages lies with the _MCollective::Security::`*`_ classes, see the provided [http://code.google.com/p/mcollective/source/browse/trunk/plugins/mcollective/security/psk.rb PSK security plugin] as an example.
 
 Abstracting the encoding away from the security plugins is a goal for future refactorings, till then each security plugin will need to at least conform to the following structure.  
-
-<wiki:toc max_depth="3" />
 
 == Requests sent to agents ==
 A sample request that gets sent to the connector can be seen here, each component is described below:
