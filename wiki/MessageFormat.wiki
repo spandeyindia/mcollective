@@ -5,7 +5,7 @@
 
 The messages that gets put on the middleware attempts to contain everything that mcollective needs to function, avoiding where possible special features in the Middle Ware.  This will hopefully make it easier to create Connector plugins for other middleware.
 
-At present the task of encoding and decoding messages lies with the _MCollective::Security::'*'_ classes, see the provided PSK security plugin as an example.
+At present the task of encoding and decoding messages lies with the _MCollective::Security::`*`_ classes, see the provided [http://code.google.com/p/mcollective/source/browse/trunk/plugins/mcollective/security/psk.rb PSK security plugin] as an example.
 
 Abstracting the encoding away from the security plugins is a goal for future refactorings, till then each security plugin will need to at least conform to the following structure.  
 
@@ -15,24 +15,23 @@ Abstracting the encoding away from the security plugins is a goal for future ref
 A sample request that gets sent to the connector can be seen here, each component is described below:
 
 {{{
-{:filter=>
-  {"puppet_class"=>"common::linux",
-   "fact"=>{:fact=>"country", :value=>"uk"},
-   "agent"=>"package"},
- :senderid=>"devel.your.com",
- :msgtarget=>"/topic/mcollective.discovery/command",
- :body=>body,
- :hash=>"2d437f2904980ac32d4ebb7ca1fd740b",
- :msgtime=>1258406924,
- :requestid=>"0b54253cb5d04eb8b26ea75bbf468cbc"}
+{:filter    =>
+  {"puppet_class"  => "common::linux",
+   "fact"          => {:fact=>"country", :value=>"uk"},
+   "agent"         => "package"},
+ :senderid  => "devel.your.com",
+ :msgtarget => "/topic/mcollective.discovery/command",
+ :body      => body,
+ :hash      => "2d437f2904980ac32d4ebb7ca1fd740b",
+ :msgtime   => 1258406924,
+ :requestid => "0b54253cb5d04eb8b26ea75bbf468cbc"}
 }}}
 
 === :filter ===
 The filter will be evaluated by each node, if it passes the node will dispatch the message to an agent.
 
-You can see all these types of filter in action in the _MCollection::Optionparser_ class.
+You can see all these types of filter in action in the [http://code.google.com/p/mcollective/source/browse/trunk/lib/mcollective/optionparser.rb MCollection::Optionparser] class.
 
-A large list of filters wo
 Valid filter types are:
 
 ==== Puppet Class ====
@@ -94,3 +93,22 @@ The unix timestamp that the message was sent at.
 === :requestid ===
 
 This is a unique id for each message that gets sent, replies will have the same id attached to them for validation.
+
+== Replies from Agents ==
+Replies are very similar to requests, I'll show a reply below and only highlight the differences between requests.
+
+{{{
+{:senderid    => "devel.your.com",
+ :senderagent => "discovery",
+ :msgtarget   => "/topic/mcollective.discovery/command",
+ :body        => body,
+ :hash        => "2d437f2904980ac32d4ebb7ca1fd740b",
+ :msgtime     => 1258406924,
+ :requestid   => "0b54253cb5d04eb8b26ea75bbf468cbc"}
+}}}
+
+=== :senderagent ===
+This is the agent name that sent the reply
+
+=== :requestid ===
+The id that was contained in the request we are replying to.  Agents do not generally tend to generate messages - they only reply - so this should always be provided.
