@@ -27,6 +27,8 @@ A sample request that gets sent to the connector can be seen here, each componen
  :requestid => "0b54253cb5d04eb8b26ea75bbf468cbc"}
 }}}
 
+Once this request is created the security plugin will serialize it and sent it to the connector, in the case of the PSK security plugin this is done using Marshal.
+
 === :filter ===
 The filter will be evaluated by each node, if it passes the node will dispatch the message to an agent.
 
@@ -106,6 +108,8 @@ Replies are very similar to requests, I'll show a reply below and only highlight
  :msgtime     => 1258406924,
  :requestid   => "0b54253cb5d04eb8b26ea75bbf468cbc"}
 }}}
+
+Once this reply is created the security plugin will serialize it and sent it to the connector, in the case of the PSK security plugin this is done using Marshal.
 
 === :senderagent ===
 This is the agent name that sent the reply
