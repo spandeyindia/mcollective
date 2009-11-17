@@ -1,6 +1,5 @@
 ﻿#summary Creating your own facts plugin
 #labels facts,Phase-Reference,plugins
-#sidebar TOC
 
 = Introduction =
 

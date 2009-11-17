@@ -1,6 +1,5 @@
 ﻿#summary Getting started guide for initial release
 #labels Featured
-#sidebar TOC
 
 = Getting Started =
 

@@ -1,6 +1,5 @@
 ﻿#summary Common terminology used
 #labels Featured,Phase-Reference
-#sidebar TOC
 
 = Introduction =
 
