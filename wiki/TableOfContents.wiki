@@ -1,11 +1,10 @@
-#summary Table of Contents
+﻿#summary Table of Contents
 #labels Phase-Reference
 
  * Users Documentation
    * [GettingStarted Getting Started]
    * [ConfigurationReference Configuration Guide]
    * [Terminology]
-
  * Developer Documentation
    * [WritingAgents Writing Agents]
    * [WritingFactsPlugins Writing Facts Plugins]
