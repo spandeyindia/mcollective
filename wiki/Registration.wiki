@@ -1,5 +1,6 @@
-#summary Registering nodes to a central inventory
+﻿#summary Registering nodes to a central inventory
 #labels registration
+#sidebar TOC
 
 = Introduction =
 

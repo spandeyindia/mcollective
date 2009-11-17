@@ -1,5 +1,6 @@
-#summary Details of the encoded message format
+﻿#summary Details of the encoded message format
 #labels Phase-Implementation
+#sidebar TOC
 
 <wiki:toc max_depth="3" />
 
