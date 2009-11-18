@@ -20,7 +20,7 @@ A sample request that gets sent to the connector can be seen here, each componen
    "fact"          => {:fact=>"country", :value=>"uk"},
    "agent"         => "package"},
  :senderid  => "devel.your.com",
- :msgtarget => "/topic/mcollective.discovery/command",
+ :msgtarget => "/topic/mcollective.discovery.command",
  :body      => body,
  :hash      => "2d437f2904980ac32d4ebb7ca1fd740b",
  :msgtime   => 1258406924,
@@ -101,8 +101,8 @@ Replies are very similar to requests, I'll show a reply below and only highlight
 
 {{{
 {:senderid    => "devel.your.com",
- :senderagent => "discovery",
- :msgtarget   => "/topic/mcollective.discovery/command",
+ :senderagent => "package",
+ :msgtarget   => "/topic/mcollective.package.reply",
  :body        => body,
  :hash        => "2d437f2904980ac32d4ebb7ca1fd740b",
  :msgtime     => 1258406924,
