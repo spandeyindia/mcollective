@@ -9,6 +9,7 @@ Configuration is a simple _key = val_ style configuration file.
 == Common Options ==
 || *Key* || *Sample* || *Description* ||
 ||topicprefix||/topic/mcollective||Prefix that gets used for all messages||
+||topicnamesep||.||The seperator to use between parts of the topic path||
 ||logfile||/var/log/mcollective.log||Where to log||
 ||loglevel||debug||Can be info, warn, debug, fatal, error||
 ||identity||dev1.your.com||Identifier for this node, doesn't need to be unique, defaults to fqdn if unset||
