@@ -7,7 +7,7 @@ We support the ability for each node to register with a central inventory, we do
 
 = Details =
 
-Registration plugins are easy to write and you can configure your nodes to use your own or the provided one.
+Registration plugins are easy to write and you can configure your nodes to use your own or the provided one.  All Registration plugins must inherit from _MCollective::Registration::Base_ to ensure they get loaded into the plugin system.
 
 The one we provide simply sends a list of agents to the inventory, it is called _agentlist_ and can be seen in its entirety below:
 
