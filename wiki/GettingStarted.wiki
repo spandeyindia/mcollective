@@ -58,7 +58,7 @@ For further info about ActiveMQ settings you might need see [SecurityWithActiveM
 
 == mcollective ==
 === Download and Extract ===
-Grab a copy of the mcollective ideally you'd use a package for your distribution else there's a tarfile that you can use, you can extract it wherever you want, the RPMs or deps will put files in Operating System compatible locations.
+Grab a copy of the mcollective ideally you'd use a package for your distribution else there's a tarfile that you can use, you can extract it wherever you want, the RPMs or deps will put files in Operating System compatible locations.  If you use the tarball you'll need to double check all the paths in the config files below.
 
 === Configure ===
 You'll need to tweak some configs in _/etc/mcollective/client.cfg_, a full reference of config settings can be found here [ConfigurationReference]:
