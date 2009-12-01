@@ -16,6 +16,10 @@ I've developed this against ActiveMQ.  It should work against other Stomp server
 
 Full details on setting up and configuring ActiveMQ is out of scope for this, below should help you get stomp and a user going though. For their excellent full docs please see  http://activemq.apache.org/
 
+I've tested against ActiveMQ 5.2 and 5.3.
+
+A spec file can be found in the _ext_ directory in SVN that can be used to build RPMs for RedHat/CentOS/Fedora you need _tanukiwrapper_ which you can find from _jpackage_, it runs fine under OpenJDK that comes with recent versions of these Operating Systems
+
 === Configuring Stomp ===
 First you should configure ActiveMQ to listen on the Stomp protocol
 
@@ -50,40 +54,63 @@ And then you should add a user or two, to keep it simple we'll just add one user
 
 This creates a user _mcollective_ with the password _marionette_ and give it access to read/write/admin _/topic/mcollective.*_.
 
+For further info about ActiveMQ settings you might need see [SecurityWithActiveMQ] and [http://www.devco.net/archives/2009/11/10/activemq_clustering.php ActiveMQ Clustering].
 
 == mcollective ==
 === Download and Extract ===
-Grab a copy of the mcollective [http://code.google.com/p/mcollective/source/checkout from svn], we'll only set up the default plugins for now enabling very basic stuff, more on plugins later
+Grab a copy of the mcollective ideally you'd use a package for your distribution else there's a tarfile that you can use, you can extract it wherever you want, the RPMs or deps will put files in Operating System compatible locations.
 
 === Configure ===
-You'll need to tweak some configs in _mcollective/etc/client.cfg_, a full reference of config settings can be found here [ConfigurationReference]:
+You'll need to tweak some configs in _/etc/mcollective/client.cfg_, a full reference of config settings can be found here [ConfigurationReference]:
 
 {{{
+# main config
 topicprefix = /topic/mcollective
-daemonize = 0
-libdir = plugins
+libdir = /usr/libexec/mcollective
 logfile = /dev/null
 loglevel = debug
-identity = devel.your.com
+identity = fqdn
 
-# Plugins 
-securityprovider = psk
-plugin.psk = sChookephe
-
+# connector plugin config
 connector = stomp
-plugin.stomp.host = stomp.your.com
+plugin.stomp.host = stomp.your.net
 plugin.stomp.port = 6163
-plugin.stomp.user = mcollective
-plugin.stomp.password = marionette
+plugin.stomp.user = unset
+plugin.stomp.password = unset
 
-factsource = yaml
-plugin.yaml = etc/facts.yaml
+# security plugin config
+securityprovider = psk
+plugin.psk = abcdefghj
 }}}
 
-Copy the same file to _mcollective/etc/server.cfg_ changing just the following:
+You should also create _/etc/mcollective/server.cfg_ here's a sample, , a full reference of config settings can be found here [ConfigurationReference]:
 
 {{{
-logfile = /dev/stderr
+# main config
+topicprefix = /topic/mcollective
+libdir = /usr/libexec/mcollective
+logfile = /var/log/mcollective.log
+daemonize = 1
+keeplogs = 1
+max_log_size = 10240
+loglevel = debug
+identity = fqdn
+registerinterval = 300
+
+# connector plugin config
+connector = stomp
+plugin.stomp.host = stomp.your.net
+plugin.stomp.port = 6163
+plugin.stomp.user = mcollective
+plugin.stomp.password = password
+
+# facts
+factsource = yaml
+plugin.yaml = /etc/mcollective/facts.yaml
+
+# security plugin config
+securityprovider = psk
+plugin.psk = abcdefghj
 }}}
 
 Replace the _plugin.stomp.host_ with your server running ActiveMQ and replace the _plugin.psk_ with a Pre-Shared Key of your own.
@@ -91,7 +118,7 @@ Replace the _plugin.stomp.host_ with your server running ActiveMQ and replace th
 === Create Facts ===
 By default - and for this setup - we'll use a simple YAML file for a fact source, later on you can use Reductive Labs Facter or something else.
 
-Create _etc/facts.yaml_ along these lines:
+Create _/etc/mcollective/facts.yaml_ along these lines:
 
 {{{
 ---
@@ -100,28 +127,14 @@ country: uk
 }}}
 
 === Start the Server ===
-You should first arrange for Ruby to look in your current directory for libraries and code:
-
-{{{
-% export RUBYLIB=.:lib
-% ./mcollectived.rb --config etc/server.cfg 
-D, [2009-11-03T22:05:30.478569 #28944] DEBUG -- : 28944 mcollectived.rb:43: Starting in the foreground
-D, [2009-11-03T22:05:30.724946 #28944] DEBUG -- : 28944 agents.rb:29:in `loadagent': Attempting to load agent discovery from ../mcollective-plugins/mcollective/agent/discovery.rb
-D, [2009-11-03T22:05:30.736341 #28944] DEBUG -- : 28944 stomp.rb:71:in `subscribe': Subscribing to /topic/mcollective.discovery/command
-D, [2009-11-03T22:05:30.736850 #28944] DEBUG -- : 28944 stomp.rb:59:in `receive': Waiting for a message from Stomp
-}}}
-
-You should see lots of debug messages like that, if you see the last one the server is good to go.
-
-The server will run in the foreground and you can just _^c_ it to exit.
+If you installed from a package start it with the RC script, else look in the source you'll find a LSB compatible RC script to start it.
 
 === Test from a client ===
-In another terminal do the following:
+If all is setup you can test with the client code:
 
 {{{
-% export RUBYLIB=.:lib
-% ./mc-ping --config etc/client.cfg
-devel.your.com                           time=74.41 ms
+% mc-ping 
+your.domain.com                           time=74.41 ms
 
 ---- ping statistics ----
 1 replies max: 74.41 min: 74.41 avg: 74.41
@@ -132,8 +145,8 @@ This sent a simple 'hello' packet out to the network and if you started up sever
 At this point you can start exploring the discovery features for example:
 
 {{{
-% ./mc-find-hosts --config etc/client.cfg --with-fact country=uk
-devel.your.com
+% mc-find-hosts --with-fact country=uk
+your.domain.com
 }}}
 
 This searches all systems currently active for ones with a fact _country=uk_, it got the data from the yaml file you made earlier.
@@ -141,10 +154,16 @@ This searches all systems currently active for ones with a fact _country=uk_, it
 If you're a puppet user and the nodes are setup with classes with _classes.txt_ in _/var/lib/puppet_ then you can search for nodes with a specific class on them - the locations will configurable soon:
 
 {{{
-% ./mc-find-hosts --config etc/client.cfg --with-class common::linux
-devel.your.com
+% mc-find-hosts --with-class common::linux
+your.domain.com
 }}}
 
 The filter commands are important they will be the main tool you use to target only parts of your infrastructure with calls to agents.
 
 See the _--help_ option to the various _mc-`*`_ script for available options.  You can now look at some of the available plugins and play around, you might need to run the server process as root if you want to play with services etc.
+
+=== Plugins ===
+We provide limited default plugins, you can look on our sister project [http://code.google.com/p/mcollective-plugins/] where you will find various plugins to manage packages, services etc.
+
+== Further Reading ==
+From here you should look at the rest of the wiki pages where you'll find guides on writing your own plugins etc.
