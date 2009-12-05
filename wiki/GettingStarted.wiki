@@ -18,7 +18,7 @@ Full details on setting up and configuring ActiveMQ is out of scope for this, be
 
 I've tested against ActiveMQ 5.2 and 5.3.
 
-A spec file can be found in the _ext_ directory in SVN that can be used to build RPMs for RedHat/CentOS/Fedora you need _tanukiwrapper_ which you can find from _jpackage_, it runs fine under OpenJDK that comes with recent versions of these Operating Systems
+A spec file can be found in the _ext_ directory in SVN that can be used to build RPMs for RedHat/CentOS/Fedora you need _tanukiwrapper_ which you can find from _jpackage_, it runs fine under OpenJDK that comes with recent versions of these Operating Systems.  I've uploaded some RPMs and SRPMs [http://www.marionette-collective.org/activemq/ here].
 
 === Configuring Stomp ===
 First you should configure ActiveMQ to listen on the Stomp protocol
