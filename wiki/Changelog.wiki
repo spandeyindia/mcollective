@@ -1,6 +1,13 @@
 #summary Changelog
 #labels Phase-Implementation
 
+== Version 0.3.x ==
+|| *Date* || *Descriptions* ||
+||2009/12/07||The Rakefile now works with rake provided on Debian 4 systems - #2||
+||2009/12/01||Filters now support regular expressions - #3||
+||2009/12/07||Improvements in the RC script for Debian and older Ubuntu systems - #5||
+
+
 == Version 0.2.x ==
 || *Date* || *Description* ||
 ||2009/12/01||Release version 0.2.0||
