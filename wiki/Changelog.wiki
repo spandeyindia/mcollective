@@ -7,7 +7,7 @@
 ||2009/12/07||The Rakefile now works with rake provided on Debian 4 systems - #2||
 ||2009/12/07||Improvements in the RC script for Debian and older Ubuntu systems - #5||
 ||2009/12/01||Filters now support regular expressions - #3||
-
+||2009/12/16||Improvements for newer versions of Ruby where TERM signal was not handled - #7||
 
 == Version 0.2.x ==
 || *Date* || *Description* ||
