@@ -115,6 +115,19 @@ We keep help information, not used right now but future version of the code will
             end
 }}}
 
+== More complex agents ==
+As you write more complex agents and clients you might find the need to have a few separate files make up your agent, you can drop these files into the util directory under plugins.
+
+The classes should be _MCollective::Util::Youclass_ and you should use the following construct to require them from disk:
+
+{{{
+MCollective::Util.loadclass("MCollective::Util::Youclass")
+}}}
+
+At present simply requiring them will work and we'll hope to maintain that but to be 100% future safe use this method.
+
+This ability is available in version 0.3 onward only.
+
 == The Client ==
 We provide a client library that abstracts away a lot of the work in writing simple attractive cli frontends to your agents that supports discovery, filtering, generates help etc.  The client lib is functional but we will improve/refactor the options parsing a bit in future.
 
