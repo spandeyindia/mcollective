@@ -105,6 +105,8 @@ Some status code ideas could be:
 ||3||Invalid data||InvalidDataError||
 ||4||Other error||UnknownError||
 
+The exceptions would all come from a base exception so that rescueing all these types of error is easy.
+
 The _:statusmessage_ would just be a human parsable representation of above that in the case of 2, 3 and 4 might give more information about whats going on.
 
 The _:data_ would be application specific, for example here the application decides to return it's own status and message, the request in the 2nd structure didn't fail due to a hard error but the agent still wanted to let us know it didn't take any action.
