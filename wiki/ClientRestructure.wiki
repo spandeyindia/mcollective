@@ -19,6 +19,34 @@ The output should then be a print of each host response in a human parsable form
 
 With this in place we'd be able to make generic web based and cli based tools easier, and ultimately make it easier to write task specific clients too.
 
+= Sample Usage =
+How might this look in use in client code? The code snippets below show a few sample use cases.
+
+{{{
+exim = Client.new("exim", options)
+exim.discover
+
+data = exim.setsender(:msgid => "1-2-3-4", :sender => "foo@bar"}
+stats = exim.stats
+}}}
+
+In this case the requests that gets created will be for the exim agent, it will pre-discover and you can just call any remote action by name, we'll need to (ab)use the _method`_`missing_ hooks to achieve this.
+
+The returned _data_ will be a Array of responses from each host, if even one of them returns anything but _0_ then an exception will be raised with the :statusmessage in it.
+
+The _stats_ method will have a normal _MCollective::Client_ style stats for the most recent request.
+
+{{{
+exim = Client.new("exim", options)
+exim.discover
+
+stats = exim.setsender(:msgid => "1-2-3-4", :sender => "foo@bar"} do |resp|
+   # do stuff per response
+end
+}}}
+
+In this use case the _resp_ would simply be a copy of the main response, you'd have access to all the various properties of it such as sender and so forth, you'd be able to do your own handling of errors etc, it's essentially the same as _MCollective::Client#req_
+
 = Data Structures =
 == Requests ==
 A request for:
@@ -61,33 +89,6 @@ The _:statusmessage_ would just be a human parsable representation of above that
 
 The _:data_ would be application specific, for example the _puppetd_ agent will return a _false_ if it was asked to disable an already disabled agent, this should be in the _:data_ and not be an error in the status messages.
 
-= Sample Usage =
-How might this look in use? The code snippets below show a few sample use cases.
-
-{{{
-exim = Client.new("exim", options)
-exim.discover
-
-data = exim.setsender(:msgid => "1-2-3-4", :sender => "foo@bar"}
-stats = exim.stats
-}}}
-
-In this case the requests that gets created will be for the exim agent, it will pre-discover and you can just call any remote action by name, we'll need to (ab)use the _method`_`missing_ hooks to achieve this.
-
-The returned _data_ will be a Array of responses from each host, if even one of them returns anything but _0_ then an exception will be raised with the :statusmessage in it.
-
-The _stats_ method will have a normal _MCollective::Client_ style stats for the most recent request.
-
-{{{
-exim = Client.new("exim", options)
-exim.discover
-
-stats = exim.setsender(:msgid => "1-2-3-4", :sender => "foo@bar"} do |resp|
-   # do stuff per response
-end
-}}}
-
-In this use case the _resp_ would simply be a copy of the main response, you'd have access to all the various properties of it such as sender and so forth, you'd be able to do your own handling of errors etc, it's essentially the same as _MCollective::Client#req_
 
 = Introspection =
 I'd like the agents to be able to expose their needs somehow, to be able to make a web system to call any and all agents the websystem should be able to figure out what fields to present to a user.
