@@ -41,6 +41,9 @@ This use case is used extensively to enable the kind of application in [http://s
 {{{
 exim = Client.new("exim", options)
 
+exim.timeout = 60
+exim.class_filter = /apache/
+
 stats = exim.setsender(:msgid => "1-2-3-4", :sender => "foo@bar"} do |resp|
    # do stuff per response
 end
