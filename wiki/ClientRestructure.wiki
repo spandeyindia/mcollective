@@ -7,6 +7,8 @@ We want to make a standard data exchange format between clients and agents, you 
 
 Today almost every agent and client impliments their own little weird exchange of info and data, this makes it hard to do generic clients, other languages etc.
 
+Some inspiration can be found in [http://www.linode.com/api/ Linode's API] and the [http://github.com/rick/linode Ruby Client for it].
+
 The idea is that we could write a CLI tool like:
 
 {{{
