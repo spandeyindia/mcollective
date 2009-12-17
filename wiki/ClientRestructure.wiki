@@ -5,6 +5,8 @@
 
 We want to make a standard data exchange format between clients and agents, you wont *have* to use it but it will go a long way towards writing generic clients.
 
+Today almost every agent and client impliments their own little weird exchange of info and data, this makes it hard to do generic clients, other languages etc.
+
 The idea is that we could write a CLI tool like:
 
 {{{
