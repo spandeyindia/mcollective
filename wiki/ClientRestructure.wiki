@@ -20,6 +20,7 @@ The output should then be a print of each host response in a human parsable form
 With this in place we'd be able to make generic web based and cli based tools easier, and ultimately make it easier to write task specific clients too.
 
 = Sample Usage =
+== Clients ==
 How might this look in use in client code? The code snippets below show a few sample use cases.
 
 {{{
@@ -54,6 +55,9 @@ In this use case the _resp_ would simply be a copy of the main response, you'd h
 Without first calling _discover_ the request would be request without discovery, it would just wait a pre-determined time and return what it found.
 
 Other accessors would be to set various parts of options like the filters, discovery timeouts, request timeouts etc in a way that doesnt involve the usual nasty options hash.
+
+== Agents ==
+Agents will have a simple way to construct the replies, still requires some thought to show sample usages though.  The data that needs to be returned can be seen below.
 
 = Data Structures =
 We expect there to be 2 classes that wrap the data below into the above usage, so all requests and responses that adhere to these standards will use those.
