@@ -3,6 +3,7 @@
 
 == Version 0.3.x ==
 || *Date* || *Descriptions* ||
+|| *2009/12/17* || *Release version 0.3.0* ||
 ||2009/12/16||Improvements for newer versions of Ruby where TERM signal was not handled - #7||
 ||2009/12/07||MCollective::Util is now a module and plugins can drop in util classes in the plugin dir||
 ||2009/12/07||The Rakefile now works with rake provided on Debian 4 systems - #2||
