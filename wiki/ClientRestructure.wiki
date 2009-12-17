@@ -36,6 +36,8 @@ The returned _data_ will be a Array of responses from each host, if even one of 
 
 The _stats_ method will have a normal _MCollective::Client_ style stats for the most recent request.
 
+This use case is used extensively to enable the kind of application in [http://screenr.com/yoU] it makes it much easier to just interact with your collective as if it's one big object.
+
 {{{
 exim = Client.new("exim", options)
 exim.discover
