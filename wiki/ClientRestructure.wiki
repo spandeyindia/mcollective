@@ -80,6 +80,14 @@ The reply that will come in the _:body_ will again be a hash, the hash would loo
  :data => {:status => 0,
            :message => "message 1-2-3-4 has been modified"}
 }
+
+{
+ :statuscode => 0,
+ :statusmessage => "OK",
+ :data => {:status => 1,
+           :message => "no message with id 1-2-3-4 found"}
+}
+
 }}}
 
 Some status code ideas could be:
@@ -92,7 +100,7 @@ Some status code ideas could be:
 
 The _:statusmessage_ would just be a human parsable representation of above that in the case of 2, 3 and 4 might give more information about whats going on.
 
-The _:data_ would be application specific, for example the _puppetd_ agent will return a _false_ if it was asked to disable an already disabled agent, this should be in the _:data_ and not be an error in the status messages.
+The _:data_ would be application specific, for example here the application decides to return it's own status and message, the request in the 2nd structure didn't fail due to a hard error but the agent still wanted to let us know it didn't take any action.
 
 
 = Introspection =
