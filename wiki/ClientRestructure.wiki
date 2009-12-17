@@ -100,5 +100,5 @@ I'd like the agents to be able to expose their needs somehow, to be able to make
 This might not really fit in with this specific task but worth keeping in mind, certainly to be able to do introspection on agents the agents should be available on the local drive of the client, we wouldn't want to ask the entire network to send back introspection information.
 
 = Questions =
-  * Should the data block be a special object - maybe an OpenStruct - so we can easily access the response properties?  A hash would do find too but be less intuitive.  We could support both by using the _[]_ and _method_missing_ tricks to expose the same data in the response objects.
+  * Should the data block be a special object - maybe an OpenStruct - so we can easily access the response properties?  A hash would do find too but be less intuitive.  We could support both by using the _`[``]`_ and _method_missing_ tricks to expose the same data in the response objects.
   * Should we be using symbols here or just strings, symbols is a rubyism we might find it easier later to support other languages?
