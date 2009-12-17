@@ -73,11 +73,9 @@ def handlemsg(msg, connection)
                 raise UnknownActionError("#{req.action} is unknown")
         end
     rescue MCClientException => e
-        reply.statucode = e.statuscode
-        reply.statusmessage = e.statusmessage
+        reply.exception = e
     rescue Exception => e
-        reply.statuscode = 4
-        reply.statusmessage = e.to_s
+        reply.exception = UnknownError.new(4, e.to_s)
     end
 
     reply.to_hash
