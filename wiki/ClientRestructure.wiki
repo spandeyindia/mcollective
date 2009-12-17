@@ -1,0 +1,16 @@
+#summary Dumping ground for ideas about new client libs
+#labels Phase-Design
+
+= Introduction =
+
+We want to make a standard data exchange format between clients and agents, you wont *have* to use it but it will go a long way towards writing generic clients.
+
+The idea is that we could write a CLI tool like:
+
+{{{
+$ mc-call-agent --agent exim --action setsender --data msgid=1-2-3-4 --data sender="foo@bar"
+}}}
+
+The output should then be a print of each host response in a human parsable format - even pp output is parsable.
+
+With this in place we'd be able to make generic web based and cli based tools easier, and ultimately make it easier to write task specific clients too.
