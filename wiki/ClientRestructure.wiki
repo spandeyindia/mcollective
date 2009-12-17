@@ -57,7 +57,48 @@ Without first calling _discover_ the request would be request without discovery,
 Other accessors would be to set various parts of options like the filters, discovery timeouts, request timeouts etc in a way that doesnt involve the usual nasty options hash.
 
 == Agents ==
-Agents will have a simple way to construct the replies, still requires some thought to show sample usages though.  The data that needs to be returned can be seen below.
+Here's some potential agent code:
+
+{{{
+def handlemsg(msg, connection)
+    req = Request.new(msg[:body])
+    reply = Reply.new
+
+    begin
+        case req.action
+            when "setsender"
+                reply.data = setsender(req.data)
+            
+            else
+                raise UnknownActionError("#{req.action} is unknown")
+        end
+    rescue MCClientException => e
+        reply.statucode = e.statuscode
+        reply.statusmessage = e.statusmessage
+    rescue Exception => e
+        reply.statuscode = 4
+        reply.statusmessage = e.to_s
+    end
+
+    reply.to_hash
+end
+
+def setsender(data)
+    # would raise appropriate MCClientException based exceptions
+    # for data missing or data not matching tests
+    Request.validate_data(data, {:msgid => String, :sender => /\S+@\S+/)
+
+    # do stuff
+
+    return {:status => 0,
+            :message => "message 1-2-3-4 has been modified"}
+end
+}}}
+
+
+The _req_ object would be exactly what the client sent, it would have some accessors for gaining access to the various data structures (see below) and reply would just wrap the expected structures again.
+
+The _validate`_`date_ method would be a generic helper method to help with data validations, it would check if the supplied data hash has the needed keys in it and also do some data type checks and potentially regex matching etc, it would raise appropriate exceptions as listed below.
 
 = Data Structures =
 We expect there to be 2 classes that wrap the data below into the above usage, so all requests and responses that adhere to these standards will use those.
