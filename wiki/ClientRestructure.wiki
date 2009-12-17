@@ -40,7 +40,6 @@ This use case is used extensively to enable the kind of application in [http://s
 
 {{{
 exim = Client.new("exim", options)
-exim.discover
 
 stats = exim.setsender(:msgid => "1-2-3-4", :sender => "foo@bar"} do |resp|
    # do stuff per response
@@ -48,6 +47,10 @@ end
 }}}
 
 In this use case the _resp_ would simply be a copy of the main response, you'd have access to all the various properties of it such as sender and so forth, you'd be able to do your own handling of errors etc, it's essentially the same as _MCollective::Client#req_
+
+Without first calling _discover_ the request would be request without discovery, it would just wait a pre-determined time and return what it found.
+
+Other accessors would be to set various parts of options like the filters, discovery timeouts, request timeouts etc in a way that doesnt involve the usual nasty options hash.
 
 = Data Structures =
 We expect there to be 2 classes that wrap the data below into the above usage, so all requests and responses that adhere to these standards will use those.
