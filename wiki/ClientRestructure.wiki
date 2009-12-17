@@ -89,6 +89,11 @@ end
 
 In this use case the _resp_ would simply be a copy of the main response, you'd have access to all the various properties of it such as sender and so forth, you'd be able to do your own handling of errors etc, it's essentially the same as _MCollective::Client#req_
 
+= Introspection =
+I'd like the agents to be able to expose their needs somehow, to be able to make a web system to call any and all agents the websystem should be able to figure out what fields to present to a user.
+
+This might not really fit in with this specific task but worth keeping in mind, certainly to be able to do introspection on agents the agents should be available on the local drive of the client, we wouldn't want to ask the entire network to send back introspection information.
+
 = Questions =
   * Should the data block be a special object - maybe an OpenStruct - so we can easily access the response properties?  A hash would do find too but be less intuitive.
   * Should we be using symbols here or just strings, symbols is a rubyism we might find it easier later to support other languages?
