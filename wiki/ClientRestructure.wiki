@@ -77,7 +77,8 @@ The reply that will come in the _:body_ will again be a hash, the hash would loo
 {
  :statuscode => 0,
  :statusmessage => "OK",
- :data => "message 1-2-3-4 has been modified"
+ :data => {:status => 0,
+           :message => "message 1-2-3-4 has been modified"}
 }
 }}}
 
