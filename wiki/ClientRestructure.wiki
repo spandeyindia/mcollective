@@ -50,13 +50,12 @@ The reply that will come in the _:body_ will again be a hash, the hash would loo
 Some status code ideas could be:
 
 ||0||OK||
-||1||Unknown agent||
-||2||Unknown action||
-||3||Missing data||
-||4||Invalid data||
-||5||Other error||
+||1||Unknown action||
+||2||Missing data||
+||3||Invalid data||
+||4||Other error||
 
-The _:statusmessage_ would just be a human parsable representation of above that in the case of 3, 4 and 5 might give more information about whats going on.
+The _:statusmessage_ would just be a human parsable representation of above that in the case of 2, 3 and 4 might give more information about whats going on.
 
 The _:data_ would be application specific, for example the _puppetd_ agent will return a _false_ if it was asked to disable an already disabled agent, this should be in the _:data_ and not be an error in the status messages.
 
