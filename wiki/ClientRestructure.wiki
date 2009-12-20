@@ -143,10 +143,11 @@ Some status code ideas could be:
 
 || *Return Code* || *Description* || *Exception Class* ||
 ||0||OK||||
-||1||Unknown action||UnknownRPCAction||
-||2||Missing data||MissingRPCData||
-||3||Invalid data||InvalidRPCData||
-||4||Other error||UnknownRPCError||
+||1||OK, failed.  All the data parsed ok, we have a action matching the request but the requested action could not be completed.||||
+||2||Unknown action||UnknownRPCAction||
+||3||Missing data||MissingRPCData||
+||4||Invalid data||InvalidRPCData||
+||5||Other error||UnknownRPCError||
 
 The exceptions would all come from a base _RPCError_ class so that rescueing all these types of error is easy.
 
