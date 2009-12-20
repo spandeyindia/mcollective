@@ -143,12 +143,12 @@ Some status code ideas could be:
 
 || *Return Code* || *Description* || *Exception Class* ||
 ||0||OK||||
-||1||Unknown action||UnknownActionError||
-||2||Missing data||MissingDataError||
-||3||Invalid data||InvalidDataError||
-||4||Other error||UnknownError||
+||1||Unknown action||UnknownRPCAction||
+||2||Missing data||MissingRPCData||
+||3||Invalid data||InvalidRPCData||
+||4||Other error||UnknownRPCError||
 
-The exceptions would all come from a base exception so that rescueing all these types of error is easy.
+The exceptions would all come from a base _RPCError_ class so that rescueing all these types of error is easy.
 
 The _:statusmessage_ would just be a human parsable representation of above that in the case of 2, 3 and 4 might give more information about whats going on.
 
