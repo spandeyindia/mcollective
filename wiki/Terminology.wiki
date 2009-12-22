@@ -39,6 +39,9 @@ A block of Ruby code that performs a specific role, the main reason for mcollect
 
 Docs to write your own can be seen in [WritingAgents]
 
+== Action == 
+Agents expose tasks, we call these tasks actions.  Each agent like a exim queue management agent might expose many tasks like _mailq_, _rm_, _retry_ etc.  These are al actions provided by an agent.
+
 == Facts ==
 Discreet bits of information about your nodes. Examples could be the domain name, country, role, operating system release etc.
 
