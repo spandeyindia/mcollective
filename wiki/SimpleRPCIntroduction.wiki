@@ -1,0 +1,46 @@
+#summary Introduction to using Simple RPC
+
+= Introduction =
+
+MCollective is a framework for writing feature full agents and clients and provides a [WritingAgents rich system to do that].  Sometimes though you just have simpler needs than the full Client provides or need to prototype something quickly.  MCollective Simple RPC is a framework ontop of the standard client that abstracts away a lot of the complexity.
+
+A bit of code probably says more than lots of english, so here's a simple hello world Agent, it just echo's back everything you send it:
+
+{{{
+module Mcollective
+    module Agent
+        class Echo<RPC::Agent
+            # Basic echo server
+            def echo_action
+                validate :msg, String
+     
+                reply.data = request[:msg]
+            end
+        end
+    end
+end
+}}}
+
+
+And here is the client for it:
+
+{{{
+#!/usr/bin/ruby
+ 
+require 'mcollective'
+ 
+include MCollective::RPC
+ 
+mc = rpcclient("echo")
+printrpc mc.echo(:msg => "Hello World")
+}}}
+
+When run you should see something like this:
+
+{{{
+$ rpctest.rb --with-class /devel/ --verbose
+dev1.your.com                          : OK
+    "hello world"
+}}}
+
+As you can see it supports full discovery and filters and you had to do nothing fancy to produce acceptable output from the command.
