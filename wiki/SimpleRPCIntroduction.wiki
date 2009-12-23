@@ -44,3 +44,25 @@ dev1.your.com                          : OK
 }}}
 
 As you can see it supports full discovery and filters and you had to do nothing fancy to produce acceptable output from the command.
+
+It even provides the basic help:
+
+{{{
+$ rpctest.rb --help
+Usage: rpctester [options]
+
+Common Options
+    -c, --config FILE                Load configuratuion from file rather than default
+        --dt SECONDS                 Timeout for doing discovery
+        --discovery-timeout
+    -t, --timeout SECONDS            Timeout for calling remote agents
+    -q, --quiet                      Do not be verbose
+    -v, --verbose                    Be verbose
+    -h, --help                       Display this screen
+
+Host Filters
+        --wf, --with-fact fact=val   Match hosts with a certain fact
+        --wc, --with-class CLASS     Match hosts with a certain puppet class
+        --wa, --with-agent AGENT     Match hosts with a certain agent
+        --wi, --with-identity IDENT  Match hosts with a certain configured identity
+}}}
