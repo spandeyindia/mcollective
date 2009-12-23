@@ -58,3 +58,5 @@ printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
 
 printrpcstats
 }}}
+
+With a standard interface come a lot of possibilities, just like the standard one-size-fits-all CLI client above you can make web interfaces, there's a [http://code.google.com/p/mcollective/source/browse/trunk/ext/mc-rpc-restserver.rb simple MCollective <-> REST bridge in the ext directory].
