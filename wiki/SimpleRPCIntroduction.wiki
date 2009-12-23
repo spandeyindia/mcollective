@@ -4,6 +4,8 @@
 
 MCollective is a framework for writing feature full agents and clients and provides a [WritingAgents rich system to do that].  Sometimes though you just have simpler needs than the full Client provides or need to prototype something quickly.  MCollective Simple RPC is a framework ontop of the standard client that abstracts away a lot of the complexity.
 
+  *NOTE:* This feature is available from version 0.4 of MCollective
+
 A bit of code probably says more than lots of english, so here's a simple hello world Agent, it just echo's back everything you send it:
 
 {{{
