@@ -43,7 +43,7 @@ devel.your.com                          : OK
 }}}
 
 
-But you can still write your own clients, it's incredibly simple:
+But you can still write your own clients, it's incredibly simple, full details of a client is out of scope for the introduction but here is some sample code to do the same call as above:
 
 {{{
 #!/usr/bin/ruby
@@ -53,37 +53,8 @@ require 'mcollective'
 include MCollective::RPC
  
 mc = rpcclient("helloworld")
+
 printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
-}}}
 
-When run you should see something like this:
-
-{{{
-$ rpctest.rb --with-class /devel/ --verbose
-dev1.your.com                          : OK
-    "Welcome to MCollective Simple RPC"
-}}}
-
-As you can see it supports full discovery and filters and you had to do nothing fancy to produce acceptable output from the command.
-
-It even provides the basic help:
-
-{{{
-$ rpctest.rb --help
-Usage: rpctester [options]
-
-Common Options
-    -c, --config FILE                Load configuratuion from file rather than default
-        --dt SECONDS                 Timeout for doing discovery
-        --discovery-timeout
-    -t, --timeout SECONDS            Timeout for calling remote agents
-    -q, --quiet                      Do not be verbose
-    -v, --verbose                    Be verbose
-    -h, --help                       Display this screen
-
-Host Filters
-        --wf, --with-fact fact=val   Match hosts with a certain fact
-        --wc, --with-class CLASS     Match hosts with a certain puppet class
-        --wa, --with-agent AGENT     Match hosts with a certain agent
-        --wi, --with-identity IDENT  Match hosts with a certain configured identity
+printrpcstats
 }}}
