@@ -9,7 +9,7 @@ A bit of code probably says more than lots of english, so here's a simple hello 
 {{{
 module Mcollective
     module Agent
-        class Echo<RPC::Agent
+        class Helloworld<RPC::Agent
             # Basic echo server
             def echo_action
                 validate :msg, String
@@ -31,8 +31,8 @@ require 'mcollective'
  
 include MCollective::RPC
  
-mc = rpcclient("echo")
-printrpc mc.echo(:msg => "Hello World")
+mc = rpcclient("helloworld")
+printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
 }}}
 
 When run you should see something like this:
@@ -40,7 +40,7 @@ When run you should see something like this:
 {{{
 $ rpctest.rb --with-class /devel/ --verbose
 dev1.your.com                          : OK
-    "hello world"
+    "Welcome to MCollective Simple RPC"
 }}}
 
 As you can see it supports full discovery and filters and you had to do nothing fancy to produce acceptable output from the command.
