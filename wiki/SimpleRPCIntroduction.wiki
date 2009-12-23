@@ -23,8 +23,27 @@ module Mcollective
 end
 }}}
 
+The nice thing about using a standard abstraction for clients is that you often won't even need to write a client for it, we ship a standard client that you can use to call the agent above:
 
-And here is the client for it:
+{{{
+$ mc-rpc --agent helloworld --action echo --arg msg="Welcome to MCollective Simple RPC"
+Determining the amount of hosts matching filter for 2 seconds .... 1
+                                        
+devel.your.com                          : OK
+    "hello world"
+
+
+
+---- rpctest#echo call stats ----
+           Nodes: 1
+      Start Time: Wed Dec 23 20:49:14 +0000 2009
+  Discovery Time: 0.00ms
+      Agent Time: 54.35ms
+      Total Time: 54.35ms
+}}}
+
+
+But you can still write your own clients, it's incredibly simple:
 
 {{{
 #!/usr/bin/ruby
