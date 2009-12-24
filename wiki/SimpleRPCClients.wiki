@@ -1,6 +1,8 @@
 #summary Writing Simple RPC Client
 #labels Phase-Reference
 
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 As pointed out in the [SimpleRPCIntroduction page you can use the _mc-rpc_ CLI to call agents and it will do it's best to print results in a sane way.  When this is not enough you can write your own clients.
@@ -42,22 +44,187 @@ printrpcstats
 
 Save this into _hello.rb_ and run it with _--help_, you should see the standard basic help including filters for discovery.
 
+If you've set up the Agent and run the client you should see something along these lines:
+
 {{{
-$ hello.rb --help
-Usage: hello [options]
+$ hello.rb
 
-Common Options
-    -c, --config FILE                Load configuratuion from file rather than default
-        --dt SECONDS                 Timeout for doing discovery
-        --discovery-timeout
-    -t, --timeout SECONDS            Timeout for calling remote agents
-    -q, --quiet                      Do not be verbose
-    -v, --verbose                    Be verbose
-    -h, --help                       Display this screen
-
-Host Filters
-        --wf, --with-fact fact=val   Match hosts with a certain fact
-        --wc, --with-class CLASS     Match hosts with a certain puppet class
-        --wa, --with-agent AGENT     Match hosts with a certain agent
-        --wi, --with-identity IDENT  Match hosts with a certain configured identity
+Finished processing 44 hosts in 375.57 ms
 }}}
+
+While it ran you would have seen a little progress bar and then just the summary line.  The idea is that if you're talking to a 1000 machine there's no point in seeing a thousand _OK_, you only want to see what failed and this is exactly what happens here, you're only seeing errors.
+
+If you run it with _--verbose_ you'll see a line of text for every host and also a larger summary of results.
+
+I'll explain each major line in the code below then add some more features from there:
+
+{{{
+include MCollective::RPC
+ 
+mc = rpcclient("helloworld")
+}}}
+
+The first line pulls in the various helper functions that we provide, this is the Mixin we mentioned earlier.
+
+We then create a new client to the agent "helloworld" that you access through the _mc_ variable.
+
+{{{
+printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
+
+printrpcstats
+}}}
+
+To call a specific action you simply have to do _mc.echo_ this calls the _echo_ action, we pass a _:msg_ parameter into it with the string we want echo'd back.  The parameters will differ from action to action.  It returns a simple array of the results that you can print any way you want, we'll show that later.
+
+_printrpc_ and _printrpcstats_ are functions used to print the results and stats respectively.
+
+== Adjusting the output ==
+
+=== Verbosely displaying results ===
+As you see there's no indication that discovery is happening and as pointed out we do not display results that are ok, you can force verbosity as below:
+
+{{{
+mc = rpcclient("helloworld")
+
+mc.discover :verbose => true
+
+printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC"), :verbose => true
+}}}
+
+Here we've added a _:verbose_ flag and we've specifically called the discover method.  Usually you don't need to call discover it will do it on demand.  Doing it this way you'll always see the line:
+
+{{{
+Determining the amount of hosts matching filter for 2 seconds .... 44
+}}}
+
+Passing verbose to _printrpc_ forces it to print all the results, failures or not.
+
+=== Disabling the progress indicator ===
+You can disable the twirling progress indicator easily:
+
+{{{
+mc = rpcclient("helloworld")
+mc.progress = false
+}}}
+
+Now whenever you call an action you will not see the progress indicator.
+
+== Applying filters programatically ==
+You can pass filters on the command line using the normal _--with-*_ options but you can also do it programatically.  Here's a new version of the client that only calls machines with the puppet class _/dev_server/_ and the fact _country=uk_
+
+{{{
+mc = rpcclient("helloworld")
+
+mc.class_filter /dev_server/
+mc.fact_filter "country", "uk"
+
+printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
+}}}
+
+You can set other filters like _agent`_`filter_ and _identity`_`filter_.
+
+== Forcing Rediscovery ==
+By default it will only do discovery once per script and then re-use the results, you can though force rediscovery if you had to adjust filters mid run for example.
+
+{{{
+mc = rpcclient("helloworld")
+
+mc.class_filter /dev_server/
+printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
+
+mc.reset
+
+mc.fact_filter "country", "uk"
+printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
+}}}
+
+Here we make one _echo_ call - which would do a discovery - we then reset the client, adjust filters and call it again.  The 2nd call would do a new discovery and have new client lists etc.
+
+== Gaining access to the full MCollective::Client ==
+If you wanted to work with the Client directly as in [WritingAgents] after perhaps setting up some queries or gathering data first you can gain access to the client, you might also need access to the options array that was parsed out from the command line and any subsequent filters that you added.
+
+{{{
+mc = rpcclient("helloworld")
+
+client = mc.client
+options = mc.options
+}}}
+
+The first call will set up the CLI option parsing, create clients etc, you can then just grab the client and options and go on as per [WritingAgents].
+
+== Dealing with the results directly ==
+The biggest reason that you'd write custom clients is probably if you wanted to do custom processing of the results, there are 2 options to do it.
+
+=== Results and Exceptions ===
+Results have a set structure and depending on how you access the results you will either get Exceptions or result codes.
+
+|| *Return Code* || *Description* || *Exception Class* ||
+||0||OK||||
+||1||OK, failed.  All the data parsed ok, we have a action matching the request but the requested action could not be completed.||||
+||2||Unknown action||UnknownRPCAction||
+||3||Missing data||MissingRPCData||
+||4||Invalid data||InvalidRPCData||
+||5||Other error||UnknownRPCError||
+
+Just note these now, I'll reference them later down.
+
+=== Simple RPC style results ===
+Simple RPC provides a trimmed down version of results from the basic Client library.  You'd choose to use this if you just want to do simple things or maybe you're just learning Ruby.  You'll get to process the results _after_ the call is either done or timed out completely.
+
+Here's an example that will print out results in a custom way.
+
+{{{
+mc.echo(:msg => "hello world").each do |resp|
+   printf("%-40s: %s\n", resp[:sender], resp[:data])
+end
+}}}
+
+This will produce a result something like this:
+
+{{{
+dev1.you.net                          : hello world
+dev2.you.net                          : hello world
+dev3.you.net                          : hello world
+}}}
+
+The _each_ in the above code just loops through the array of results.  Results are an array of Hashes, each Hash looks like this:
+
+{{{
+{:statusmsg=>"OK",
+ :sender=>"dev2.your.net",
+ :data=>"hello world",
+ :statuscode=>0}
+}}}
+
+The _:statuscode_ matches the table above so you can make decisions based on each result's status.
+
+=== Gaining access to MCollective::Client#req results ===
+You can get access to each result in real time, in this case you will need to handle the exceptions in the table above and you'll get a different style of result set.  The result set will be exactly as from the full blown client.
+
+In this mode there will be no progress indicator, you'll deal with results as and when they come in not after the fact as in the previous example.
+
+{{{
+mc.echo(:msg => "hello world") do |resp|
+   begin
+      printf("%-40s: %s\n", resp[:senderid], resp[:body][:data])
+   rescue RPCError => e
+      puts "The RPC agent returned an error: #{e}"
+   end
+end
+}}}
+
+The output will be the same as above
+
+In this mode the results you get will be like this:
+
+{{{
+{:msgtarget=>"/topic/mcollective.rpctest.reply",
+ :senderid=>"dev2.your.net",
+ :msgtime=>1261696663,
+ :hash=>"2d37daf690c4bcef5b5380b1e0c55f0c",
+ :body=>{:statusmsg=>"OK", :statuscode=>0, :data=>"hello world"},
+ :requestid=>"2884afb0b52cb38ea4d4a3146d18ef5f",
+ :senderagent=>"rpctest"}
+}}}
+
+Note how here we need to catch the exceptions, just handing _:statuscode_ will not be enough as the RPC client will raise exceptions - all descendant from _RPCError_ so you can easily catch just those.
