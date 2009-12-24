@@ -27,7 +27,7 @@ module Mcollective
             def echo_action
                 validate :msg, String
      
-                reply.data = request[:msg]
+                @reply.data = @request[:msg]
             end
         end
     end
