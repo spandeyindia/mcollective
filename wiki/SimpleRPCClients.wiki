@@ -228,3 +228,34 @@ In this mode the results you get will be like this:
 }}}
 
 Note how here we need to catch the exceptions, just handing _:statuscode_ will not be enough as the RPC client will raise exceptions - all descendant from _RPCError_ so you can easily catch just those.
+
+== Adding custom command line options ==
+You can look at the _mc-rpc_ script for a big sample, here I am just adding a simple _--msg_ option to our script so you can customize the message that will be sent and received.
+
+{{{
+#!/usr/bin/ruby
+ 
+require 'mcollective'
+ 
+include MCollective::RPC
+ 
+options = rpcoptions do |parser, options|
+   parser.define_head "Generic Echo Client"
+   parser.banner = "Usage: hello [options] [filters] --msg MSG"
+
+   parser.on('-m', '--msg MSG', 'Message to pass') do |v|
+      options[:msg] = v
+   end
+end
+
+unless options.include?(:msg)
+   puts("You need to specify a message with --msg")
+   exit! 1
+end
+
+mc = rpcclient("helloworld", :options => options)
+
+printrpc mc.echo(:msg => options[:msg])
+}}}
+
+Documentation for the Options Parser can be found [http://code.google.com/p/mcollective/source/browse/trunk/lib/mcollective/optionparser.rb in it's code] you can also look at the various _mc-*_ scripts that come with the code.
