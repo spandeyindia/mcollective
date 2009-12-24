@@ -5,7 +5,7 @@
 
 = Introduction =
 
-As pointed out in the [SimpleRPCIntroduction page you can use the _mc-rpc_ CLI to call agents and it will do it's best to print results in a sane way.  When this is not enough you can write your own clients.
+As pointed out in the [SimpleRPCIntroduction] page you can use the _mc-rpc_ CLI to call agents and it will do it's best to print results in a sane way.  When this is not enough you can write your own clients.
 
 Simple RPC clients can do most of what a normal [WritingAgents client] can do but it makes a lot of things much easier if you stick to the Simple RPC conventions.
 
@@ -110,7 +110,7 @@ mc.progress = false
 Now whenever you call an action you will not see the progress indicator.
 
 == Applying filters programatically ==
-You can pass filters on the command line using the normal _--with-*_ options but you can also do it programatically.  Here's a new version of the client that only calls machines with the puppet class _/dev_server/_ and the fact _country=uk_
+You can pass filters on the command line using the normal _--with-`*`_ options but you can also do it programatically.  Here's a new version of the client that only calls machines with the puppet class _/dev_server/_ and the fact _country=uk_
 
 {{{
 mc = rpcclient("helloworld")
@@ -255,7 +255,18 @@ end
 
 mc = rpcclient("helloworld", :options => options)
 
-printrpc mc.echo(:msg => options[:msg])
+mc.echo(:msg => options[:msg]).each do |resp|
+   printf("%-40s: %s\n", resp[:sender], resp[:data])
+end
 }}}
 
-Documentation for the Options Parser can be found [http://code.google.com/p/mcollective/source/browse/trunk/lib/mcollective/optionparser.rb in it's code] you can also look at the various _mc-*_ scripts that come with the code.
+This version of the code should be run like this:
+
+{{{
+test.rb --msg foo
+dev1.you.net                          : foo
+dev2.you.net                          : foo
+dev3.you.net                          : foo
+}}}
+
+Documentation for the Options Parser can be found [http://code.google.com/p/mcollective/source/browse/trunk/lib/mcollective/optionparser.rb in it's code] you can also look at the various _mc-`*`_ scripts that come with the code.
