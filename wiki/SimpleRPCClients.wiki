@@ -7,6 +7,8 @@
 
 As pointed out in the [SimpleRPCIntroduction] page you can use the _mc-rpc_ CLI to call agents and it will do it's best to print results in a sane way.  When this is not enough you can write your own clients.
 
+*NOTE: This feature is available from version 0.4 of MCollective*
+
 Simple RPC clients can do most of what a normal [WritingAgents client] can do but it makes a lot of things much easier if you stick to the Simple RPC conventions.
 
 We'll walk through building a ever more complex example of Hello World here.
