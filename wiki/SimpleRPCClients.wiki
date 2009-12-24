@@ -1,0 +1,63 @@
+#summary Writing Simple RPC Client
+#labels Phase-Reference
+
+= Introduction =
+
+As pointed out in the [SimpleRPCIntroduction page you can use the _mc-rpc_ CLI to call agents and it will do it's best to print results in a sane way.  When this is not enough you can write your own clients.
+
+Simple RPC clients can do most of what a normal [WritingAgents client] can do but it makes a lot of things much easier if you stick to the Simple RPC conventions.
+
+We'll walk through building a ever more complex example of Hello World here.
+
+== The Basic Client ==
+The client is mostly a bunch of helper methods that you use as a [http://juixe.com/techknow/index.php/2006/06/15/mixins-in-ruby/ Ruby Mixin] in your own code, it provides:
+
+ * Standard command line option parsing with help output
+ * Ability to add your own command line options
+ * Simple access to agents and actions
+ * Tools to help you print results
+ * Tools to print stats
+ * Tools to construct your own filters
+ * While retaining full power of _MCollective::Client_ if you need the additional feature sets
+ * And being as simple or as complex to match your level of code proficiency
+
+We'll write a client for the _Helloworld_ agent that you saw in the [SimpleRPCIntroduction].
+
+== Call an Agent and print the result ==
+A basic hello world client can be seen below:
+
+{{{
+#!/usr/bin/ruby
+ 
+require 'mcollective'
+ 
+include MCollective::RPC
+ 
+mc = rpcclient("helloworld")
+
+printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
+
+printrpcstats
+}}}
+
+Save this into _hello.rb_ and run it with _--help_, you should see the standard basic help including filters for discovery.
+
+{{{
+$ hello.rb --help
+Usage: hello [options]
+
+Common Options
+    -c, --config FILE                Load configuratuion from file rather than default
+        --dt SECONDS                 Timeout for doing discovery
+        --discovery-timeout
+    -t, --timeout SECONDS            Timeout for calling remote agents
+    -q, --quiet                      Do not be verbose
+    -v, --verbose                    Be verbose
+    -h, --help                       Display this screen
+
+Host Filters
+        --wf, --with-fact fact=val   Match hosts with a certain fact
+        --wc, --with-class CLASS     Match hosts with a certain puppet class
+        --wa, --with-agent AGENT     Match hosts with a certain agent
+        --wi, --with-identity IDENT  Match hosts with a certain configured identity
+}}}
