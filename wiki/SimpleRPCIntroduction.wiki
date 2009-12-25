@@ -54,7 +54,7 @@ devel.your.com                          : OK
 }}}
 
 
-But you can still write your own clients, it's incredibly simple, full details of a client is out of scope for the introduction but here is some sample code to do the same call as above including full discovery and help output:
+But you can still write your own clients, it's incredibly simple, full details of a client is out of scope for the introduction - see the [SimpleRPCClients] page instead for full details - but here is some sample code to do the same call as above including full discovery and help output:
 
 {{{
 #!/usr/bin/ruby
