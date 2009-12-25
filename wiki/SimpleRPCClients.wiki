@@ -83,7 +83,7 @@ _printrpc_ and _printrpcstats_ are functions used to print the results and stats
 == Adjusting the output ==
 
 === Verbosely displaying results ===
-As you see there's no indication that discovery is happening and as pointed out we do not display results that are ok, you can force verbosity as below:
+As you see there's no indication that discovery is happening and as pointed out we do not display results that are ok, you can force verbosity as below on individual requests:
 
 {{{
 mc = rpcclient("helloworld")
@@ -100,6 +100,17 @@ Determining the amount of hosts matching filter for 2 seconds .... 44
 }}}
 
 Passing verbose to _printrpc_ forces it to print all the results, failures or not.
+
+If you just wanted to force verbose on for all client interactions, do:
+
+{{{
+mc = rpcclient("helloworld")
+mc.verbose = true
+
+printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
+}}}
+
+In this case everything will be verbose, regardless of command line options.
 
 === Disabling the progress indicator ===
 You can disable the twirling progress indicator easily:
@@ -152,7 +163,7 @@ client = mc.client
 options = mc.options
 }}}
 
-The first call will set up the CLI option parsing, create clients etc, you can then just grab the client and options and go on as per [WritingAgents].
+The first call will set up the CLI option parsing, create clients etc, you can then just grab the client and options and go on as per [WritingAgents].  This is a much quicker way to write full power clients, by just by short-circuiting the options parsing etc.
 
 == Dealing with the results directly ==
 The biggest reason that you'd write custom clients is probably if you wanted to do custom processing of the results, there are 2 options to do it.
@@ -160,7 +171,7 @@ The biggest reason that you'd write custom clients is probably if you wanted to 
 === Results and Exceptions ===
 Results have a set structure and depending on how you access the results you will either get Exceptions or result codes.
 
-|| *Return Code* || *Description* || *Exception Class* ||
+|| *Status Code* || *Description* || *Exception Class* ||
 ||0||OK||||
 ||1||OK, failed.  All the data parsed ok, we have a action matching the request but the requested action could not be completed.||||
 ||2||Unknown action||UnknownRPCAction||
@@ -171,7 +182,9 @@ Results have a set structure and depending on how you access the results you wil
 Just note these now, I'll reference them later down.
 
 === Simple RPC style results ===
-Simple RPC provides a trimmed down version of results from the basic Client library.  You'd choose to use this if you just want to do simple things or maybe you're just learning Ruby.  You'll get to process the results _after_ the call is either done or timed out completely.
+Simple RPC provides a trimmed down version of results from the basic Client library.  You'd choose to use this if you just want to do simple things or maybe you're just learning Ruby.  You'll get to process the results _after_ the call is either done or timed out completely.  
+
+This is an important difference between the two approaches, in one you can parse the results as it comes in, in the other you will only get results after processing is done.  This would be the main driving facter for choosing one over the other.
 
 Here's an example that will print out results in a custom way.
 
@@ -189,13 +202,17 @@ dev2.you.net                          : hello world
 dev3.you.net                          : hello world
 }}}
 
-The _each_ in the above code just loops through the array of results.  Results are an array of Hashes, each Hash looks like this:
+The _each_ in the above code just loops through the array of results.  Results are an array of Hashes, the data you got for above has the following structure:
 
 {{{
+[{:statusmsg=>"OK",
+ :sender=>"dev1.your.net",
+ :data=>"hello world",
+ :statuscode=>0},
 {:statusmsg=>"OK",
  :sender=>"dev2.your.net",
  :data=>"hello world",
- :statuscode=>0}
+ :statuscode=>0}]
 }}}
 
 The _:statuscode_ matches the table above so you can make decisions based on each result's status.
@@ -220,13 +237,13 @@ The output will be the same as above
 In this mode the results you get will be like this:
 
 {{{
-{:msgtarget=>"/topic/mcollective.rpctest.reply",
+{:msgtarget=>"/topic/mcollective.helloworld.reply",
  :senderid=>"dev2.your.net",
  :msgtime=>1261696663,
  :hash=>"2d37daf690c4bcef5b5380b1e0c55f0c",
  :body=>{:statusmsg=>"OK", :statuscode=>0, :data=>"hello world"},
  :requestid=>"2884afb0b52cb38ea4d4a3146d18ef5f",
- :senderagent=>"rpctest"}
+ :senderagent=>"helloworld"}
 }}}
 
 Note how here we need to catch the exceptions, just handing _:statuscode_ will not be enough as the RPC client will raise exceptions - all descendant from _RPCError_ so you can easily catch just those.
@@ -272,3 +289,27 @@ dev3.you.net                          : foo
 }}}
 
 Documentation for the Options Parser can be found [http://code.google.com/p/mcollective/source/browse/trunk/lib/mcollective/optionparser.rb in it's code] you can also look at the various _mc-`*`_ scripts that come with the code.
+
+And finally if you add options as above rather than try to parse it yourself you will get help integration for free:
+
+{{{
+$ hello.rb --help
+Usage: hello [options] [filters] --msg MSG
+Generic Echo Client
+    -m, --msg MSG                    Message to pass
+
+Common Options
+    -c, --config FILE                Load configuratuion from file rather than default
+        --dt SECONDS                 Timeout for doing discovery
+        --discovery-timeout
+    -t, --timeout SECONDS            Timeout for calling remote agents
+    -q, --quiet                      Do not be verbose
+    -v, --verbose                    Be verbose
+    -h, --help                       Display this screen
+
+Host Filters
+        --wf, --with-fact fact=val   Match hosts with a certain fact
+        --wc, --with-class CLASS     Match hosts with a certain puppet class
+        --wa, --with-agent AGENT     Match hosts with a certain agent
+        --wi, --with-identity IDENT  Match hosts with a certain configured identity
+}}}
