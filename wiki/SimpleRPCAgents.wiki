@@ -1,0 +1,219 @@
+#summary Writing Simple RPC agents
+#labels Phase-Reference
+
+<wiki:toc max_depth="3" />
+
+= Introduction =
+
+Simple RPC works because it makes a lot of assumptions about how you write agents, we'll try to capture those assumptions here and show you how to apply them to our Helloworld agent.
+
+== Conventions regarding Incoming Data ==
+
+As you've seen in [SimpleRPCClients] our clients will send requests like:
+
+{{{
+mc.echo(:msg => "Welcome to MCollective Simple RPC")
+}}}
+
+A more complex example might be:
+
+{{{
+exim.setsender(:msgid => "1NOTVx-00028U-7G", :sender => "foo@bar.com")
+}}}
+
+Effectively this creates a hash with the members _:msgid_ and _:sender_, you could use strings for the data items too:
+
+{{{
+exim.setsender("msgid" => "1NOTVx-00028U-7G", "senderid" => "foo@bar.com")
+}}}
+
+Your data types should be preserved if your Security plugin supports that - the default one does - so you can pass in Arrays, Hashes, OpenStructs, Hashes of Hashes but you should always pass something in and it should be key/value pairs like a Hash expects.
+
+== Sample Agent ==
+Here's our sample _Helloworld_ agent:
+
+{{{
+module Mcollective
+    module Agent
+        class Helloworld<RPC::Agent
+            # Basic echo server
+            def echo_action
+                validate :msg, String
+     
+                reply.data = request[:msg]
+            end
+        end
+    end
+end
+}}}
+
+Strictly speaking this Agent will work but isn't considered complete - there's no meta data and no help.
+
+== Agent Name ==
+The agent name is derived from the class name, the example code creates _MCollective::Agent::Helloworld_ and the agent name would be _helloworld_.
+
+== Meta Data and Initialization ==
+Simple RPC agents still need meta data like in [WritingAgents], without it you'll justh ave some defaults assigned, code below adds the meta data to our agent:
+
+{{{
+module Mcollective
+    module Agent
+        class Helloworld<RPC::Agent
+
+            meta[:license] = "Apache 2"
+            meta[:author] = "R.I.Pienaar"
+            meta[:version] = "1.1"
+
+            timeout = 10
+          
+            # Basic echo server
+            def echo_action
+                validate :msg, String
+     
+                reply.data = request[:msg]
+            end
+        end
+    end
+end
+}}}
+
+The added code sets our creator info, license and version as well as a timeout.  The timeout is how long MCollective will let your agent run for before killing them, this is a very important number and should be given careful consideration.  If you set it too low your agents will be terminated before their work is done.
+
+The default timeout for SimpleRPC agents is _10_ .
+
+== Providing Help ==
+We should always provide help for our agents, this is not currently used but we'll soon add abilities to perform introspection on agents from the client side so then help will be invaluable.
+
+{{{
+        class Helloworld<RPC::Agent
+             .
+             .
+             .
+           
+             def help
+                <<-EOH
+                Basic hello world agent:
+
+                Actions:
+                  echo - Accepts :msg and returns it back
+                EOH
+             end
+        end
+}}}
+
+Future versions of Simple RPC will probably create default help that is sensible - it would for example show all actions and what their input is automatically.
+
+=== Writing Actions ===
+Actions are the individual tasks that your agent can do, they should just be in methods matching the _name`_`action_.
+
+{{{
+            def echo_action
+                validate :msg, String
+     
+                reply.data = request[:msg]
+            end
+}}}
+
+Creates an action called "echo".  They don't and can't take any arguments.
+
+== Validating Input ==
+If you've followed the conventions and put the incoming data in a Hash structure then you can use a few of the provided validators to make sure your data that you received is what you expected.
+
+If you didn't use Hashes for input the validators would not be usable to you.
+
+In the sample action above we validate the _:msg_ input to be of type _String_, here are a few more examples:
+
+{{{
+   validate :msg, /[a-zA-Z]+/
+   validate :ipaddr, :ipv4address
+   validate :ipaddr, :ipv6address
+   validate :commmand, :shellsafe
+}}}
+
+The table below shows the validators we support currently
+
+|| * Type of Check * || * Description * || * Example * ||
+||Regular Expressions||Matches the input against the supplied regular expression||validate :msg, /[a-zA-Z]+/||
+||Type Checks||Verifies that input is of a given ruby data type||validate :msg, String||
+||IPv4 Checks||Validates an ip v4 address, note 5.5.5.5 is technically a valid address||validate :ipaddr, :ipv4address||
+||IPv6 Checks||Validates an ip v6 address||validate :ipaddr, :ipv6address||
+||system call safety checks||Makes sure the input is a string and has no ><` or | characters in it||validate :command, :shellsafe||
+
+All of these checks will raise an InvalidRPCData exception, you shouldn't catch this exception as the Simple RPC framework catches those and handles them appropriately.
+
+We'll make input validators plugins so you can provide your own types of validation easily.
+
+== Accessing the Input ==
+As you see from the echo example our input is easy to get to by just looking in _request.data_, this would be a Hash of exactly what was sent in by the client in the original request.
+
+The request object is in instance of _MCollective::RPC::Request_, you can also gain access to the following:
+
+||time||The time the message was sent||
+||action||The action it is directed at||
+||data||The actual hash of data||
+||sender||The id of the sender||
+||agent||Which agent it was directed at||
+
+Since data is the actual Hash you can gain access to your input like:
+
+{{{
+request.data[:msg]
+}}}
+
+OR
+
+{{{
+request[:msg]
+}}}
+
+Accessing it via the first will give you full access to all the normal Hash methods where the 2nd will only give you access to _include?_.
+
+== Constructing Replies ==
+=== Reply Data ===
+The reply data is in the _reply_ variable and is an instance of _MCollective::RPC::Reply_.  
+
+You can pass values back by simply assining anything to the data like here:
+
+{{{
+reply.data = request[:msg]
+}}}
+
+In this example data will be a String, nothing fancy gets done to it if you assign directly to _reply.data_
+
+Or there's a few convenience methods if you wanted to pass back a hash of data.
+
+{{{
+reply[:msg] = request[:msg]
+}}}
+
+Here reply will act as if it's a hash so you don't have to do _reply.data`[`:msg`]`_ all the time.
+
+=== Reply Status ===
+As pointed out in the [SimpleRPCClients#Results_and_Exceptions] page results all include status messages and the reply object has a helper to create those.
+
+{{{
+def rmmsg_action
+   validate :msg, String
+   validate :msg, /[a-zA-Z]+-[a-zA-Z]+-[a-zA-Z]+-[a-zA-Z]+/
+   reply.fail "No such message #{request[:msg]}", 1 unless have_msg?(request[:msg])
+
+   # check all the validation passed before doing any work
+   return unless reply.statuscode == 0
+
+   # now remove the message from the queue
+end
+}}}
+
+The number in _reply.fail_ corresponds to the codes in [SimpleRPCClients#Results_and_Exceptions] it would default to _1_ so you could just say:
+
+{{{
+reply.fail "No such message #{request[:msg]}" unless have_msg?(request[:msg])
+}}}
+
+This is hypothetical action that is supposed to remove a message from some queue, if we do have a String as input that matches our message id's we then check that we do have such a message and if we don't we fail with a helpful message.
+
+Technically this will just set _statuscode_ and _statusmsg_ fields in the reply to appropriate values.
+
+It won't actually raise exceptions or exit your action though you should do that yourself as in the example here.
+
+   
