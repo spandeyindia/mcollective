@@ -1,5 +1,4 @@
 ﻿#summary Writing a simple agent
-#labels Featured
 
 = Introduction =
 Writing agents for mcollective is simple, we'll write a simple _echo_ agent as well as a cli tool to communicate with it that supports discovery, filtering and more.

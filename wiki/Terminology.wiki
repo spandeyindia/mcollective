@@ -1,5 +1,5 @@
 ﻿#summary Common terminology used
-#labels Featured,Phase-Reference
+#labels Phase-Reference
 
 = Introduction =
 

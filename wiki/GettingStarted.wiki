@@ -1,5 +1,4 @@
 ﻿#summary Getting started guide for initial release
-#labels Featured
 
 = Getting Started =
 
