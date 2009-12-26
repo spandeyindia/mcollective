@@ -166,4 +166,8 @@ See the _--help_ option to the various _mc-`*`_ script for available options.  Y
 We provide limited default plugins, you can look on our sister project [http://code.google.com/p/mcollective-plugins/] where you will find various plugins to manage packages, services etc.
 
 == Further Reading ==
-From here you should look at the rest of the wiki pages where you'll find guides on writing your own plugins etc.
+From here you should look at the rest of the wiki pages some key pages are:
+
+ * [Screencasts] - Get a hands-on look at what is possible
+ * [Terminology]
+ * [SimpleRPCIntroduction Introduction to Simple RPC] - a simple to use framework for writing clients and agents
