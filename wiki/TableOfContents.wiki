@@ -5,6 +5,10 @@
    * [GettingStarted Getting Started]
    * [ConfigurationReference Configuration Guide]
    * [Terminology]
+ * Simple RPC Reference
+   * [SimpleRPCIntroduction Introduction]
+   * [SimpleRPCAgents Writing Agents]
+   * [SimpleRPCClients Writing Clients]
  * Developer Documentation
    * [WritingAgents Writing Agents]
    * [WritingFactsPlugins Writing Facts Plugins]
