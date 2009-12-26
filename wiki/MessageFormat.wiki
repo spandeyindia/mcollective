@@ -11,6 +11,20 @@ At present the task of encoding and decoding messages lies with the _MCollective
 
 Abstracting the encoding away from the security plugins is a goal for future refactorings, till then each security plugin will need to at least conform to the following structure.  
 
+= Message Flow =
+The diagram below shows basic message flow on a MCollective system.
+
+The key thing to take away from this diagram is the broadcast paradigm that is in use, one message only leaves the client and gets broadcast to all nodes.  We'll walk you through each point below.
+
+[http://www.marionette-collective.org/images/message-flow-diagram.png]
+
+ A - A single messages gets sent from the workstation of the administrator to the middleware.  The message has a filter attached saying only machines with the fact _cluster=c_ should perform an action.
+ B - The middleware network broadcasts the message to all nodes.  The middleware network can be a cluster of multiple servers in multiple locations, networks and data centers.
+ C - Every node gets the message and validates the filter
+ D - Only machines in _cluster=c_ act on the message and sends a reply, depending on your middleware only the workstation will get the reply.
+
+Below see the raw structure of message that gets sent and received.
+
 == Requests sent to agents ==
 A sample request that gets sent to the connector can be seen here, each component is described below:
 
@@ -84,6 +98,8 @@ The contents of the body will vary by what ever the security provider choose to 
 
 This ensures that variable types etc remain in tact end to end.  Other security providers might use JSON etc, the decoding of this is also handled by the security provider so its totally up to the provider to decide.
 
+In the case of [SimpleRPCIntroduction Simple RPC] the entire RPC request and replies will be in the body of the messages, it's effectively a layer on top of the basic message flow.
+ 
 === :hash ===
 
 This is an example of something specific to the security provider, this is used only by the PSK provider so it's optional and specific to the PSK provider
