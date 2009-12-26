@@ -11,6 +11,8 @@ At present the task of encoding and decoding messages lies with the _MCollective
 
 Abstracting the encoding away from the security plugins is a goal for future refactorings, till then each security plugin will need to at least conform to the following structure.  
 
+In general this is all hidden from the developers, especially if you use [SimpleRPCIntroduction Simple RPC].  If you want to implement your own security or serialization you will need to know exactly how all of this sticks together.
+
 = Message Flow =
 The diagram below shows basic message flow on a MCollective system.
 
