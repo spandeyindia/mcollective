@@ -18,6 +18,7 @@ What is MCollective and what does it allow you to do:
  * Allows you to write simple RPC style programs in an easy to understand language - Ruby
  * Makes it trivial to write your own custom CLI's or even Web interfaces
  * Extremely pluggable and adaptable to local needs
+ * Does not re-invent the wheel unless necessary, middle ware systems already have rich authentication and authorization models, leverage these and do not try to re-develop a new authentication system.
 
 We aim to provide a stable core framework that allows you to build it out into a system that meets your own needs, we are pluggable in the following areas:
 
