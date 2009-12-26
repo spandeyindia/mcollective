@@ -1,0 +1,28 @@
+#summary Introducing MCollective
+= Introduction =
+
+The Marionette Collective aka. mcollective is a framework to build server orchestration or parallel job execution systems.
+
+Primarily we'll use it as a means to programmatically execute actions on clusters of servers.  In this regard we operate in the same space as tools like [https://fedorahosted.org/func/ Func], [http://fabfile.org/ Fabric] or [http://www.capify.org Capistrano].  
+
+We've attempted to think out of the box a bit in designing such a system by not relying on central inventories and tools like SSH, we're not simply a fancy SSH for loop.  MCollective uses modern tools like [http://en.wikipedia.org/wiki/Publish/subscribe Publish Subscribe Middleware] and modern philosophies like real time discovery of network resources to deliver a very scalable and very fast parallel execution environment.
+
+What is MCollective and what does it allow you to do:
+
+ * Manage a large to very large cluster of servers
+ * Use a broadcast paradigm for request distribution.  All servers get all requests at the same time, requests have filters attached and only servers matching the filter will act on requests.  There is no central asset database to go out of sync, the network is the only source of truth
+ * Leverage your existing investment in tools such as Puppet or Chef to build up filters that use your own meta data
+ * Comes with simple to use command line tools to call remote agents
+ * A number of agents to manage packages, services and other common components are available from the community.
+ * Build custom agents and clients to perform any action you can program in the Ruby language. 
+ * Allows you to write simple RPC style programs in an easy to understand language - Ruby
+ * Makes it trivial to write your own custom CLI's or even Web interfaces
+ * Extremely pluggable and adaptable to local needs
+
+We aim to provide a stable core framework that allows you to build it out into a system that meets your own needs, we are pluggable in the following areas:
+
+ * Replace our choice of middleware - STOMP compliant middleware - with your own like AMQP based.
+ * Replace our authorization system with one that suits your local needs
+ * Replace out serialization - Ruby Marshal based - with your own like [http://json-schema.org/ JSONSchema] that is cross language.
+ * Add sources of data, if you use Chef and Ohai you can provide a plugin to give us access to that data
+ * Create a central inventory of services leveraging MCollective as transport that can run and distribute inventory data on a regular basis.
