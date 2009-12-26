@@ -34,6 +34,9 @@ A combination of Servers, Nodes and Middleware all operating in the same Namespa
 
 Multiple collectives can be built sharing the same Middleware but kept separate by using different Namespaces.
 
+== Simple RPC ==
+A Remote Procedure Call system built ontop of MCollective that makes it very simple to write feature full agents and clients.  See [SimpleRPCIntroduction].
+
 == Agent == 
 A block of Ruby code that performs a specific role, the main reason for mcollective's existence is to host agents.  Agents can perform tasks like manipulate firewalls, services, packages etc. See [http://en.wikipedia.org/wiki/Software_agent Wikpedia].
 
