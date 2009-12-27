@@ -14,7 +14,7 @@ To get an immediate feel for what I am on about you can look at some of the vide
 
  * Interact with small to very large clusters of servers
  * Use a [MessageFlow broadcast paradigm for request distribution].  All servers get all requests at the same time, requests have filters attached and only servers matching the filter will act on requests.  There is no central asset database to go out of sync, the network is the only source of truth
- * Break free from ever more complex naming conventions for hostnames as a means of identity.  Use a very rich set of meta data provided by each machine to address them.  Meta data comes from Puppet, Chef, Facter, Ohai or plugins you provide yourself.   
+ * Break free from ever more complex naming conventions for hostnames as a means of identity.  Use a very rich set of meta data provided by each machine to address them.  Meta data comes from Puppet, Chef, Facter, Ohai [WritingFactsPlugins or plugins you provide yourself].   
  * Comes with simple to use command line tools to call remote agents.
  * A number of agents to manage packages, services and other common components are available from the community.
  * Allows you to write simple RPC style agents, clients and Web UIs in an easy to understand language - Ruby
