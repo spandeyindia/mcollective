@@ -43,6 +43,7 @@ Introductory and Tutorial Pages:
  *  Learn how to write simple Agents and Clients using our [SimpleRPCIntroduction  Simple RPC Framework]
  * The author maintains some agents and clients on another project [http://code.google.com/p/mcollective-plugins/ here].
  * The author has written [http://www.devco.net/archives/tag/mcollective several blog posts] about mcollective.
+ * Subscribe and post questions to the mailing list. [http://groups.google.com/group/mcollective-users]
  
 Internal References and Developer Docs:
  * Finding it hard to do something complex with Simple RPC? See [WritingAgents] for what lies underneath
