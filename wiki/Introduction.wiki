@@ -20,6 +20,7 @@ To get an immediate feel for what I am on about you can look at some of the vide
  * Allows you to write simple RPC style agents, clients and Web UIs in an easy to understand language - Ruby
  * Extremely pluggable and adaptable to local needs
  * Middleware systems already have rich authentication and authorization models, leverage these and do not try to re-develop a new authentication system.
+ * Re-use the ability of middleware to do [ActiveMQClusters clustering, routing and network isolation] to realize secure and scalable setups.
 
 == Pluggable Core ==
 
