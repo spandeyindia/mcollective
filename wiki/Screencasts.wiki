@@ -4,11 +4,17 @@
 = Overview =
 
 == Introduction and Concepts ==
-General introduction to the concepts behind mcollective, this is an old video from before the tool was open source but the concepts still apply.
+Introduction to MCollective, shows features present in the upcoming 0.4 version and onward.
 
-<wiki:video url="http://www.youtube.com/watch?v=C8vobjgrW4E" width=878 height=526 />
+<wiki:video url="http://www.youtube.com/watch?v=WBJDOE6zhko  width=878>
 
 == Interactive management of clusters ==
 Demonstrating managing a cluster of Exim servers spread over 3 continents.  The main idea behind this cast is to show the high performance of mcollective and the kind of system it could potentially enable you to create
 
 <wiki:video url="http://www.youtube.com/watch?v=kNvoQCpJ1V4" width=878 height=526 />
+
+= Old Videos =
+
+General introduction to the concepts behind mcollective, this is an old video from before the tool was open source but the concepts still apply.
+
+<wiki:video url="http://www.youtube.com/watch?v=C8vobjgrW4E" width=878 height=526 />
