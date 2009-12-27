@@ -69,7 +69,7 @@ Next up you should configure the _networkConnectors_:
 
 {{{
     <networkConnectors>
-       <networkConnector name="no1-dc1" uri="static:(tcp://192.168.1.10:6166)" userName="amq" password="Afuphohxoh" duplex="true"/>
+       <networkConnector name="noc1-dc1amq1" uri="static:(tcp://192.168.1.10:6166)" userName="amq" password="Afuphohxoh" duplex="true"/>
     </networkConnectors>
 }}}
 
@@ -98,7 +98,6 @@ We have an [SecurityWithActiveMQ entire page dedicated] to the subject of users 
             <authorizationEntries>
               <authorizationEntry queue=">" write="admins" read="admins" admin="admins" />
               <authorizationEntry topic=">" write="admins" read="admins" admin="admins" />
-              <authorizationEntry topic="ActiveMQ.Advisory.>" read="everyone,all" write="everyone,all" admin="everyone,all"/>
             </authorizationEntries>
           </authorizationMap>
         </map>
