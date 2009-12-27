@@ -1,6 +1,10 @@
 #summary Changelog
 #labels Phase-Implementation
 
+== Version 0.4.x ==
+|| *Date* || *Descriptions* ||
+|| 2009/12/27 || Add support for multiple filters of the same type -  #3||
+
 == Version 0.3.x ==
 || *Date* || *Descriptions* ||
 || *2009/12/17* || *Release version 0.3.0* ||
