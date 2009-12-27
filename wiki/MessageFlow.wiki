@@ -1,0 +1,19 @@
+#summary Message flow through MCollective
+
+= Message Flow =
+The diagram below shows basic message flow on a MCollective system.
+
+The key thing to take away from this diagram is the broadcast paradigm that is in use, one message only leaves the client and gets broadcast to all nodes.  We'll walk you through each point below.
+
+[http://www.marionette-collective.org/images/message-flow-diagram.png]
+
+||A||A single messages gets sent from the workstation of the administrator to the middleware.  The message has a filter attached saying only machines with the fact _cluster=c_ should perform an action.||
+||B||The middleware network broadcasts the message to all nodes.  The middleware network can be a cluster of multiple servers in multiple locations, networks and data centers.||
+||C||Every node gets the message and validates the filter||
+||D||Only machines in _cluster=c_ act on the message and sends a reply, depending on your middleware only the workstation will get the reply.||
+
+For further information see:
+ 
+ * [MessageFormat Messages and their contents]
+ * [ActiveMQClusters Clustering ActiveMQ brokers]
+ * [SecurityWithActiveMQ Security, authentication and authorization]
