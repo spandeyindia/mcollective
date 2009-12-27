@@ -6,7 +6,7 @@ The Marionette Collective aka. mcollective is a framework to build server orches
 
 Primarily we'll use it as a means to programmatically execute actions on clusters of servers.  In this regard we operate in the same space as tools like [https://fedorahosted.org/func/ Func], [http://fabfile.org/ Fabric] or [http://www.capify.org Capistrano].  
 
-We've attempted to think out of the box a bit designing this system by not relying on central inventories and tools like SSH, we're not simply a fancy SSH "for loop".  MCollective uses modern tools like [http://en.wikipedia.org/wiki/Publish/subscribe Publish Subscribe Middleware] and modern philosophies like real time discovery of network resources to deliver a very scalable and very fast parallel execution environment.
+We've attempted to think out of the box a bit designing this system by not relying on central inventories and tools like SSH, we're not simply a fancy SSH "for loop".  MCollective uses modern tools like [http://en.wikipedia.org/wiki/Publish/subscribe Publish Subscribe Middleware] and modern philosophies like real time discovery of network resources using meta data and not hostnames.  Delivering a very scalable and very fast parallel execution environment.
 
 To get an immediate feel for what I am on about you can look at some of the videos on the [Screencasts] page and then keep reading below for further info and links.
 
