@@ -2,7 +2,7 @@
 
 = Introduction =
 
-If you're a chef user you are supported in both facts and classes filters.
+If you're a Chef user you are supported in both facts and classes filters.
 
 = Facts =
 There is a [http://code.google.com/p/mcollective-plugins/wiki/FactsOpsCodeOhai community plugin to enable Ohai] as a fact source.
