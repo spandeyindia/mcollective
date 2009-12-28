@@ -10,6 +10,8 @@ This is a list of release notes for various releases, you should review these be
 === Release Focus and Notes ===
 This release introduced a major new feature - [SimpleRPCIntroduction Simple RPC] - a framework for easily building clients and agents.  More than that it's a set of conventions and standards that will help us build generic clients like web based ones capable of talking to all agents.
 
+We think this feature is ready for wider use, it's well documented and we've done extensive testing.  We'll be porting some of our own code over to it once this release is out and we do anticipate there might be some _0.4.x_ releases to round off a few issues that might remain.
+
 We've also added the ability to create more complex queries such as:
 
 {{{
