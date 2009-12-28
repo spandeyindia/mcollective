@@ -1,4 +1,4 @@
-#summary Writing Simple RPC Client
+﻿#summary Writing Simple RPC Client
 #labels Phase-Reference
 
 <wiki:toc max_depth="3" />
@@ -123,7 +123,7 @@ mc.progress = false
 Now whenever you call an action you will not see the progress indicator.
 
 == Applying filters programatically ==
-You can pass filters on the command line using the normal _--with-`*`_ options but you can also do it programatically.  Here's a new version of the client that only calls machines with the puppet class _/dev_server/_ and the fact _country=uk_
+You can pass filters on the command line using the normal _--with-`*`_ options but you can also do it programatically.  Here's a new version of the client that only calls machines with the configuration management class _/dev_server/_ and the fact _country=uk_
 
 {{{
 mc = rpcclient("helloworld")
@@ -309,7 +309,7 @@ Common Options
 
 Host Filters
         --wf, --with-fact fact=val   Match hosts with a certain fact
-        --wc, --with-class CLASS     Match hosts with a certain puppet class
+        --wc, --with-class CLASS     Match hosts with a certain configuration management class
         --wa, --with-agent AGENT     Match hosts with a certain agent
         --wi, --with-identity IDENT  Match hosts with a certain configured identity
 }}}

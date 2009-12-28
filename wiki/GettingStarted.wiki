@@ -150,12 +150,14 @@ your.domain.com
 
 This searches all systems currently active for ones with a fact _country=uk_, it got the data from the yaml file you made earlier.
 
-If you're a puppet user and the nodes are setup with classes with _classes.txt_ in _/var/lib/puppet_ then you can search for nodes with a specific class on them - the locations will configurable soon:
+If you use confiuration management tools like puppet and the nodes are setup with classes with _classes.txt_ in _/var/lib/puppet_ then you can search for nodes with a specific class on them - the locations will configurable soon:
 
 {{{
 % mc-find-hosts --with-class common::linux
 your.domain.com
 }}}
+
+Chef does not yet support such a list natively but we have some details on the wiki to achieve the same with Chef.
 
 The filter commands are important they will be the main tool you use to target only parts of your infrastructure with calls to agents.
 

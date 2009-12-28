@@ -32,9 +32,9 @@ A sample request that gets sent to the connector can be seen here, each componen
 
 {{{
 {:filter    =>
-  {"puppet_class"  => "common::linux",
-   "fact"          => {:fact=>"country", :value=>"uk"},
-   "agent"         => "package"},
+  {"cf_class"      => ["common::linux"],
+   "fact"          => [{:fact=>"country", :value=>"uk"}],
+   "agent"         => ["package"]},
  :senderid  => "devel.your.com",
  :msgtarget => "/topic/mcollective.discovery.command",
  :body      => body,
@@ -50,14 +50,16 @@ The filter will be evaluated by each node, if it passes the node will dispatch t
 
 You can see all these types of filter in action in the [http://code.google.com/p/mcollective/source/browse/trunk/lib/mcollective/optionparser.rb MCollection::Optionparser] class.
 
+Each filter is an array and you can have multiple filters per type which will be applied with an _AND_
 Valid filter types are:
 
-==== Puppet Class ====
+==== CF Class ====
 
-This will look in your puppet _classes.txt_ for a matching class.
+This will look in a list of classes/recipes/cookbooks/roles applied by your 
+configuration management system and match based on that
 
 {{{
-filter["puppet_class"] = "common::linux"
+filter["cf_class"] = ["common::linux"]
 }}}
 
 
@@ -66,7 +68,7 @@ filter["puppet_class"] = "common::linux"
 This will look through the list of known agents and match against that.
 
 {{{
-filter["agent"] = "package"
+filter["agent"] = ["package"]
 }}}
 
 ==== Facts ====
@@ -74,7 +76,7 @@ filter["agent"] = "package"
 Since facts are key => value pairs this is a bit more complex than normal as you need to build a nested Hash.
 
 {{{
-filter["fact"] = {:fact => "country", :value => "uk"}
+filter["fact"] = [{:fact => "country", :value => "uk"}]
 }}}
 
 
@@ -83,7 +85,7 @@ filter["fact"] = {:fact => "country", :value => "uk"}
 The identity is the configured identity in the server config file, many hosts can have the same identity it's just another level of filter doesn't really mean much like a hostname that would need to be unique.
 
 {{{
-filter["identity"] = "foo.bar.com"
+filter["identity"] = ["foo.bar.com"]
 }}}
 
 === :senderid ===

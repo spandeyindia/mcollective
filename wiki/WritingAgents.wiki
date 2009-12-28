@@ -227,7 +227,7 @@ Common Options
 
 Host Filters
         --wf, --with-fact fact=val   Match hosts with a certain fact
-        --wc, --with-class CLASS     Match hosts with a certain puppet class
+        --wc, --with-class CLASS     Match hosts with a certain configuration management class
         --wa, --with-agent AGENT     Match hosts with a certain agent
         --wi, --with-identity IDENT  Match hosts with a certain configured identity
 }}}

@@ -1,4 +1,4 @@
-#summary Introducing MCollective
+﻿#summary Introducing MCollective
 #labels Featured
 = Introduction =
 
@@ -29,7 +29,7 @@ We aim to provide a stable core framework that allows you to build it out into a
  * Replace our choice of middleware - STOMP compliant middleware - with your own like AMQP based.
  * Replace our authorization system with one that suits your local needs
  * Replace our serialization - Ruby Marshal based - with your own like [http://json-schema.org/ JSONSchema] that is cross language.
- * Add sources of data, if you use Chef and Ohai you can [WritingFactsPlugins provide a plugin to give us access to that data].  The community have ones for [http://code.google.com/p/mcollective-plugins/wiki/FactsRLFacter Puppet and Facter already]
+ * Add sources of data, if you use Chef and Ohai you can [WritingFactsPlugins provide a plugin to give us access to that data].  The community have ones for [http://code.google.com/p/mcollective-plugins/wiki/FactsRLFacter Puppet, Facter and Ohai already]
  * Create a central inventory of services [Registration leveraging MCollective as transport] that can run and distribute inventory data on a regular basis.
 
 MCollective is licensed under the Apache 2 license.
