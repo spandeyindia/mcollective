@@ -53,7 +53,19 @@ if MCollective::Util.empty_filter?(options[:filter])
 
 This new method is compatible with both the old and new filter method so you can start using it before you finish the first issue mentioned here.
 
-We've also made the class filter more generic, in the past you had to adjust _options[:filter]["puppet_class"]_ now you have to adjust _options[:filter]["cf_class"]_.  Old code will keep working but you should change to this name for filters to be consistent with the rest of the code base.
+We've also made the class filter more generic, in the past you had did class filters like this:
+
+{{{
+options[:filter]["puppet_class"] << /apache/
+}}}
+
+Now you have to adjust it to:
+
+{{{
+options[:filter]["cf_class"] << /apache/
+}}}
+
+Old code will keep working but you should change to this name for filters to be consistent with the rest of the code base.
 
 === Changes ===
 || *Date* || *Descriptions* ||
