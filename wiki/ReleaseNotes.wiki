@@ -71,3 +71,13 @@ This release should not break any older code, if it does it's a bug.
 ||2009/12/07||MCollective::Util is now a module and plugins can drop in util classes in the plugin dir||
 ||2009/12/07||The Rakefile now works with rake provided on Debian 4 systems - #2||
 ||2009/12/07||Improvements in the RC script for Debian and older Ubuntu systems - #5||
+
+== 0.3 - 2009/12/02 ==
+=== Release Focus and Notes ===
+First numbered release
+
+=== Backwards Compatibility ==
+n/a
+
+=== Changes ===
+n/a
