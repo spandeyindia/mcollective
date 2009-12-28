@@ -54,7 +54,7 @@ This new method is compatible with both the old and new filter method so you can
 || 2009/12/27 || Create a new client framework [SimpleRPCIntroduction] - #6||
 || 2009/12/27 || Add support for multiple filters of the same type -  #3||
 
-== 0.3 ==
+== 0.3 - 2009/12/17 ==
 === Release Focus and Notes ===
 Primarily a bug fix release.  Only new feature is to allow the user to create _MCollective::Util::*_ classes and put those in the plugins directory.  This is useful for more complex agents and clients.
 
