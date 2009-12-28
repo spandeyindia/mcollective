@@ -14,7 +14,7 @@ To get an immediate feel for what I am on about you can look at some of the vide
 
  * Interact with small to very large clusters of servers
  * Use a [MessageFlow broadcast paradigm for request distribution].  All servers get all requests at the same time, requests have filters attached and only servers matching the filter will act on requests.  There is no central asset database to go out of sync, the network is the only source of truth
- * Break free from ever more complex naming conventions for hostnames as a means of identity.  Use a very rich set of meta data provided by each machine to address them.  Meta data comes from Puppet, Chef, Facter, Ohai [WritingFactsPlugins or plugins you provide yourself].   
+ * Break free from ever more complex naming conventions for hostnames as a means of identity.  Use a very rich set of meta data provided by each machine to address them.  Meta data comes from [UsingWithPuppet Puppet], [UsingWithChef Chef], [http://code.google.com/p/mcollective-plugins/wiki/FactsRLFacter Facter], [http://code.google.com/p/mcollective-plugins/wiki/FactsOpsCodeOhai Ohai] [WritingFactsPlugins or plugins you provide yourself].   
  * Comes with simple to use command line tools to call remote agents.
  * A number of agents to manage packages, services and other common components are [http://code.google.com/p/mcollective-plugins/ available from the community].
  * Allows you to write [SimpleRPCIntroduction simple RPC style agents, clients] and Web UIs in an easy to understand language - Ruby
@@ -29,7 +29,7 @@ We aim to provide a stable core framework that allows you to build it out into a
  * Replace our choice of middleware - STOMP compliant middleware - with your own like AMQP based.
  * Replace our authorization system with one that suits your local needs
  * Replace our serialization - Ruby Marshal based - with your own like [http://json-schema.org/ JSONSchema] that is cross language.
- * Add sources of data, if you use Chef and Ohai you can [WritingFactsPlugins provide a plugin to give us access to that data].  The community have ones for [http://code.google.com/p/mcollective-plugins/wiki/FactsRLFacter Puppet, Facter and Ohai already]
+ * Add sources of data, we support [UsingWithChef Chef] and [UsingWithPuppet Puppet].   You can [WritingFactsPlugins provide a plugin to give us access to your tools data].  The community have ones for [http://code.google.com/p/mcollective-plugins/ Facter and Ohai already]
  * Create a central inventory of services [Registration leveraging MCollective as transport] that can run and distribute inventory data on a regular basis.
 
 MCollective is licensed under the Apache 2 license.
