@@ -21,6 +21,8 @@ We've also added the ability to create more complex queries such as:
 
 This does an _AND_ operation on the puppet classes on the node and finds only nodes with both _/dev_server/_ *AND* _/rails/_ classes.  This new functionality applies to all types of filter.
 
+We've made the _--with-class_ filters more generic in comments, documentation etc with an eye to be more usable in Chef and other Configuration Management environments.
+
 === Backwards Compatibility ===
 Unfortunately introducing the new filtering methods has some backward compatibility issues, if you had clients/agents with code like:
 
@@ -36,7 +38,8 @@ options[:filter]["agent"] << "some agent"
 
 As each filter is an array now.  If you do not change the code it will still work as before but you will not be able to use the compound filtering featuring on filter types that you've forced to be a string and there might be some other undesired side effects.  We've tried though to at least not break old code, they just can't use the new features.
 
-You were also able to test easily in the past if you're running unfiltered using something like:
+You were also able to test easily in the past if you're running unfiltered using 
+something like:
 
 {{{
 if options[:filter] == {}
@@ -50,9 +53,11 @@ if MCollective::Util.empty_filter?(options[:filter])
 
 This new method is compatible with both the old and new filter method so you can start using it before you finish the first issue mentioned here.
 
+We've also made the class filter more generic, in the past you had to adjust _options[:filter]["puppet_class"]_ now you have to adjust _options[:filter]["cf_class"]_.  Old code will keep working but you should change to this name for filters to be consistent with the rest of the code base.
 
 === Changes ===
 || *Date* || *Descriptions* ||
+|| 2009/12/28 || Add support for other configuration management systems like chef in the --with-class filters - #13||
 || 2009/12/28 || Add a _Util.empty`_`filter?_ to test for an empty filter||
 || 2009/12/27 || Create a new client framework [SimpleRPCIntroduction] - #6||
 || 2009/12/27 || Add support for multiple filters of the same type -  #3||
