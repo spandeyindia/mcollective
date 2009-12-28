@@ -4,6 +4,56 @@
 
 This is a list of release notes for various releases, you should review these before upgrading as any potential problems and backward incompatible changes will be highlighted here.
 
+<wiki:toc max_depth="3" />
+
+== 0.4 - Pending release ==
+=== Release Focus and Notes ===
+This release introduced a major new feature - [SimpleRPCIntroduction Simple RPC] - a framework for easily building clients and agents.  More than that it's a set of conventions and standards that will help us build generic clients like web based ones capable of talking to all agents.
+
+We've also added the ability to create more complex queries such as:
+
+{{{
+--with-class /dev_server/ --with-class /rails/
+}}}
+
+This does an _AND_ operation on the puppet classes on the node and finds only nodes with both _/dev_server/_ *AND* _/rails/_ classes.  This new functionality applies to all types of filter.
+
+=== Backwards Compatibility ===
+Unfortunately introducing the new filtering methods has some backward compatibility issues, if you had clients/agents with code like:
+
+{{{
+options[:filter]["agent"] = "some agent"
+}}}
+
+You should now change that to:
+
+{{{
+options[:filter]["agent"] << "some agent"
+}}}
+
+As each filter is an array now.  If you do not change the code it will still work as before but you will not be able to use the compound filtering featuring on filter types that you've forced to be a string and there might be some other undesired side effects.  We've tried though to at least not break old code, they just can't use the new features.
+
+You were also able to test easily in the past if you're running unfiltered using something like:
+
+{{{
+if options[:filter] == {}
+}}}
+
+Now that's much harder and we've added a helper to make this easier:
+
+{{{
+if MCollective::Util.empty_filter?(options[:filter])
+}}}
+
+This new method is compatible with both the old and new filter method so you can start using it before you finish the first issue mentioned here.
+
+
+=== Changes ===
+|| *Date* || *Descriptions* ||
+|| 2009/12/28 || Add a _Util.empty`_`filter?_ to test for an empty filter||
+|| 2009/12/27 || Create a new client framework [SimpleRPCIntroduction] - #6||
+|| 2009/12/27 || Add support for multiple filters of the same type -  #3||
+
 == 0.3 ==
 === Release Focus and Notes ===
 Primarily a bug fix release.  Only new feature is to allow the user to create _MCollective::Util::*_ classes and put those in the plugins directory.  This is useful for more complex agents and clients.
