@@ -36,7 +36,7 @@ You should now change that to:
 options[:filter]["agent"] << "some agent"
 }}}
 
-As each filter is an array now.  If you do not change the code it will still work as before but you will not be able to use the compound filtering featuring on filter types that you've forced to be a string and there might be some other undesired side effects.  We've tried though to at least not break old code, they just can't use the new features.
+As each filter is an array now.  If you do not change the code it will still work as before but you will not be able to use the compound filtering feature on filter types that you've forced to be a string and there might be some other undesired side effects.  We've tried though to at least not break old code, they just can't use the new features.
 
 You were also able to test easily in the past if you're running unfiltered using 
 something like:
@@ -53,7 +53,7 @@ if MCollective::Util.empty_filter?(options[:filter])
 
 This new method is compatible with both the old and new filter method so you can start using it before you finish the first issue mentioned here.
 
-We've also made the class filter more generic, in the past you had did class filters like this:
+We've also made the class filter more generic, in the past you did class filters like this:
 
 {{{
 options[:filter]["puppet_class"] << /apache/
