@@ -1,0 +1,31 @@
+#summary Using Puppet with MCollective
+
+= Introduction =
+
+If you're a Puppet user you are supported in both facts and classes filters.
+
+= Facts =
+There is a [FactsRLFacter community plugin to enable Facter] as a fact source.
+
+So you can use the facts provided by Facter in filters, reports etc.
+
+{{{
+$ mc-find-hosts --with-fact lsbdistrelease=5.4
+}}}
+
+This includes facts pushed out with [http://reductivelabs.com/trac/puppet/wiki/PluginsInModules Plugin Sync].
+ 
+= Class Filters =
+Puppet provides a list of classes applied to a node by default in _/var/lib/puppet/classes.txt_, we'll use this data with _--with-class_ filters.
+
+You should configure MCollective to use this file by putting the following in your _server.cfg_
+
+{{{
+classesfile = /var/lib/puppet/classes.txt
+}}}
+
+You can now use your classes lists in filters:
+
+{{{
+$ mc-find-hosts --with-class /apache/
+}}}
