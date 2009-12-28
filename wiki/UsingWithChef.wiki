@@ -4,6 +4,8 @@
 
 If you're a Chef user you are supported in both facts and classes filters.
 
+*NOTE: This is available from version 0.4*
+
 = Facts =
 There is a [http://code.google.com/p/mcollective-plugins/wiki/FactsOpsCodeOhai community plugin to enable Ohai] as a fact source.
 
