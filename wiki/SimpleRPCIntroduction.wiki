@@ -1,4 +1,4 @@
-#summary Introduction to using Simple RPC
+﻿#summary Introduction to using Simple RPC
 #labels Phase-Reference
 
 = Introduction =
@@ -55,6 +55,13 @@ devel.your.com                          : OK
       Total Time: 54.35ms
 }}}
 
+You could also use _mc-rpc_ like this and achieve the same result:
+
+{{{
+$ mc-rpc helloworld echo msg="Welcome to MCollective Simple RPC"
+}}}
+
+For multiple options just add more _key=val_ pairs at the end
 
 But you can still write your own clients, it's incredibly simple, full details of a client is out of scope for the introduction - see the [SimpleRPCClients] page instead for full details - but here is some sample code to do the same call as above including full discovery and help output:
 
