@@ -57,6 +57,8 @@ The agent name is derived from the class name, the example code creates _MCollec
 == Meta Data and Initialization ==
 Simple RPC agents still need meta data like in [WritingAgents], without it you'll justh ave some defaults assigned, code below adds the meta data to our agent:
 
+*Note: there is currently a bug with setting meta data, refer to [http://code.google.com/p/mcollective/issues/detail?id=14 issue 14] till it's resolved you can't add meta data*
+
 {{{
 module Mcollective
     module Agent
