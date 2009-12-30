@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2009/12/30 || Added :discovered and :discovered_nodes to client stats - #20||
 || 2009/12/30 || Add a empty_filter? helper to the RPC mixin - #18||
 || 2009/12/30 || Fix formatting bug with progress bar - #21||
 || 2009/12/29 || Simplify mc-rpc command line - #16||
