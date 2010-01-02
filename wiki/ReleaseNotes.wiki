@@ -15,6 +15,15 @@ The main issue is around handling of meta data in agents, the documented approac
 
 We've also made logging and config retrieval a bit easier in agents - and documented this.  See [SimpleRPCAgents#Agent_Configuration Agent Configuration] and [SimpleRPCAgents#Logging Logging]
 
+You can now call the _mc-rpc_ command a bit easier:
+
+{{{
+$ mc-rpc --agent helloworld --action echo --argument msg="hello world"
+$ mc-rpc helloworld echo msg="hello world"
+}}}
+
+The 2 calls are the same, you can pass as many arguments in _key=val_ pairs as needed at the end.
+
 === Backwards Compatibility ===
 No issues with backward compatibility, should be a simple upgrade.
 
