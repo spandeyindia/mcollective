@@ -30,6 +30,8 @@ perl-Net-SNMP
 xinetd
 }}}
 
+Gram and install _passmakr-1.0.0.gem_ from [http://passmakr.googlecode.com/]
+
 = File modifications =
 Most of the files needed are in SVN in the _ext/ec2demo_ directory.
 
