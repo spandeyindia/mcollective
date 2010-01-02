@@ -147,6 +147,22 @@ All of these checks will raise an InvalidRPCData exception, you shouldn't catch 
 
 We'll make input validators plugins so you can provide your own types of validation easily.
 
+== Agent Configuration ==
+
+You can save configuration for your agents in the main server config file:
+
+{{{
+plugin.helloworld.setting = foo
+}}}
+
+In your code you can retrieve the config setting like this:
+
+{{{
+setting = config.pluginconf["helloworld.setting"] || ""
+}}}
+
+This will set the setting to whatever is the config file of "" if unset.
+
 == Accessing the Input ==
 As you see from the echo example our input is easy to get to by just looking in _request.data_, this would be a Hash of exactly what was sent in by the client in the original request.
 
@@ -220,4 +236,11 @@ Technically this will just set _statuscode_ and _statusmsg_ fields in the reply 
 
 It won't actually raise exceptions or exit your action though you should do that yourself as in the example here.
 
-   
+== Logging ==
+You can write to the server log file using the normal logger class:
+
+{{{
+logger.debug ("Hello from your agent")
+}}}
+
+You can log at levels _info_, _warn_, _debug_, _fatal_ or _error_.
