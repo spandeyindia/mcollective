@@ -246,3 +246,28 @@ logger.debug ("Hello from your agent")
 }}}
 
 You can log at levels _info_, _warn_, _debug_, _fatal_ or _error_.
+
+== Processing Hooks ==
+We provide a few hooks into the processing of a message, you've already used this earlier to [#Meta_Data_and_Initialization set meta data].
+
+You'd use these hooks to add some functionality into the processing chain of agents, maybe you want to add extra logging for audit purposes of the raw incoming message and replies, these hooks will let you do that.
+
+|| *Hook Function Name* || *Description* ||
+||startup`_`hook||Called at the end of the initialize method of the _RPC::Agent_ base class||
+||before`_`processing`_`hook(msg, connection)||Before processing of a message starts, pass in the raw message and the _MCollective::Connector_ class||
+||after`_`processing`_`hook||Just before the message is dispatched to the client||
+
+=== startup`_`hook ===
+Called at the end of the RPC::Agent standard initialize method use this to adjust meta parameters, timeouts and any setup you need to do.
+
+This will not be called right when the daemon starts up, we use lazy loading and initialization so it will only be called the first time a request for this agent arrives.
+
+=== before`_`processing`_`hook ===
+Called just after a message was received from the middleware before it gets passed to the handlers.  _request_ and _reply_ will already be set, the msg passed is the message as received from the normal mcollective runner and the connection is the actual connector.
+
+You can in theory send off new messages over the connector maybe for auditing or something, probably limited use case in simple agents.
+
+=== after`_`processing`_`hook ===
+Called at the end of processing just before the response gets sent to the middleware.
+
+This gets run outside of the main exception handling block of the agent so you should handle any exceptions you could raise yourself.  The reason  it is outside of the block is so you'll have access to even status codes set by the exception handlers.  If you do raise an exception it will just be passed onto the runner and processing will fail.
