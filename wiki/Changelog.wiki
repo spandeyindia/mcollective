@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| *2010/01/02* || *Release version 0.4.1* ||
 || 2010/01/02 || Added hooks to plug into the processing of requests, also enabled setting meta data and timeouts - #14||
 || 2010/01/02 || Created readers for @config and @logger in the SimpleRPC agent - #23||
 || 2009/12/30 || Don't send out any requests if no nodes were discovered - #17||
