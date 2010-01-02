@@ -7,7 +7,30 @@ This is a list of release notes for various releases, you should review these be
 
 <wiki:toc max_depth="3" />
 
-== 0.4 - Pending release ==
+== 0.4.1 - pending ==
+=== Release Focus and Notes ===
+This is a bug fix release to address some shortcomings and issues found in [SimpleRPCIntroduction Simple RPC].
+
+The main issue is around handling of meta data in agents, the documented approach did not work, we've now solved this by adding a number of hooks into the processing of Simple RPC agents - see [SimpleRPCAgents#Meta_Data_and_Initialization] and [SimpleRPCAgents#Processing_Hooks.
+
+We've also made logging and config retrieval a bit easier in agents - and documented this.  See [SimpleRPCAgents#Agent_Configuration] and [SimpleRPCAgents#Logging]
+
+=== Backwards Compatibility ===
+No issues with backward compatibility, should be a simple upgrade.
+
+=== Changes ===
+|| *Date* || *Descriptions* ||
+|| 2010/01/02 || Added hooks to plug into the processing of requests, also enabled setting meta data and timeouts - #14||
+|| 2010/01/02 || Created readers for @config and @logger in the SimpleRPC agent - #23||
+|| 2009/12/30 || Don't send out any requests if no nodes were discovered - #17||
+|| 2009/12/30 || Added :discovered and :discovered_nodes to client stats - #20||
+|| 2009/12/30 || Add a empty_filter? helper to the RPC mixin - #18||
+|| 2009/12/30 || Fix formatting bug with progress bar - #21||
+|| 2009/12/29 || Simplify mc-rpc command line - #16||
+|| 2009/12/29 || Fix layout issue when printing hosts that did not respond - #15||
+
+
+== 0.4.0 - 2009/12/29 ==
 === Release Focus and Notes ===
 This release introduced a major new feature - [SimpleRPCIntroduction Simple RPC] - a framework for easily building clients and agents.  More than that it's a set of conventions and standards that will help us build generic clients like web based ones capable of talking to all agents.
 
@@ -74,7 +97,7 @@ Old code will keep working but you should change to this name for filters to be 
 || 2009/12/27 || Create a new client framework [SimpleRPCIntroduction] - #6||
 || 2009/12/27 || Add support for multiple filters of the same type -  #3||
 
-== 0.3 - 2009/12/17 ==
+== 0.3.0 - 2009/12/17 ==
 === Release Focus and Notes ===
 Primarily a bug fix release.  Only new feature is to allow the user to create _MCollective::Util::`*`_ classes and put those in the plugins directory.  This is useful for more complex agents and clients.
 
@@ -89,7 +112,7 @@ This release should not break any older code, if it does it's a bug.
 ||2009/12/07||The Rakefile now works with rake provided on Debian 4 systems - #2||
 ||2009/12/07||Improvements in the RC script for Debian and older Ubuntu systems - #5||
 
-== 0.2 - 2009/12/02 ==
+== 0.2.0 - 2009/12/02 ==
 === Release Focus and Notes ===
 First numbered release
 
