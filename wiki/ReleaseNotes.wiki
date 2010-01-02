@@ -7,7 +7,7 @@ This is a list of release notes for various releases, you should review these be
 
 <wiki:toc max_depth="3" />
 
-== 0.4.1 - pending ==
+== 0.4.1 - 2010/01/02 ==
 === Release Focus and Notes ===
 This is a bug fix release to address some shortcomings and issues found in [SimpleRPCIntroduction Simple RPC].
 
