@@ -1,0 +1,72 @@
+#!/usr/bin/ruby
+
+# Generic client for MCollective Simple RPC
+#
+# http://code.google.com/p/mcollective/wiki/SimpleRPCIntroduction
+
+require 'mcollective'
+
+include MCollective::RPC
+
+begin
+    options = rpcoptions do |parser, options|
+        parser.define_head "Generic Simple RPC client"
+        parser.separator ""
+        parser.separator "Usage: mc-rpc [options] [filters] --agent <agent> --action <action> [--argument <key=val> --argument ...]"
+        parser.separator "Alternate Usage: mc-rpc [options] [filters] <agent> <action> [<key=val> <key=val> ...]"
+        parser.separator ""
+    
+        options[:arguments] = {}
+    
+        parser.on('-a', '--agent AGENT', 'Agent to call') do |v|
+            options[:agent] = v
+        end
+    
+        parser.on('--action ACTION', 'Action to call') do |v|
+            options[:action] = v
+        end
+    
+        parser.on('--arg', '--argument ARGUMENT', 'Arguments to pass to agent') do |v|
+            if v =~ /^(.+?)=(.+)$/
+                options[:arguments][$1.to_sym] = $2
+            else
+                STDERR.puts("Could not parse --arg #{v}")
+            end
+        end
+    end
+
+    mc = rpcclient(options[:agent], {:options => options})
+
+    # Parse the alternative command line 
+    unless options.include?(:agent) && options.include?(:action) && options.include?(:arguments)
+        if ARGV.length > 2
+            options[:agent] = ARGV[0]
+            ARGV.delete_at(0)
+
+            options[:action] = ARGV[0]
+            ARGV.delete_at(0)
+
+            ARGV.each do |v|
+                if v =~ /^(.+?)=(.+)$/
+                    options[:arguments][$1.to_sym] = $2
+                else
+                    STDERR.puts("Could not parse --arg #{v}")
+                end
+            end
+        else
+            STDERR.puts("No agent, action and arguments specified")
+            exit!
+        end
+    end
+
+    mc.agent_filter(options[:agent])
+    mc.discover :verbose => true
+
+    printrpc mc.send(options[:action], options[:arguments])
+
+    printrpcstats :caption => "#{options[:agent]}##{options[:action]} call stats"
+rescue Exception => e
+    STDERR.puts("Could not call agent: #{e}")
+end
+
+# vi:tabstop=4:expandtab:ai
