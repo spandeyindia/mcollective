@@ -57,19 +57,20 @@ The agent name is derived from the class name, the example code creates _MCollec
 == Meta Data and Initialization ==
 Simple RPC agents still need meta data like in [WritingAgents], without it you'll justh ave some defaults assigned, code below adds the meta data to our agent:
 
-*Note: there is currently a bug with setting meta data, refer to [http://code.google.com/p/mcollective/issues/detail?id=14 issue 14] till it's resolved you can't add meta data*
+*Note: setting meta data and timeout will only work from version 0.4.1 onward - see ticket [#14]*
 
 {{{
 module Mcollective
     module Agent
         class Helloworld<RPC::Agent
+            def startup_hook
+                meta[:license] = "Apache 2"
+                meta[:author] = "R.I.Pienaar"
+                meta[:version] = "1.1"
 
-            meta[:license] = "Apache 2"
-            meta[:author] = "R.I.Pienaar"
-            meta[:version] = "1.1"
+                @timeout = 10
+            end
 
-            timeout = 10
-          
             # Basic echo server
             def echo_action
                 validate :msg, String
