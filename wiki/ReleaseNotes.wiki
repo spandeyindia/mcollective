@@ -11,9 +11,9 @@ This is a list of release notes for various releases, you should review these be
 === Release Focus and Notes ===
 This is a bug fix release to address some shortcomings and issues found in [SimpleRPCIntroduction Simple RPC].
 
-The main issue is around handling of meta data in agents, the documented approach did not work, we've now solved this by adding a number of hooks into the processing of Simple RPC agents - see [SimpleRPCAgents#Meta_Data_and_Initialization] and [SimpleRPCAgents#Processing_Hooks.
+The main issue is around handling of meta data in agents, the documented approach did not work, we've now solved this by adding a number of hooks into the processing of Simple RPC agents - see [SimpleRPCAgents#Meta_Data_and_Initialization Meta Data and Initialization] and [SimpleRPCAgents#Processing_Hooks Processing Hooks].
 
-We've also made logging and config retrieval a bit easier in agents - and documented this.  See [SimpleRPCAgents#Agent_Configuration] and [SimpleRPCAgents#Logging]
+We've also made logging and config retrieval a bit easier in agents - and documented this.  See [SimpleRPCAgents#Agent_Configuration Agent Configuration] and [SimpleRPCAgents#Logging Logging]
 
 === Backwards Compatibility ===
 No issues with backward compatibility, should be a simple upgrade.
