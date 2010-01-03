@@ -7,7 +7,7 @@ We've created a Amazon hosted demo of mcollective that can give you a quick feel
 
 It would also be a good test bed for new agents etc.
 
-<wiki:video url="http://www.youtube.com/watch?v=ShxDrGDJfIU" width=878 height=526 />
+<wiki:video url="http://www.youtube.com/watch?v=MgDnmkhNpE0" width=878 height=526 />
 
 = AMIs =
 
