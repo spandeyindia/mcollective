@@ -20,6 +20,9 @@ The video shows you the basic steps to get it going using the [https://console.a
 
 We can create a copy of it in the US if there's demand for that.
 
+= Security Groups = 
+Just in case it's not clear in the video you should open ports _22_ and _6163_ to make sure it all works, technically you only need to open 6163 on the main server only the rest only need it for outgoing.
+
 = Agents = 
 The images all have the basic agents going as well as some community ones:
 
@@ -27,7 +30,6 @@ The images all have the basic agents going as well as some community ones:
  * [http://code.google.com/p/mcollective-plugins/wiki/AgentPuppetPackage Puppet based Package]
  * [http://code.google.com/p/mcollective-plugins/wiki/AgentNRPE NRPE]
  * [http://code.google.com/p/mcollective-plugins/wiki/RegistrationMetaData Meta Registration]
-
 
 = Registration = 
 The main node will have [Registration] setup and the community [http://code.google.com/p/mcollective-plugins/wiki/AgentRegistrationMonitor Registration Monitor] agent, look in _/var/tmp/mcollective_ for meta data from all your nodes.
