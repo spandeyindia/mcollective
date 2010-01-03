@@ -8,6 +8,11 @@ Introduction to MCollective, shows features present in the upcoming 0.4 version 
 
 <wiki:video url="http://www.youtube.com/watch?v=WBJDOE6zhko  width=878 height=444>
 
+== EC2 based Demo System ==
+See [EC2Demo] for more information about the EC2 based demo of mcollective
+
+<wiki:video url="http://www.youtube.com/watch?v=ShxDrGDJfIU" width=878 height=526 />
+
 == Interactive management of clusters ==
 Demonstrating managing a cluster of Exim servers spread over 3 continents.  The main idea behind this cast is to show the high performance of mcollective and the kind of system it could potentially enable you to create
 
