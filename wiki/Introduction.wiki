@@ -8,7 +8,7 @@ Primarily we'll use it as a means to programmatically execute actions on cluster
 
 We've attempted to think out of the box a bit designing this system by not relying on central inventories and tools like SSH, we're not simply a fancy SSH "for loop".  MCollective uses modern tools like [http://en.wikipedia.org/wiki/Publish/subscribe Publish Subscribe Middleware] and modern philosophies like real time discovery of network resources using meta data and not hostnames.  Delivering a very scalable and very fast parallel execution environment.
 
-To get an immediate feel for what I am on about you can look at some of the videos on the [Screencasts] page and then keep reading below for further info and links.
+To get an immediate feel for what I am on about you can look at some of the videos on the [Screencasts] page and then keep reading below for further info and links.  We've also created an Amazon EC2 based demo where you can launch as many instances as you want to see how it behaves first hand.
 
 == What is MCollective and what does it allow you to do ==
 
