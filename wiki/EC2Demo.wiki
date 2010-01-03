@@ -1,0 +1,34 @@
+#summary Test out mcollective using Amazon EC2
+
+= Introduction =
+
+We've created a Amazon hosted demo of mcollective that can give you a quick feel for how things work without all the hassle of setting up from scratch.
+
+It would also be a good test bed for new agents etc.
+
+<wiki:video url="http://www.youtube.com/watch?v=ShxDrGDJfIU" width=878 height=526 />
+
+= AMIs =
+
+The AMI is based in the _EU West_ availability zone, we currently have just the one AMI id that is running mcollective 0.4.1.
+
+|| *AMI ID* || *Description* ||
+||ami-11ffd465||Server and Node for MCollective 0.4.1||
+
+The video shows you the basic steps to get it going using the [https://console.aws.amazon.com/ec2/ Amazon Console].
+
+We can create a copy of it in the US if there's demand for that.
+
+= Agents = 
+The images all have the basic agents going as well as some community ones:
+
+ * [http://code.google.com/p/mcollective-plugins/wiki/AgentService Puppet based Service]
+ * [http://code.google.com/p/mcollective-plugins/wiki/AgentPuppetPackage Puppet based Package]
+ * [http://code.google.com/p/mcollective-plugins/wiki/AgentNRPE NRPE]
+ * [http://code.google.com/p/mcollective-plugins/wiki/RegistrationMetaData Meta Registration]
+
+
+= Registration = 
+The main node will have [Registration] setup and the community [http://code.google.com/p/mcollective-plugins/wiki/AgentRegistrationMonitor Registration Monitor] agent, look in _/var/tmp/mcollective_ for meta data from all your nodes.
+
+The current AMI has 1 x left over file there from when I was building the AMI.
