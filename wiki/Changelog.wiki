@@ -3,9 +3,10 @@
 
 == Version 0.5.x ==
 || *Date* || *Descriptions* ||
-|| 2010/01/04 || Specify class and fact filters easier with the new -W or --with option ||
-|| 2010/01/04 || Added COPYING file to RPMs and tarball ||
-|| 2010/01/04 || Make shorter filter options -C, -I, -A and -F ||
+|| 2010/01/04 || Timeouts can now be changed with MCOLLECTIVE_TIMEOUT and MCOLLECTIVE_DTIMEOUT environment vars - #25||
+|| 2010/01/04 || Specify class and fact filters easier with the new -W or --with option - #27 ||
+|| 2010/01/04 || Added COPYING file to RPMs and tarball - #28||
+|| 2010/01/04 || Make shorter filter options -C, -I, -A and -F - #26||
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
