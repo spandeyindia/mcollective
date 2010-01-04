@@ -1,6 +1,10 @@
 ﻿#summary Changelog
 #labels Phase-Implementation
 
+== Version 0.5.x ==
+|| *Date* || *Descriptions* ||
+|| 2010/01/04 || Make shorter filter options -C, -I, -A and -F ||
+
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
 || *2010/01/02* || *Release version 0.4.1* ||
