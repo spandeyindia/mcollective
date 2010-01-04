@@ -3,7 +3,7 @@
 
 == Version 0.5.x ==
 || *Date* || *Descriptions* ||
-|| 2010/01/04 || Specify class and fact filters easier with the new -f option ||
+|| 2010/01/04 || Specify class and fact filters easier with the new -W or --with option ||
 || 2010/01/04 || Added COPYING file to RPMs and tarball ||
 || 2010/01/04 || Make shorter filter options -C, -I, -A and -F ||
 
