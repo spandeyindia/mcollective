@@ -1,15 +1,12 @@
 ﻿#summary Changelog
 #labels Phase-Implementation
 
-== Version 0.5.x ==
+== Version 0.4.x ==
 || *Date* || *Descriptions* ||
 || 2010/01/04 || Timeouts can now be changed with MCOLLECTIVE_TIMEOUT and MCOLLECTIVE_DTIMEOUT environment vars - #25||
 || 2010/01/04 || Specify class and fact filters easier with the new -W or --with option - #27 ||
 || 2010/01/04 || Added COPYING file to RPMs and tarball - #28||
 || 2010/01/04 || Make shorter filter options -C, -I, -A and -F - #26||
-
-== Version 0.4.x ==
-|| *Date* || *Descriptions* ||
 || *2010/01/02* || *Release version 0.4.1* ||
 || 2010/01/02 || Added hooks to plug into the processing of requests, also enabled setting meta data and timeouts - #14||
 || 2010/01/02 || Created readers for @config and @logger in the SimpleRPC agent - #23||
