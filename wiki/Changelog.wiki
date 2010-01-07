@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/01/07 || Improved LSB compliance of the init script - thanks Riccardo Setti - #32||
 || 2010/01/07 || Multiple calls to SimpleRPC client would reset discovered hosts - #31||
 || 2010/01/04 || Timeouts can now be changed with MCOLLECTIVE_TIMEOUT and MCOLLECTIVE_DTIMEOUT environment vars - #25||
 || 2010/01/04 || Specify class and fact filters easier with the new -W or --with option - #27 ||
