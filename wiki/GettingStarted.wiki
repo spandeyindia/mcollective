@@ -2,6 +2,10 @@
 
 = Getting Started =
 
+Below find a rough guide to get you going, this assumes the client and server is on the same node, but servers don't need the client code installed.
+
+For an even quicker intro to how it all works you can try our [EC2Demo EC2 based demo]
+
 == Requirements ==
 We try to keep the requirements on external Gems to a minimum, you only need:
 
