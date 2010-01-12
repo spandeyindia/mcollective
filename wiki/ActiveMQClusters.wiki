@@ -19,7 +19,7 @@ The diagram above shows our sample network, I am using the same techniques to pu
  # These are the terminals of your NOC staff, they run the client code, these could also be isolated web servers for running admin tools etc.
  # Each location has its own instance of ActiveMQ and nodes would only need to communicate to their local ActiveMQ.  This greatly enhances security in a setup like this.
  # The ActiveMQ instances speak to each other using a protocol called OpenWire, you can run this over IPSec or you could use the native support for SSL.
- # These are the servers being managed.  No direct communications needs to be in place between NOC and managed servers.
+ # These are the servers being managed, they run the server code.  No direct communications needs to be in place between NOC and managed servers.
 
 Refer to the [MessageFormat] document to see how messages would traverse the middleware in a setup like this.
 
