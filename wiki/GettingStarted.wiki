@@ -26,15 +26,25 @@ A spec file can be found in the _ext_ directory in SVN that can be used to build
 === Configuring Stomp ===
 First you should configure ActiveMQ to listen on the Stomp protocol
 
-{{{
-    <transportConnectors>
-       <transportConnector name="stomp"   uri="stomp://your.fqdn:6163"/>
-    </transportConnectors>
-}}}
-
 And then you should add a user or two, to keep it simple we'll just add one user, the template file will hopefully make it obvious where this goes, it should be in the _broker_ block:
 
+*Note: This config is for ActiveMQ 5.3*
+
 {{{
+<beans
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:amq="http://activemq.apache.org/schema/core"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+  http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd   
+  http://activemq.apache.org/camel/schema/spring http://activemq.apache.org/camel/schema/spring/camel-spring.xsd">
+
+    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="localhost" useJmx="true">
+    <transportConnectors>
+       <transportConnector name="openwire" uri="tcp://0.0.0.0:6166"/>
+       <transportConnector name="stomp"   uri="stomp://0.0.0.0:6163"/>
+    </transportConnectors>
+
     <plugins>
       <simpleAuthenticationPlugin>
         <users>
@@ -53,6 +63,7 @@ And then you should add a user or two, to keep it simple we'll just add one user
         </map>
       </authorizationPlugin>
     </plugins>
+</beans>
 }}}
 
 This creates a user _mcollective_ with the password _marionette_ and give it access to read/write/admin _/topic/mcollective.*_.
