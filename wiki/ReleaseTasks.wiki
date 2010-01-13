@@ -4,8 +4,8 @@
 
 Notes on what to do when we release
 
- * update changelog
- * update release notes
+ * update [Changelog]
+ * update [ReleaseNotes]
  * update rakefile for version
  * tag release
  * build and release rpms
