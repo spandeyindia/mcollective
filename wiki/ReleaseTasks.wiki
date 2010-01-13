@@ -12,3 +12,4 @@ Notes on what to do when we release
  * build and release debs
  * update release notes with release date
  * send mail
+ * Announce on freshmeat
