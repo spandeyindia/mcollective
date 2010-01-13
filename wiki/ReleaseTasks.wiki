@@ -13,3 +13,18 @@ Notes on what to do when we release
  * update release notes with release date
  * send mail
  * Announce on freshmeat
+
+== Building debs ==
+Boot up an instance of _ami-0db89079_ and do more or less the following:
+
+*Note: There's some bug, you might need to run _make deb_ twice to make it work*
+
+{{{
+# apt-get update
+# apt-get install rake irb rdoc build-essential subversion devscripts dpatch cdbs rubygems
+# svn checkout http://mcollective.googlecode.com/svn/trunk/ mcollective-read-only
+# cd mcollective-read-only
+# rake deb
+}}}
+
+Copy do test installs on the machine make sure it looks fine and ship them off the AMI, shut it.
