@@ -6,6 +6,51 @@
 This is a list of release notes for various releases, you should review these before upgrading as any potential problems and backward incompatible changes will be highlighted here.
 
 <wiki:toc max_depth="3" />
+== 0.4.2 - 2010/01/14 ==
+=== Release Focus and Notes ===
+This release fixes a few bugs, add some command line improvements and brings major changes to the Debian packaging.
+
+==== Packaging ====
+Firstly we've had some amazing work done by Riccardo Setti to make us Debian packages that complies with Debian and Ubuntu policy, this release use these new packages.  It has some unfortunate changes to file layout detailed below but overall I think it's a big win to get us in line with Distribution policies and standards.
+
+The only major change is that in the past we used _/usr/libexec/mcollective_ as the libdir, but Debian does not have this directory and it is not in the LFHS anymore so we now use _/usr/share/mcollective/plugins_ as the lib dir.  You need to move your plugins there and update both client and server configs.
+
+The RedHat packages will move to this convention too in the next release since I think it's the better location and complies with LFHS.
+
+==== Command Line Improvements ====
+We've streamlined the command line a bit, nothings changed we've just added some flags.
+
+The _--with-class_, _--with-fact_, _--with-agent_ and _--with-identity_ now all have a short form _-C_, _-F_, _-A_ and _-I_ respectively.
+
+We've added a new filter option _--with_ and a short form _-W_ that combines _--with-class_ and _--with-fact_ into one filter type, use case would be:
+
+{{{
+$ mc-find-hosts -W "/centreon/ country=de roles::dev_server/"
+}}}
+
+This would find hosts with class regex matched _/centreon/_, class _roles::dev_server_ and fact matching _country=de_.  Hopefully this saves on some typing.
+
+You can also now set the environment variables _MCOLLECTIVE_TIMEOUT_ and _MCOLLECTIVE_DTIMEOUT_ which saves you from typing _--timeout_ and _--discovery-timeout_ often, especially useful on very fast networks.
+
+==== Other fixes and improvements ====
+
+ * We've added the COPYING file to all the packages
+ * We've made the init script more LSB compliant
+ * A bug related to discovery in SimpleRPC was fixed
+
+=== Backwards Compatibility ===
+The only backwards issue is the Debian packages.  They've been tested to upgrade cleanly but you need to change the config as above.
+
+=== Changes ===
+|| *Date* || *Descriptions* ||
+|| *2010/01/13* || *Release version 0.4.2* ||
+|| 2010/01/13 || New packaging for Debian provided by Riccardo Setti - #29||
+|| 2010/01/07 || Improved LSB compliance of the init script - thanks Riccardo Setti - #32||
+|| 2010/01/07 || Multiple calls to SimpleRPC client would reset discovered hosts - #31||
+|| 2010/01/04 || Timeouts can now be changed with MCOLLECTIVE_TIMEOUT and MCOLLECTIVE_DTIMEOUT environment vars - #25||
+|| 2010/01/04 || Specify class and fact filters easier with the new -W or --with option - #27 ||
+|| 2010/01/04 || Added COPYING file to RPMs and tarball - #28||
+|| 2010/01/04 || Make shorter filter options -C, -I, -A and -F - #26||
 
 == 0.4.1 - 2010/01/02 ==
 === Release Focus and Notes ===
