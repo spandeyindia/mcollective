@@ -14,8 +14,8 @@ It would also be a good test bed for new agents etc.
 The AMI is based in the _EU West_ availability zone, we currently have just the one AMI id that is running mcollective 0.4.1.
 
 || *AMI ID* || *Description* ||
-||ami-11ffd465||Server and Node for MCollective 0.4.1||
 ||ami-21c8e355||Server and Node for MCollective 0.4.2||
+||ami-11ffd465||Server and Node for MCollective 0.4.1||
 
 The video shows you the basic steps to get it going using the [https://console.aws.amazon.com/ec2/ Amazon Console].
 
