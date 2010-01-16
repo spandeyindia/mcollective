@@ -28,6 +28,7 @@ nagios-plugins
 perl-Digest-HMAC
 perl-Net-SNMP
 xinetd
+rubygem-rdialog
 }}}
 
 Gram and install _passmakr-1.0.0.gem_ from [http://passmakr.googlecode.com/]
