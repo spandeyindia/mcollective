@@ -1,5 +1,10 @@
 #summary Notes on how the EC2 demo is created
 
+= TODO =
+Things to improve in next build:
+
+ * set _plugin.urltest.syslocation_ to the availability zone the AMI is running on to improve mc-urltest output
+
 = RightScale AMI =
 Start up ami _ami-efe4cf9b_ or a newer RightScale EC2 image
 
