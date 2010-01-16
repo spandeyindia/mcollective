@@ -5,9 +5,9 @@
 
 MCollective is a framework for writing feature full agents and clients and provides a [WritingAgents rich system to do that].  Sometimes though you just have simpler needs than the full Client provides or need to prototype something quickly.  MCollective Simple RPC is a framework ontop of the standard client that abstracts away a lot of the complexity.
 
-I've written a simple to use framework that is integrated into MCollective that aims to tick all of these boxes:
+We've written a simple to use framework that is integrated into MCollective that aims to tick all of these boxes:
 
- * Provide simple conventions for writing [SimpleRPCAgents agents] and [SimpleRPCClient clients], favoring convention over custom design
+ * Provide simple conventions for writing [SimpleRPCAgents agents] and [SimpleRPCClients clients], favoring convention over custom design
  * Very easy to write agents including input validation and a sensible feedback mechanism in case of error
  * The provided generic calling tool should be able to speak to most compliant agents
  * Should you need to you can still write your own clients, this should be very easy too
