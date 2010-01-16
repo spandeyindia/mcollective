@@ -1,6 +1,8 @@
 ﻿#summary Writing a simple agent
 
 = Introduction =
+We recommend you use [SimpleRPCIntroduction Simple RPC] to write agents and clients, sometimes though you need to do something Simple RPC can't this guide explains how to write agents without the help of the Simple RPC framework.
+
 Writing agents for mcollective is simple, we'll write a simple _echo_ agent as well as a cli tool to communicate with it that supports discovery, filtering and more.
 
 The agent will send back everything that got sent to it, not overly useful but enough to demonstrate the concepts.
