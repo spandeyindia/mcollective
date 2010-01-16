@@ -39,6 +39,8 @@ The images all have the basic agents going as well as some community ones:
  * [http://code.google.com/p/mcollective-plugins/wiki/AgentPuppetPackage Puppet based Package]
  * [http://code.google.com/p/mcollective-plugins/wiki/AgentNRPE NRPE]
  * [http://code.google.com/p/mcollective-plugins/wiki/RegistrationMetaData Meta Registration]
+ * [http://code.google.com/p/mcollective-plugins/wiki/AgentUrltest URL Tester]
+ * [http://code.google.com/p/mcollective-plugins/wiki/UtilitiesSSH Discovery Aware SSH]
 
 = Registration = 
 The main node will have [Registration] setup and the community [http://code.google.com/p/mcollective-plugins/wiki/AgentRegistrationMonitor Registration Monitor] agent, look in _/var/tmp/mcollective_ for meta data from all your nodes.
