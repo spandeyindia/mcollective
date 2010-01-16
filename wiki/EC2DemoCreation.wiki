@@ -28,6 +28,7 @@ nagios-plugins
 perl-Digest-HMAC
 perl-Net-SNMP
 xinetd
+dialog
 rubygem-rdialog
 }}}
 
