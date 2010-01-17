@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/01/17 || Improve error message when Regex validation failed on SimpleRPC input - #36||
 || *2010/01/13* || *Release version 0.4.2* ||
 || 2010/01/13 || New packaging for Debian provided by Riccardo Setti - #29||
 || 2010/01/07 || Improved LSB compliance of the init script - thanks Riccardo Setti - #32||
