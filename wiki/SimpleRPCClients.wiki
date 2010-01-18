@@ -173,7 +173,7 @@ Results have a set structure and depending on how you access the results you wil
 
 || *Status Code* || *Description* || *Exception Class* ||
 ||0||OK||||
-||1||OK, failed.  All the data parsed ok, we have a action matching the request but the requested action could not be completed.||||
+||1||OK, failed.  All the data parsed ok, we have a action matching the request but the requested action could not be completed.||RPCAborted||
 ||2||Unknown action||UnknownRPCAction||
 ||3||Missing data||MissingRPCData||
 ||4||Invalid data||InvalidRPCData||
