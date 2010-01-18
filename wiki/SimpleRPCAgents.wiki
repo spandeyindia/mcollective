@@ -238,6 +238,8 @@ Technically this will just set _statuscode_ and _statusmsg_ fields in the reply 
 
 It won't actually raise exceptions or exit your action though you should do that yourself as in the example here.
 
+From version 0.4.3 onward there is also a _fail!_ instead of just _fail_ it does the same basic function but also raises exceptions.  This lets you abort processing of the agent immediately without performing your own checks on _statuscode_ as above later on.
+
 == Logging ==
 You can write to the server log file using the normal logger class:
 
