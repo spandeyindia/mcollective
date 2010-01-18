@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/01/18 || The SRPM we provide will now build outside of the Rake environment - #40||
 || 2010/01/18 || Add a _fail!_ method to RPC::Agent - #37||
 || 2010/01/18 || mc-rpc can now be used without supplying arguments - #38 ||
 || 2010/01/18 || Don't raise an error if no user/pass is given to the stomp connector, try unauthenticated mode - #35||
