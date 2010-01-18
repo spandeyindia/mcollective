@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/01/18 || Don't raise an error if no user/pass is given to the stomp connector, try unauthenticated mode - #35||
 || 2010/01/17 || Improve error message when Regex validation failed on SimpleRPC input - #36||
 || *2010/01/13* || *Release version 0.4.2* ||
 || 2010/01/13 || New packaging for Debian provided by Riccardo Setti - #29||
