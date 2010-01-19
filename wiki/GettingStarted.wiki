@@ -78,6 +78,8 @@ Grab a copy of the mcollective ideally you'd use a package for your distribution
 === Configure ===
 You'll need to tweak some configs in _/etc/mcollective/client.cfg_, a full reference of config settings can be found here [ConfigurationReference]:
 
+Mostly what you'll need to change is the _identity_, _plugin.stomp.*_ and the _plugin.psk_:
+
 {{{
 # main config
 topicprefix = /topic/mcollective
