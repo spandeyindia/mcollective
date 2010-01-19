@@ -58,6 +58,6 @@ We do not do log rotation of this file so you should do that yourself if you ena
 This log lines like:
 
 {{{
-9170b825005d47d66a86efe23ebaa106: 1263939135 caller=rip agent=rpctest action=dataokactionfailed sendernode=devel.your.com-client
-9170b825005d47d66a86efe23ebaa106: {:caller=>"rip", :foo=>"bar"}
+9170b825005d47d66a86efe23ebaa106: 1263939135 caller=rip agent=service action=status sendernode=devel.your.com-client
+9170b825005d47d66a86efe23ebaa106: {:caller=>"rip", :service=>"httpd"}
 }}}
