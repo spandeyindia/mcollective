@@ -67,7 +67,7 @@ And then you should add a user or two, to keep it simple we'll just add one user
 </beans>
 }}}
 
-This creates a user _mcollective_ with the password _marionette_ and give it access to read/write/admin _/topic/mcollective.*_.
+This creates a user _mcollective_ with the password _marionette_ and give it access to read/write/admin _/topic/mcollective.`*`_.
 
 For further info about ActiveMQ settings you might need see [SecurityWithActiveMQ] and [http://www.devco.net/archives/2009/11/10/activemq_clustering.php ActiveMQ Clustering].
 
