@@ -3,6 +3,8 @@
 
 = Introduction =
 
+*Note: This feature is available from 0.4.3 onwards*
+
 As part of the [SimpleRPCIntroduction SimpleRPC] framework we've added an auditing system that you can use to log all requests received into a file or even send it over mcollective to a central auditing system.
 
 = Configuration =
