@@ -29,8 +29,6 @@ Auditing is implemented using plugins that you should install in the normal plug
 module MCollective
     module Audit
         class Logfile<Base
-            require 'pp'
-
             def audit_request(request, connection)
                 logfile = Config.instance.pluginconf["logfile_audit.logfile"] || "/var/log/mcollective-audit.log"
 
