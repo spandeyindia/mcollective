@@ -30,7 +30,7 @@ module MCollective
     module Audit
         class Logfile<Base
             def audit_request(request, connection)
-                logfile = Config.instance.pluginconf["logfile_audit.logfile"] || "/var/log/mcollective-audit.log"
+                logfile = Config.instance.pluginconf["audit.logfile"] || "/var/log/mcollective-audit.log"
 
                 Log.instance.debug("Logging to '#{logfile}' - #{logfile.class}")
                 File.open(logfile, "w") do |f|
@@ -48,7 +48,7 @@ As you can see you only need to provide one method called _audit_request_, you w
 The Logfile plugin takes a configuration option:
 
 {{{
-plugin.logfile_audit.logfile = /var/log/mcollective-audit.log
+plugin.audit.logfile = /var/log/mcollective-audit.log
 }}}
 
 We do not do log rotation of this file so you should do that yourself if you enable this plugin.
