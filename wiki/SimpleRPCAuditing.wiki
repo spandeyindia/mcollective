@@ -5,7 +5,7 @@
 
 *Note: This feature is available from 0.4.3 onwards*
 
-As part of the [SimpleRPCIntroduction SimpleRPC] framework we've added an auditing system that you can use to log all requests received into a file or even send it over mcollective to a central auditing system.
+As part of the [SimpleRPCIntroduction SimpleRPC] framework we've added an auditing system that you can use to log all requests received into a file or even send it over mcollective to a central auditing system.  What actually happens with audit data is pluggable and you can provide your own plugins to do what you need.
 
 The clients will include the _uid_ of the process running the client library in the requests and the audit function will have access to that on the requests.
 
