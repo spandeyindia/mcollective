@@ -59,5 +59,5 @@ This log lines like:
 
 {{{
 9170b825005d47d66a86efe23ebaa106: 1263939135 caller=rip@devel.your.com agent=service action=status
-9170b825005d47d66a86efe23ebaa106: {:caller=>"rip", :service=>"httpd"}
+9170b825005d47d66a86efe23ebaa106: {:service=>"httpd"}
 }}}
