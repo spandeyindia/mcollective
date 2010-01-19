@@ -9,6 +9,7 @@ We've written a simple to use framework that is integrated into MCollective that
 
  * Provide simple conventions for writing [SimpleRPCAgents agents] and [SimpleRPCClients clients], favoring convention over custom design
  * Very easy to write agents including input validation and a sensible feedback mechanism in case of error
+ * Provide [SimpleRPCAuditing audit logging] abilities of calls to agents
  * The provided generic calling tool should be able to speak to most compliant agents
  * Should you need to you can still write your own clients, this should be very easy too
  * Return data should be easy to print, in most cases the framework should be able to print a sensible output with a single, provided, function
