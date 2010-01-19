@@ -32,7 +32,6 @@ module MCollective
             def audit_request(request, connection)
                 logfile = Config.instance.pluginconf["audit.logfile"] || "/var/log/mcollective-audit.log"
 
-                Log.instance.debug("Logging to '#{logfile}' - #{logfile.class}")
                 File.open(logfile, "w") do |f|
                     f.puts("#{request.uniqid}: #{request.time} caller=#{request.caller}@#{request.sender} agent=#{request.agent} action=#{request.action}")
                     f.puts("#{request.uniqid}: #{request.data.pretty_print_inspect}")
@@ -56,6 +55,6 @@ We do not do log rotation of this file so you should do that yourself if you ena
 This log lines like:
 
 {{{
-9170b825005d47d66a86efe23ebaa106: 1263939135 caller=rip@devel.your.com agent=service action=status
+9170b825005d47d66a86efe23ebaa106: 1263939135 caller=uid=500@devel.your.com agent=service action=status
 9170b825005d47d66a86efe23ebaa106: {:service=>"httpd"}
 }}}
