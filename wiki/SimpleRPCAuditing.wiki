@@ -14,7 +14,7 @@ To enable logging you should set an option to enable it and also one to configur
 
 {{{
 audit = 1
-audirprovider = Logfile
+auditprovider = Logfile
 }}}
 
 This sets it up to use _MCollective::Audit::Logfile_ plugin for logging evens.
