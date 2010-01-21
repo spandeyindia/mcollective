@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/01/21 || Force all facts in the YAML fact source to be strings - #41 ||
 || 2010/01/19 || Add [SimpleRPCAuditing audit logging] to SimpleRPC clients and Agents ||
 || 2010/01/18 || The SRPM we provide will now build outside of the Rake environment - #40||
 || 2010/01/18 || Add a _fail!_ method to RPC::Agent - #37||
