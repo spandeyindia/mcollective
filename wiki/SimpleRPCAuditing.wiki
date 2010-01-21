@@ -13,8 +13,8 @@ The clients will include the _uid_ of the process running the client library in 
 To enable logging you should set an option to enable it and also one to configure which plugin to use:
 
 {{{
-audit = 1
-auditprovider = Logfile
+rpcaudit = 1
+rpcauditprovider = Logfile
 }}}
 
 This sets it up to use _MCollective::Audit::Logfile_ plugin for logging evens.
@@ -27,10 +27,10 @@ Auditing is implemented using plugins that you should install in the normal plug
 
 {{{
 module MCollective
-    module Audit
-        class Logfile<Base
+    module RPC
+        class Logfile<Audit
             def audit_request(request, connection)
-                logfile = Config.instance.pluginconf["audit.logfile"] || "/var/log/mcollective-audit.log"
+                logfile = Config.instance.pluginconf["rpcaudit.logfile"] || "/var/log/mcollective-audit.log"
 
                 File.open(logfile, "w") do |f|
                     f.puts("#{request.uniqid}: #{request.time} caller=#{request.caller}@#{request.sender} agent=#{request.agent} action=#{request.action}")
@@ -47,7 +47,7 @@ As you can see you only need to provide one method called _audit_request_, you w
 The Logfile plugin takes a configuration option:
 
 {{{
-plugin.audit.logfile = /var/log/mcollective-audit.log
+plugin.rpcaudit.logfile = /var/log/mcollective-audit.log
 }}}
 
 We do not do log rotation of this file so you should do that yourself if you enable this plugin.
