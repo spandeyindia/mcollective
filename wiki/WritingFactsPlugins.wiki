@@ -20,7 +20,13 @@ module MCollective
             def self.get_facts
                 config = MCollective::Config.instance
 
-                YAML.load_file(config.pluginconf["yaml"])
+                facts = {}
+
+                YAML.load_file(config.pluginconf["yaml"]).each_pair do |k, v|
+                    facts[k] = v.to_s
+                end
+
+                facts
             end
         end
     end
@@ -28,6 +34,8 @@ end
 }}}
 
 You can see that all you have to do is provide _self.get_facts_ which should return a Hash as described above.
+
+Important to note that we only support strings for fact values, in this example we force all values in the YAML file to string since discovery from the client can only be done based on strings.
 
 There's a sample using Reductive Labs Facter on the plugins project if you wish to see an example that queries an external fact source.
 
