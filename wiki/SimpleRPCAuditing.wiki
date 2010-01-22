@@ -59,4 +59,4 @@ This log lines like:
 9170b825005d47d66a86efe23ebaa106: {:service=>"httpd"}
 }}}
 
-Other plugins can be found on the community site like [http://code.google.com/p/mcollective-plugins/wiki/AuditCentralRPCLog a centralized logging plugins].
+Other plugins can be found on the community site like [http://code.google.com/p/mcollective-plugins/wiki/AuditCentralRPCLog a centralized logging plugin].
