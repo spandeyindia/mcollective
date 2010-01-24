@@ -14,6 +14,18 @@ Notes on what to do when we release
  * send mail
  * Announce on freshmeat
 
+== Building RPMs ==
+Boot up an instance of the EC2 demo AMIs
+
+{{{
+# gem install rake
+# svn checkout http://mcollective.googlecode.com/svn/trunk/ mcollective-read-only
+# cd mcollective-read-only
+# rake rpm
+}}}
+
+Copy the RPMs and test it.
+
 == Building debs ==
 Boot up an instance of _ami-0db89079_ and do more or less the following:
 
