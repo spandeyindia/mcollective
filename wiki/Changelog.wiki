@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/02/01 || Made the discovery agent timeout configurable using plugin.discovery.timeout - #48||
 || 2010/01/25 || mc-controller now correctly loads/reloads agents. - #45||
 || 2010/01/25 || Building packages has been improved to ensure rdocs are always included - #44 ||
 || *2010/01/24* || *Release version 0.4.3* || 
