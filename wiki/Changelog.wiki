@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/02/17 || Improve mc-controller and document it - #46||
 || 2010/02/08 || Remove some close coupling with Stomp to easy creating of other connectors - #49||
 || 2010/02/01 || Made the discovery agent timeout configurable using plugin.discovery.timeout - #48||
 || 2010/01/25 || mc-controller now correctly loads/reloads agents. - #45||
