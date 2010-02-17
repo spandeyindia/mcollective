@@ -190,3 +190,4 @@ From here you should look at the rest of the wiki pages some key pages are:
  * [Screencasts] - Get a hands-on look at what is possible
  * [Terminology]
  * [SimpleRPCIntroduction Introduction to Simple RPC] - a simple to use framework for writing clients and agents
+ * [ControllingTheDaemon] Controlling a running daemon
