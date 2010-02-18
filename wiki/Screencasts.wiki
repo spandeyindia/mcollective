@@ -13,6 +13,10 @@ See [EC2Demo] for more information about the EC2 based demo of mcollective
 
 <wiki:video url="http://www.youtube.com/watch?v=MgDnmkhNpE0" width=878 height=526 />
 
+= Custom Deployment Tools = 
+A demonstration of a deployment tool built for to customer needs using mcollective.  This is a sample of the consulting work you can contract the project authors for.
+
+<wiki:video url="http://www.youtube.com/watch?v=Fqt2SgnQn3k"width=878 />
 = Interactive management of clusters =
 Demonstrating managing a cluster of Exim servers spread over 3 continents.  The main idea behind this cast is to show the high performance of mcollective and the kind of system it could potentially enable you to create
 
