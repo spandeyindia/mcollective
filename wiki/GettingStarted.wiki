@@ -12,7 +12,7 @@ We try to keep the requirements on external Gems to a minimum, you only need:
   * A Stomp server, tested against [http://activemq.apache.org/ ActiveMQ]
   * Ruby
   * Rubygems
-  * [http://stomp.codehaus.org/Ruby+Client Ruby Stomp Client]
+  * [http://stomp.codehaus.org/Ruby+Client Ruby Stomp Client] *NOTE: You need version 1.1.1 as the newer versions are broken*
 
 == ActiveMQ ==
 I've developed this against ActiveMQ.  It should work against other Stomp servers but I suspect if you choose one without username and password support you might have problems, please let me know if that's the case and I'll refactor the code around that.
