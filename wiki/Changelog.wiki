@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/03/23 || Clean up logging for messages not targeted at us - #56 ||
 || 2010/03/19 || Add exception handling to the registration base class - #55 ||
 || 2010/03/03 || Use /usr/bin/env ruby instead of hardcoded paths - #54||
 || 2010/02/17 || Improve mc-controller and document it - #46||
