@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/03/27 || Manipulating the filters via the helper methods will force rediscovery - #59 ||
 || 2010/03/23 || Prevent Activesupport when brought in by Facter from breaking our logs - #57 ||
 || 2010/03/23 || Clean up logging for messages not targeted at us - #56 ||
 || 2010/03/19 || Add exception handling to the registration base class - #55 ||
