@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/03/27 || Make it easier to construct SimpleRPC requests to use with the standard client library - #60 ||
 || 2010/03/27 || Manipulating the filters via the helper methods will force rediscovery - #59 ||
 || 2010/03/23 || Prevent Activesupport when brought in by Facter from breaking our logs - #57 ||
 || 2010/03/23 || Clean up logging for messages not targeted at us - #56 ||
