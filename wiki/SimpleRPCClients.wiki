@@ -313,3 +313,30 @@ Host Filters
         --wa, --with-agent AGENT     Match hosts with a certain agent
         --wi, --with-identity IDENT  Match hosts with a certain configured identity
 }}}
+
+== Sending SimpleRPC requests without discovery and blocking ==
+
+* Note: this is only available in 0.4.4 and newer *
+
+Usually this section will not apply to you, I am demonstrating a technique that lets you
+use the normal _Client#sendreq_ method to send SimpleRPC requests, you would do this only in cases where you had no interest in any of the following:
+
+ * Knowing if your request was received by any agents
+ * Any stats about processing times etc
+ * Any information about the success or failure of your request
+
+The above should make it clear already that this is a limited use case, it's essentially a broadcast request with no feedback loop.
+
+The code below will send a request to the _runonce_ action for an agent _puppetd_, once the request is dispatched I will have no idea if it got handled etc, my code will just continue onwards.
+
+{{{
+p = rpcclient("puppetd")
+
+msg = p.new_request("runonce", :forcerun => true)
+filter = p.filter
+
+r.client.sendreq(msg, msg[:agent], filter)
+
+puts("Request has been sent")
+
+}}}
