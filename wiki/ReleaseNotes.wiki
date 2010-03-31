@@ -12,8 +12,14 @@ This release is mostly a bug fix release.
 
 We've cleaned up the logs a bit so you'll see fewer exceptions logged, also if you have Rails + Puppet on a node the logs will stay in the standard format.  We are handling some exceptions better which has improved stability of the registration system.
 
+If you do some slow queries in your discovery agent you can bump the timeout up in the config using _plugin.discovery.timeout_.
+
+All the scripts now use _/usr/bin/env ruby_ rather than hardcoded paths to deal better with Ruby's in weird places.
+
+Several other small annoyances was fixed or improved.
+
 === mc-controller ===
-We've always had a tool that let you control a network of mcollective instances remotely, it lagged behind a bit with the core, we've fixed it up and documented it in [ControllingTheDaemon].  You can use it to reload agents from disk without restarting the daemon for example.
+We've always had a tool that let you control a network of mcollective instances remotely, it lagged behind a bit with the core, we've fixed it up and documented it in [ControllingTheDaemon].  You can use it to reload agents from disk without restarting the daemon for example or get stats or shut down the entire mcollective network.
 
 === Backwards Compatibility ===
 No changes that impacts backward compatibility has been made.
