@@ -10,7 +10,7 @@ This is a list of release notes for various releases, you should review these be
 === Release Focus and Notes ==
 This release is mostly a bug fix release.
 
-We've cleaned up the logs a bit so you'll see fewer exceptions logs, also if you have Rails + Puppet on a node the logs will stay in the standard format.  We are handling some exceptions better which has improved stability of the registration system.
+We've cleaned up the logs a bit so you'll see fewer exceptions logged, also if you have Rails + Puppet on a node the logs will stay in the standard format.  We are handling some exceptions better which has improved stability of the registration system.
 
 === mc-controller ===
 We've always had a tool that let you control a network of mcollective instances remotely, it lagged behind a bit with the core, we've fixed it up and documented it in [ControllingTheDaemon].  You can use it to reload agents from disk without restarting the daemon for example.
