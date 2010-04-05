@@ -35,9 +35,9 @@ Your data types should be preserved if your Security plugin supports that - the 
 Here's our sample _Helloworld_ agent:
 
 {{{
-module Mcollective
+module MCollective
     module Agent
-        class Helloworld<RPC::Agent
+        class Helloworld<<RPC::Agent
             # Basic echo server
             def echo_action
                 validate :msg, String
@@ -60,7 +60,7 @@ Simple RPC agents still need meta data like in [WritingAgents], without it you'l
 *Note: setting meta data and timeout will only work from version 0.4.1 onward - see ticket [http://code.google.com/p/mcollective/issues/detail?id=14 #14]*
 
 {{{
-module Mcollective
+module MCollective
     module Agent
         class Helloworld<RPC::Agent
             def startup_hook
