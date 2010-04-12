@@ -9,6 +9,8 @@
    * [SimpleRPCIntroduction Introduction]
    * [SimpleRPCAgents Writing Agents]
    * [SimpleRPCClients Writing Clients]
+   * [SimpleRPCAuthorization Authorization]
+   * [SimpleRPCAuditing Auditing]
  * Developer Documentation
    * [WritingAgents Writing Agents]
    * [WritingFactsPlugins Writing Facts Plugins]
