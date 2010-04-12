@@ -1,0 +1,48 @@
+#summary SimpleRPC Authorization
+#labels SimpleRPC,Phase-Reference
+= Introduction =
+
+*Note: This feature is available from 0.4.5 onward*
+
+As part of the [SimpleRPCIntroduction SimpleRPC] framework we've added an authorization system that you can use to exert fine grained control over who can call agents and actions.
+
+Combined with [SecurityWithActiveMQ Connection Security], [SimpleRPCAuditing Centralized Auditing] and Crypto signed messages this rounds out a series of extremely important features for large companies that in combination allow for very precise control over your MCollective Cluster.
+
+The clients will include the _uid_ of the process running the client library in the requests and the authorization function will have access to that on the requests.
+
+There is a sample full featured plugin called [http://code.google.com/p/mcollective-plugins/wiki/ActionPolicy ActionPolicy] that you can use or get some inspiration from.
+
+= Writing Authorization Plugins =
+
+Writing an Authorization plugin is pretty simple, the below example will only allow RPC calls from Unix UID 500.
+
+{{{
+module MCollective::Util
+    class AuthorizeIt
+        def self.authorize(request)
+            if request.caller != "uid=500"
+                raise("Not authorized")
+            end
+        end
+    end
+end
+}}}
+
+Any exception thrown by your class will just result in the message not being processed or audited.
+
+You'd install this in your libdir where you should already have a Util directory for these kinds of classes.
+
+To use your authorization plugin in an agent simply do something like this:
+
+{{{
+module MCollective::Agent
+    class Service<RPC::Agent
+        authorized_by :authorize_it
+         
+        # ...
+    end
+end
+}}}
+
+The call extra _authorized`_`by :authorize`_`it_ line tells your agent to use the _MCollective::Util::AuthorizeIt_ class for authorization.
+ 
