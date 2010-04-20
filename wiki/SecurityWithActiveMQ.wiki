@@ -18,7 +18,7 @@ The nodes only need read access to the command topics and only need write access
 
 There's one special case and that's the registration topic, if you want to enable the [Registration registration feature] you should give the nodes access to write on the command channel for the registration agent. Nothing should reply on the registration topic so you can limit that in the ActiveMQ config.
 
-We'll let mcollective log in as the mcollective user, create a group called systemusers, we'll then give the systemsuser group access to run as a typical registration enabled mcollective node.
+We'll let mcollective log in as the mcollective user, create a group called mcollectiveusers, we'll then give the mcollectiveusers group access to run as a typical registration enabled mcollective node.
 
 The rip user is a mcollective admin and can create commands and receive replies.
 
