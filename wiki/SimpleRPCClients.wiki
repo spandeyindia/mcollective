@@ -136,6 +136,21 @@ printrpc mc.echo(:msg => "Welcome to MCollective Simple RPC")
 
 You can set other filters like _agent`_`filter_ and _identity`_`filter_.
 
+== Resetting filters to empty ==
+If while using the client you wish to reset the filters to an empty set of filters - containing only the agent name that you're busy addressing you can do it as follows:
+
+This feature is available in _0.4.5_ onward.
+
+{{{
+mc = rpcclient("helloworld")
+
+mc.class_filter /dev_server/
+
+mc.reset_filter
+}}}
+
+After this code snippet the filter will only have an agent filter of _helloworld_ set.
+
 == Forcing Rediscovery ==
 By default it will only do discovery once per script and then re-use the results, you can though force rediscovery if you had to adjust filters mid run for example.
 
