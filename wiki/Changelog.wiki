@@ -4,6 +4,7 @@
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
 || 2010/04/12 || Add SimpleRPC Authorization support - #63||
+|| 2010/04/26 || Listen for signal USR1 and reload all agents from disk - #65 ||
 || *2010/04/03* || *Release version 0.4.4* || 
 || 2010/03/27 || Make it easier to construct SimpleRPC requests to use with the standard client library - #60 ||
 || 2010/03/27 || Manipulating the filters via the helper methods will force rediscovery - #59 ||
