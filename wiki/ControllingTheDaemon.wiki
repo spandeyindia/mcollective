@@ -4,6 +4,8 @@
 
 The main daemon that runs on nodes keeps internal stats and supports reloading of agents, we provide a tool - _mc-controller_ - to interact with any running daemon from a client.
 
+If all you want is to reload all the agents without restarting the daemon you can just send it signal _USR1_ and it will reload its agents.  This is available from version _0.4.5_ onward.
+
 = Details =
 
 The mc-controller allows you to:
