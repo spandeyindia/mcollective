@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/04/27 || The supplied generic stompclient now accepts STOMP_PORT in the environment - #68 ||
 || 2010/04/26 || Add a SimpleRPC Client helper to reset filters - #64 ||
 || 2010/04/26 || Listen for signal USR1 and reload all agents from disk - #65 ||
 || 2010/04/12 || Add SimpleRPC Authorization support - #63||
