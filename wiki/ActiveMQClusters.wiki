@@ -60,7 +60,7 @@ First you should configure transport for that each ActiveMQ will listen on, this
       </transportConnectors>
 }}}
 
- * The _brokerName_ is important and should be unique.
+ * *The _brokerName_ attribute is important and should be unique.* (Leaving it set to localhost will cause message loops to occur)
  * The _openwire_ transport is the important one here, you can make it listen on specific hosts and ports as shown.
 
 == Connecting to other ActiveMQs ==
