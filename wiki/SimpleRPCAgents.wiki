@@ -31,6 +31,8 @@ exim.setsender("msgid" => "1NOTVx-00028U-7G", "senderid" => "foo@bar.com")
 
 Your data types should be preserved if your Security plugin supports that - the default one does - so you can pass in Arrays, Hashes, OpenStructs, Hashes of Hashes but you should always pass something in and it should be key/value pairs like a Hash expects.
 
+From version *0.4.5* onward you cannot use the a data item called _:process_results_ as this has special meaning to the agent and client.  This will indicate to the agent that the client is'nt going to be waiting to process results.  You might choose not to send back a reply based on this.
+
 == Sample Agent ==
 Here's our sample _Helloworld_ agent:
 
