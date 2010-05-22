@@ -355,3 +355,14 @@ r.client.sendreq(msg, msg[:agent], filter)
 puts("Request has been sent")
 
 }}}
+
+From version 0.4.5 onward you can do this much simpler:
+
+{{{
+p = rpcclient("puppetd")
+
+reqid = p.new_request("runonce", :forcerun => true, :process_results => true)
+}}}
+
+This will do the same as above, it will honor any attached filters set either programatically or through the command line, it will send the request but will 
+just not handle any responses.  All it will do is return the request id.
