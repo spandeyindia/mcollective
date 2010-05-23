@@ -1,7 +1,7 @@
 ﻿#summary Reference for the config file
 
 = Configuration Files =
-There are 2 configuration files, one for the client and one for the server, these default to _/etc/mcollective/service.cfg_ and _/etc/mcollective/client.cfg_.
+There are 2 configuration files, one for the client and one for the server, these default to _/etc/mcollective/server.cfg_ and _/etc/mcollective/client.cfg_.
 
 Configuration is a simple _key = val_ style configuration file.
 
