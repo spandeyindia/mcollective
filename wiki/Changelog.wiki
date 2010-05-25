@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/05/25 || Add option --no-progress to disable progress bar for SimpleRPC - #74||
 || 2010/05/23 || Add some missing dependencies to the RPMs - #72 ||
 || 2010/05/22 || Add an option _:process_results_ to the client - #71||
 || 2010/05/13 || Fix help output that still shows old branding - #70||
