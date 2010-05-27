@@ -24,7 +24,7 @@ We've provided full tutorials on [SimpleRPCAgents Writing Simple RPC Agents] and
 A bit of code probably says more than lots of english, so here's a simple hello world Agent, it just echo's back everything you send it in the _:msg_ argument:
 
 {{{
-module Mcollective
+module MCollective
     module Agent
         class Helloworld<RPC::Agent
             # Basic echo server
