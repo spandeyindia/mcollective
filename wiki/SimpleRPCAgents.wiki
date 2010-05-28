@@ -39,7 +39,7 @@ Here's our sample _Helloworld_ agent:
 {{{
 module MCollective
     module Agent
-        class Helloworld<<RPC::Agent
+        class Helloworld<RPC::Agent
             # Basic echo server
             def echo_action
                 validate :msg, String
