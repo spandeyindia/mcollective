@@ -122,6 +122,24 @@ mc.progress = false
 
 Now whenever you call an action you will not see the progress indicator.
 
+=== Saving the reports in variables without printing ===
+As of version *0.4.5* you can retrieve the stats from the clients and also get text of reports without printing them:
+
+{{{
+stats = mc.echo(:msg => "Welcome to MCollective Simple RPC").stats
+
+report = stats.report
+}}}
+
+_report_ will now have the text that would have been displayed by 'printrpcstats' you can also use _no_response_report_ to get report text for just the list of hosts that didnt respond.
+
+If you didn't want to just print the results out to STDOUT you can also get them back as just text:
+
+{{{
+report = rpcresults mc.echo(:msg => "Welcome to MCollective Simple RPC")
+}}}
+
+
 == Applying filters programatically ==
 You can pass filters on the command line using the normal _--with-`*`_ options but you can also do it programatically.  Here's a new version of the client that only calls machines with the configuration management class _/dev_server/_ and the fact _country=uk_
 
