@@ -366,3 +366,23 @@ reqid = p.new_request("runonce", :forcerun => true, :process_results => true)
 
 This will do the same as above, it will honor any attached filters set either programatically or through the command line, it will send the request but will 
 just not handle any responses.  All it will do is return the request id.
+
+== Doing your own discovery ==
+For web applications you'd probably use cached copied of Registration data to do discovery rather than wait for MC to do discovery between each request.
+
+To do this, you'll need to construct a filter and a list of expected hosts and then do a custom call:
+
+{{{
+puppet = rpcclient("puppetd")
+
+printrpc puppet.custom_request("runonce", {:forcerun => true}, "your.box.com", {"identity" => "your.box.com"})
+}}}
+
+This will do a call with exactly the same stats, block and other semantics as a normal call like:
+
+{{{
+printrpc puppet.runonce(:forcerun => true)
+}}}
+
+But instead of doing any discovery it will use the host list and filter you supplied in the call.
+  
