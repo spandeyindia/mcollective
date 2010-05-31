@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/06/01 || Improve the main discovery agent by adding facts and classes to its inventory action - #79||
 || 2010/05/30 || Add various helpers to get reports as text instead of printing them - #43||
 || 2010/05/30 || Add a custom_request method to call SimpleRPC agents with your own discovery - #75||
 || 2010/05/30 || Refactor RPC::Client to be more generic and easier to maintain - #75||
