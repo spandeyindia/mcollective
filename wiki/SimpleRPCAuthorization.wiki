@@ -46,3 +46,12 @@ end
 
 The call extra _authorized`_`by :authorize`_`it_ line tells your agent to use the _MCollective::Util::AuthorizeIt_ class for authorization.
  
+= Enabling RPC auditing globally =
+You can enable a specific plugin on all RPC agents in the server config file.  If you do this and an agent also specify it's own authorization the agent will take priority.
+
+{{{
+rpcauthorization = yes
+rpcauthprovider = action_policy
+}}}
+
+Note setting _rpcauthorization = no_ here doesn't disable it everywhere, agents that specify authorization will still be used.  This boolean enables the global auth policy not the per agent.
