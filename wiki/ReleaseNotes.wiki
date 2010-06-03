@@ -13,7 +13,7 @@ This release is a major feature relase.
 The focus of this release is to finish up some of the more enterprise like features, we now have fine grained Authorization and Authentication and a new security model that uses SSL keys.
 
 === Security Plugin ===
-Vladimir Vuksan contributed the base code of a new [SSLSecurityPlugin SSL based security plugin].  This plugin builds on the old PSK plugin but gives each client a unique certificate pair.  The nodes all share a certificate but this modem means that should one node be compromised it cannot be used to control the rest of the network.
+Vladimir Vuksan contributed the base code of a new [SSLSecurityPlugin SSL based security plugin].  This plugin builds on the old PSK plugin but gives each client a unique certificate pair.  The nodes all share a certificate and only store client public keys.  This means that should one node be compromised it cannot be used to control the rest of the network.
 
 === Authorization Plugin ===
 We've developed new hooks and plugins for SimpleRPC that enable you to write [SimpleRPCAuthorization fine grained authorization systems].  You can do authorization on every aspect of the request and you'll have access to the caller userid as provided by the security plugin.  Combined with the above SSL plugin this can be used to build powerful and secure Authentication and Authorization systems.
