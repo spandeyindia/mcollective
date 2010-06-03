@@ -16,7 +16,7 @@ Configuration is a simple _key = val_ style configuration file.
 ||max_log_size||10240||Max size in bytes for log files before rotation happens||
 ||libdir||/usr/libexec/mcollective||Where to look for plugins||
 ||connector||Stomp||Which _connector_ plugin to use for communication||
-||securityprovider||Psk||Which security model to use||
+||securityprovider||Psk||Which security model to use, see SSLSecurityPlugin for details on configuring SSL||
 
 == Server Configuration ==
 The server configuration file should be root only readable
