@@ -27,9 +27,11 @@ The server configuration file should be root only readable
 ||registration||Agentlist||Registration plugin to use||
 ||registerinterval||120||How many seconds to sleep between registration messages, setting this to zero disables registration||
 ||classesfile||/var/lib/puppet/classes.txt||Where to find a list of classes configured by your configuration management system||
-||audit||1||Enables [SimpleRPCIntroduction] auditing||
-||auditprovider||Logfile||Enables auditing using MCollective::Audit::Logfile||
+||rpcaudit||1||Enables [SimpleRPCIntroduction] auditing||
+||rpcauditprovider||Logfile||Enables auditing using MCollective::Audit::Logfile||
 ||plugin.discovery.timeout||10||Sets the timeout for the discovery agent, useful if facts are very slow||
+||rpcauthorization||1||Enables [SimpleRPCAuthorization] globally||
+||rpcauthprovider||action_policy||Use the MCollective::Util::ActionPolicy plugin to manage authorization||
 
 == Plugin Configuration ==
 You can add free form config options for plugins, they take the general form like:
