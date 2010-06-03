@@ -191,3 +191,4 @@ From here you should look at the rest of the wiki pages some key pages are:
  * [Terminology]
  * [SimpleRPCIntroduction Introduction to Simple RPC] - a simple to use framework for writing clients and agents
  * [ControllingTheDaemon] Controlling a running daemon
+ * [SSLSecurityPlugin] Using SSL for secure message signing and authentication of clients
