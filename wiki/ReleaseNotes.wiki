@@ -12,29 +12,29 @@ This release is a major feature relase.
 
 The major focus of this release is to finish up some of the more enterprise like features, we now have fine grained Authorization and Authentication and a new security model that uses SSL keys.
 
-==== Security Plugin ====
+=== Security Plugin ===
 Vladimir Vuksan contributed the base code of a new [SSLSecurityPlugin SSL based security plugin].  This plugin builds on the old PSK plugin but gives each client a unique certificate pair.  The nodes all share a certificate but this modem means that should one node be compromised it cannot be used to control the rest of the network.
 
-==== Authorization Plugin ====
+=== Authorization Plugin ===
 We've developed new hooks and plugins for SimpleRPC that enable you to write [SimpleRPCAuthorization fine grained authorization systems].  You can do authorization on every aspect of the request and you'll have access to the caller userid as provided by the security plugin.  Combined with the above SSL plugin this can be used to build powerful and secure Authentication and Authorization systems.
 
 A sample plugin can be found [http://code.google.com/p/mcollective-plugins/wiki/ActionPolicy here].
 
-==== Enhancements for Web Development ====
+=== Enhancements for Web Development ===
 Web apps doesn't tie in well with our discover, request, wait model.  We've made it easier for web apps to maintain their own cached discovery data using the [Registration] system and then based on that do requests that would not require any discovery.  This is done by [SimpleRPCClients#Doing_your_own_discovery bypassing discovery completely].
 
-==== Fire and Forget requests ====
+=== Fire and Forget requests ===
 It is often desirable to just send a request and not wait for any reply.  We've made it [SimpleRPCClients#Sending_SimpleRPC_requests_without_discovery_and_blocking easy to do requests like this] with the addition of a new request parameter on the SimpleRPC client class.
 
 Requests like this will not take any time to do discovery and you will not be able to get results back from the agents.
 
-==== Reloading Agents ====
+=== Reloading Agents ===
 To make it a bit easier to manage daemons and agents you can now send the _mcollectived_ a _USR1_ signal and it will re-read all it's agents from disk.
 
-==== Backwards Compatibility ====
+=== Backwards Compatibility ===
 This release when used with the old style PSK plugin should be perfectly backward compatible with your existing agents.  To use some of the newer features like authorization will require config and/or agent changes.
 
-==== Changes ====
+=== Changes ===
 || *Date* || *Description* ||
 || 2010/06/01 || Improve the main discovery agent by adding facts and classes to its inventory action - #79||
 || 2010/05/30 || Add various helpers to get reports as text instead of printing them - #43||
