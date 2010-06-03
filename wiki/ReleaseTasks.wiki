@@ -21,6 +21,7 @@ Boot up an instance of the EC2 demo AMIs
 # gem install rake
 # git clone git://github.com/mcollective/marionette-collective.git
 # cd marionette-collective
+# git checkout 0.x.x
 # rake rpm
 }}}
 
