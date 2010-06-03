@@ -19,7 +19,7 @@ To get an immediate feel for what I am on about you can look at some of the vide
  * A number of agents to manage packages, services and other common components are [http://code.google.com/p/mcollective-plugins/ available from the community].
  * Allows you to write [SimpleRPCIntroduction simple RPC style agents, clients] and Web UIs in an easy to understand language - Ruby
  * Extremely pluggable and adaptable to local needs
- * Middleware systems already have rich [SecurityWithActiveMQ authentication and authorization models], leverage these as a first line of control.  Include fine grained [SimpleRPCAuthorization Authorization] and [SimpleRPCAuditing Auditing] of requests.
+ * Middleware systems already have rich [SecurityWithActiveMQ authentication and authorization models], leverage these as a first line of control.  Include fine grained [SSLSecurityPlugin Authentication], [SimpleRPCAuthorization Authorization] and [SimpleRPCAuditing Auditing] of requests.
  * Re-use the ability of middleware to do [ActiveMQClusters clustering, routing and network isolation] to realize secure and scalable setups.
 
 == Pluggable Core ==
