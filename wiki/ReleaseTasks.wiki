@@ -19,8 +19,8 @@ Boot up an instance of the EC2 demo AMIs
 
 {{{
 # gem install rake
-# svn checkout http://mcollective.googlecode.com/svn/trunk/ mcollective-read-only
-# cd mcollective-read-only
+# git clone git://github.com/mcollective/marionette-collective.git
+# cd marionette-collective
 # rake rpm
 }}}
 
