@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/06/09 || Sort the mc-facts output to be more readable - #82||
 || 2010/06/08 || Fix deprecation warnings in newer Stomp gems - #81||
 || *2010/06/03* || *Release version 0.4.5* || 
 || 2010/06/01 || Improve the main discovery agent by adding facts and classes to its inventory action - #79||
