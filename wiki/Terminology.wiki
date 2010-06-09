@@ -63,3 +63,9 @@ Often clients will use the _MCollective::Client_ library to communicate to the C
 
 == User ==
 Servers and Clients all authenticate to the Middleware, user would generally refer to the username used to authenticate against the middleware.
+
+== Audit ==
+In relation to SimpleRPC an audit action is a step requests go through where they can get logged to disk or other similar action
+
+== Authorization ==
+In relation to SimpleRPC authorization is a processes whereby requests get allowed or denied based on some identifying information of the requester 
