@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/06/10 || Tighten up handling of filters to avoid nil's getting into them - #83||
 || 2010/06/09 || Sort the mc-facts output to be more readable - #82||
 || 2010/06/08 || Fix deprecation warnings in newer Stomp gems - #81||
 || *2010/06/03* || *Release version 0.4.5* || 
