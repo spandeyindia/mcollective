@@ -41,3 +41,15 @@ plugin.stomp.pool.password1 = secret
 This gives it 2 servers to attempt to connect to, if the first one fails it will use the second.  As before usernames and passwords can be set with STOMP_USER, STOMP_PASSWORD.
 
 If you do not specify a port it will default to _6163_
+
+When using pools you can also specify the following options, these are the defaults in the Stomp 1.1.6 gem:
+
+{{{
+plugin.stomp.pool.initial_reconnect_delay = 0.01
+plugin.stomp.pool.max_reconnect_delay = 30.0
+plugin.stomp.pool.use_exponential_back_off = true
+plugin.stomp.pool.back_off_multiplier = 2
+plugin.stomp.pool.max_reconnect_attempts = 0
+plugin.stomp.pool.randomize = false
+plugin.stomp.pool.timeout = -1
+}}}
