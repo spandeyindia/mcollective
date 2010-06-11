@@ -12,7 +12,9 @@ We try to keep the requirements on external Gems to a minimum, you only need:
   * A Stomp server, tested against [http://activemq.apache.org/ ActiveMQ]
   * Ruby
   * Rubygems
-  * [http://stomp.codehaus.org/Ruby+Client Ruby Stomp Client] *NOTE: You need version 1.1 as the newer versions are broken and do not work with multi threaded servers*
+  * [http://stomp.codehaus.org/Ruby+Client Ruby Stomp Client] 
+
+*NOTE: You need version Stomp Gem 1.1 for mcollective up to 0.4.5.  mcollective 0.4.6 onward supports 1.1 and 1.1.6 and newer*
 
 == ActiveMQ ==
 I've developed this against ActiveMQ.  It should work against other Stomp servers but I suspect if you choose one without username and password support you might have problems, please let me know if that's the case and I'll refactor the code around that.
@@ -132,6 +134,8 @@ plugin.psk = abcdefghj
 
 Replace the _plugin.stomp.host_ with your server running ActiveMQ and replace the _plugin.psk_ with a Pre-Shared Key of your own.
 
+The STOMP connector supports other options like failover pools, see [ConnectorStomp] for full details.
+
 === Create Facts ===
 By default - and for this setup - we'll use a simple YAML file for a fact source, later on you can use Reductive Labs Facter or something else.
 
@@ -190,5 +194,6 @@ From here you should look at the rest of the wiki pages some key pages are:
  * [Screencasts] - Get a hands-on look at what is possible
  * [Terminology]
  * [SimpleRPCIntroduction Introduction to Simple RPC] - a simple to use framework for writing clients and agents
- * [ControllingTheDaemon] Controlling a running daemon
- * [SSLSecurityPlugin] Using SSL for secure message signing and authentication of clients
+ * [ControllingTheDaemon] - Controlling a running daemon
+ * [SSLSecurityPlugin] - Using SSL for secure message signing and authentication of clients
+ * [ConnectorStomp] - Full details on the Stomp adapter including failover pools
