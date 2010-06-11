@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/06/11 || Add connection pool retry options and ssl for connection - #85||
 || 2010/06/11 || Add support for specifying multiple stomp hosts for failover - #84||
 || 2010/06/10 || Tighten up handling of filters to avoid nil's getting into them - #83||
 || 2010/06/09 || Sort the mc-facts output to be more readable - #82||
