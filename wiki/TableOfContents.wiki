@@ -8,6 +8,7 @@
  * Simple RPC Reference
    * [SimpleRPCIntroduction Introduction]
    * [SimpleRPCAgents Writing Agents]
+   * [SimpleRPCDDL Data Description Language]
    * [SimpleRPCClients Writing Clients]
    * [SimpleRPCAuthorization Authorization]
    * [SimpleRPCAuditing Auditing]
