@@ -1,5 +1,5 @@
 #summary Writing Simple RPC agents
-#labels Phase-Reference
+#labels Phase-Reference,SimpleRPC
 
 <wiki:toc max_depth="3" />
 
