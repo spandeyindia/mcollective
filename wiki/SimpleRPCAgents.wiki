@@ -41,7 +41,7 @@ module MCollective
     module Agent
         class Helloworld<RPC::Agent
             # Basic echo server
-            def echo_action
+            action "echo" do
                 validate :msg, String
      
                 reply.data = request[:msg]
@@ -57,25 +57,22 @@ Strictly speaking this Agent will work but isn't considered complete - there's n
 The agent name is derived from the class name, the example code creates _MCollective::Agent::Helloworld_ and the agent name would be _helloworld_.
 
 == Meta Data and Initialization ==
-Simple RPC agents still need meta data like in [WritingAgents], without it you'll justh ave some defaults assigned, code below adds the meta data to our agent:
-
-*Note: setting meta data and timeout will only work from version 0.4.1 onward - see ticket [http://code.google.com/p/mcollective/issues/detail?id=14 #14]*
+Simple RPC agents still need meta data like in [WritingAgents], without it you'll just have some defaults assigned, code below adds the meta data to our agent:
 
 {{{
 module MCollective
     module Agent
         class Helloworld<RPC::Agent
-            def startup_hook
-                meta[:license] = "Apache 2"
-                meta[:author] = "R.I.Pienaar"
-                meta[:version] = "1.1"
-                meta[:url] = "http://mcollective.googlecode.com/"
-
-                @timeout = 10
-            end
+            metadata :name        => "SimpleRPC Service Agent",
+                     :description => "Agent to manage services using the Puppet service provider", 
+                     :author      => "R.I.Pienaar",
+                     :license     => "GPLv2",
+                     :version     => "1.1",
+                     :url         => "http://mcollective-plugins.googlecode.com/",
+                     :timeout     => 60
 
             # Basic echo server
-            def echo_action
+            action "echo" do
                 validate :msg, String
      
                 reply.data = request[:msg]
@@ -89,28 +86,6 @@ The added code sets our creator info, license and version as well as a timeout. 
 
 The default timeout for SimpleRPC agents is _10_ .
 
-== Providing Help ==
-We should always provide help for our agents, this is not currently used but we'll soon add abilities to perform introspection on agents from the client side so then help will be invaluable.
-
-{{{
-        class Helloworld<RPC::Agent
-             .
-             .
-             .
-           
-             def help
-                <<-EOH
-                Basic hello world agent:
-
-                Actions:
-                  echo - Accepts :msg and returns it back
-                EOH
-             end
-        end
-}}}
-
-Future versions of Simple RPC will probably create default help that is sensible - it would for example show all actions and what their input is automatically.
-
 === Writing Actions ===
 Actions are the individual tasks that your agent can do, they should just be in methods matching the _name`_`action_.
 
@@ -122,12 +97,55 @@ Actions are the individual tasks that your agent can do, they should just be in 
             end
 }}}
 
+There's a helper to create this for you, you saw it earlier:
+
+{{{
+            action "echo" do
+                validate :msg, String
+     
+                reply.data = request[:msg]
+            end
+}}}
+
+These two code blocks have the identical outcome, the 2nd usage is recommended.
+
 Creates an action called "echo".  They don't and can't take any arguments.
+
+== Help and the Data Description Language ==
+We have a separate file that goes together with an agent and is used to describe the agent in detail, a DDL file for the above echo agent can be seen below:
+
+{{{
+metadata :name        => "SimpleRPC Service Agent",
+         :description => "Agent to manage services using the Puppet service provider", 
+         :author      => "R.I.Pienaar",
+         :license     => "GPLv2",
+         :version     => "1.1",
+         :url         => "http://mcollective-plugins.googlecode.com/",
+         :timeout     => 60
+
+action "echo", description "Echos back any message it receives" do
+   input :msg,
+         :prompt      => "Service Name",
+         :description => "The service to get the status for",
+         :type        => :string,
+         :validation  => '^[a-zA-Z\-_\d]+$',
+         :optional    => false,
+         :maxlength   => 30
+
+   output :data,
+          :description => "The message we received",
+          :display_as  => "Message"
+end
+}}}
+
+As you can see the DDL file expand on the basic syntax adding a lot of markup, help and other important validation data.  This information - when available - helps in making more robust clients and also potentially auto generating user interfaces.
+
+The DDL is a complex topic, read all about it in [SimpleRPCDDL].
 
 == Validating Input ==
 If you've followed the conventions and put the incoming data in a Hash structure then you can use a few of the provided validators to make sure your data that you received is what you expected.
 
-If you didn't use Hashes for input the validators would not be usable to you.
+If you didn't use Hashes for input the validators would not be usable to you.  In future validation will happen automatically based on the [SimpleRPCDDL] so I strongly suggest you follow the agent design pattern shown here using hashes.
 
 In the sample action above we validate the _:msg_ input to be of type _String_, here are a few more examples:
 
