@@ -4,6 +4,7 @@
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
 || 2010/06/12 || Qualify the Process class to avoid clashes in the discovery agent - #88||
+|| 2010/06/12 || Add mc-inventory which shows agents, classes and facts for a node - #87||
 || 2010/06/11 || mc-facts now supports standard filters - #86||
 || 2010/06/11 || Add connection pool retry options and ssl for connection - #85||
 || 2010/06/11 || Add support for specifying multiple stomp hosts for failover - #84||
