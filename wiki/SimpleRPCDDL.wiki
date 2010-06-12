@@ -1,6 +1,8 @@
 #summary SimpleRPC Data Description Language
 #labels Phase-Implementation,SimpleRPC
 
+<wiki:toc max_depth="3" />
+
 = Introduction =
 
 As with other remote procedure invocation systems SimpleRPC has a DDL that defines what remote methods are available, what inputs they take and what outputs they generate.
@@ -80,6 +82,46 @@ All of this code just goes into a file, no special class or module bits needed, 
 
 Importantly you do not need to have the _service.rb_ on a machine to use the DDL, this means on machines that are just used for running client programs you can just drop the _.ddl_ files into the agents directory.
 
+You can view a human readable version of this using the _mc-rpc_ command:
+
+{{{
+$ mc-rpc --agent-help service
+SimpleRPC Service Agent
+=======================
+
+Agent to manage services using the Puppet service provider
+
+      Author: R.I.Pienaar
+     Version: 1.1
+     License: GPLv2
+     Timeout: 60
+   Home Page: http://mcollective-plugins.googlecode.com/
+
+
+
+ACTIONS:
+========
+   restart, start, status, stop
+
+   restart action:
+   ---------------
+       Restart a service
+
+       INPUT:
+           service:
+              Description: The service to restart
+                   Prompt: Service Name
+                     Type: string
+               Validation: ^[a-zA-Z\-_\d]+$
+                   Length: 30
+
+
+       OUTPUT:
+           status:
+              Description: The status of service after restart
+               Display As: Service Status
+}}}
+
 = Optional Inputs =
 The input block has a mandatory _:optional_ field, when true it would be ok if a client attempts to call the agent without this input supplied.  If it is supplied though it will be validated.
 
@@ -104,3 +146,69 @@ input :action,
 }}}
 
 In user interfaces this might be displayed as a drop down list selector or another kind of menu.
+
+= Accessing the DDL =
+While programming client applications or web apps you can gain access to the DDL for any agent in several ways:
+
+{{{
+require 'mcollective'
+
+config = MCollective::Config.instance
+config.loadconfig(options[:config])
+
+ddl = MCollective::RPC::DDL.new("service")
+puts ddl.help("#{config.configdir}/rpc-help.erb")
+}}}
+
+This will produce the text help output from the above example, you can supply any ERB template to format the output however you want.
+
+You can also access the data structures directly:
+
+{{{
+ddl = MCollective::RPC::DDL.new("service")
+puts "Meta Data:"
+pp ddl.meta
+
+puts
+puts "Status Action:"
+pp ddl.action_interface("status")
+}}}
+
+{{{
+Meta Data:
+{:license=>"GPLv2",
+ :author=>"R.I.Pienaar",
+ :name=>"SimpleRPC Service Agent",
+ :timeout=>60,
+ :version=>"1.1",
+ :url=>"http://mcollective-plugins.googlecode.com/",
+ :description=>"Agent to manage services using the Puppet service provider"}
+
+Status Action:
+{:action=>"status",
+ :input=>
+  {:service=>
+    {:validation=>"^[a-zA-Z\\-_\\d]+$",
+     :maxlength=>30,
+     :prompt=>"Service Name",
+     :type=>:string,
+     :optional=>false,
+     :description=>"The service to get the status for"}},
+ :output=>
+  {"status"=>
+    {:display_as=>"Service Status", :description=>"The status of service"}},
+ :description=>"Gets the status of a service"}
+
+}}}
+
+The ddl object is also available on any _rpcclient_:
+
+{{{
+service = rpcclient("service")
+pp service.ddl.meta
+}}}
+
+In the case of accessing it through the service as in this example, if there was no DDL file on the machine for the service agent you'd get a _nil_ back from the ddl accessor.
+
+= Input Validation =
+As mentioned earlier the client does automatic input validation using the DDL, if validation fails you will get an _MCollective::DDLValidationError_ exception thrown with an appropriate message.
