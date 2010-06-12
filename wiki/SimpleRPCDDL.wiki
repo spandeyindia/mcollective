@@ -17,6 +17,8 @@ The DDL is used in various scenarios:
  * Before sending a call over the network inputs get validated so we do not send unexpected data to remote nodes.
  * Module repositories can use the meta data to display a standard view of available modules to assist a user in picking the right ones.
 
+*Note:* This feature was introduced as part of version _0.4.6_.
+
 = Examples =
 We'll start with a few examples as I think it's pretty simple what they do, and later on show what other permutations are allowed for defining inputs and outputs.
 
