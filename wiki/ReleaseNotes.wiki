@@ -6,9 +6,74 @@
 This is a list of release notes for various releases, you should review these before upgrading as any potential problems and backward incompatible changes will be highlighted here.
 
 <wiki:toc max_depth="3" />
+== 0.4.6 - tba ==
+=== Release Focus and Notes ===
+This release is a major feature release.
+
+We're focusing mainly on the Stomp connector and on the SimpleRPC agents in this release though a few smaller additions were made.
+
+=== Stomp Connector ===
+We've historically been stuck just using Rubygem Stomp 1.1 due to multi threading bugs in the newer releases.  All attempts to contact the authors failed.  Recently though I had some luck and these issues are resolved in the RubyGem Stomp 1.1.6 release.
+
+This means we can take advantage of a lot of new features such as connection pooling for failover/ha and also SSL TLS between nodes and ActiveMQ server.
+
+See [ConnectorStomp] for details.
+
+=== RPC Agent Data Description Language ===
+I've been working since around February on building introspection, automatically generated documentation and the ability for user interfaces to be auto generated for agents, even ones you write your self.
+
+This feature is documented in [SimpleRPCDDL] but a quick example of a DDL document might help make it clear:
+
+{{{
+metadata :name        => "SimpleRPC Service Agent",
+         :description => "Agent to manage services using the Puppet service provider", 
+         :author      => "R.I.Pienaar",
+         :license     => "GPLv2",
+         :version     => "1.1",
+         :url         => "http://mcollective-plugins.googlecode.com/",
+         :timeout     => 60
+
+action "status", :description => "Gets the status of a service" do
+    input :service, 
+          :prompt      => "Service Name",
+          :description => "The service to get the status for",
+          :type        => :string,
+          :validation  => '^[a-zA-Z\-_\d]+$',
+          :optional    => false,
+          :maxlength   => 30
+
+    output "status",
+          :description => "The status of service",
+          :display_as  => "Service Status"
+end
+}}}
+
+This describes parts of a service agent, you will notice this includes all the human friendly information about an agent, enough so that user interfaces and help can be generated on the fly.
+
+Additionally, and most importantly, if you make a DDL file for your agents and distribute it to clients the client library will automatically validate your input and only make requests it thinks matches your DDL.
+
+Full details of this feature can be found on the wiki [SimpleRPCDDL]
+
+=== CLI Utilities changes ===
+  * mc-facts now take all the standard filters so you can make reports for just subsets of machines
+  * A new utility mc-inventory has been added, it will show agents, facts and classes for a node
+  * mc-rpc has a new option _--agent-help_ that will use the DDL and display auto generated documentation for an agent.
+  * mc-facts output is sorted for better readability
+
+=== Changes ===
+|| *Date* || *Descriptions* ||
+|| 2010/06/12 || Qualify the Process class to avoid clashes in the discovery agent - #88||
+|| 2010/06/12 || Add mc-inventory which shows agents, classes and facts for a node - #87||
+|| 2010/06/11 || mc-facts now supports standard filters - #86||
+|| 2010/06/11 || Add connection pool retry options and ssl for connection - #85||
+|| 2010/06/11 || Add support for specifying multiple stomp hosts for failover - #84||
+|| 2010/06/10 || Tighten up handling of filters to avoid nil's getting into them - #83||
+|| 2010/06/09 || Sort the mc-facts output to be more readable - #82||
+|| 2010/06/08 || Fix deprecation warnings in newer Stomp gems - #81||
+
 == 0.4.5 - 2010/06/03 ==
 === Release Focus and Notes ===
-This release is a major feature relase.
+This release is a major feature release.
 
 The focus of this release is to finish up some of the more enterprise like features, we now have fine grained Authorization and Authentication and a new security model that uses SSL keys.
 
