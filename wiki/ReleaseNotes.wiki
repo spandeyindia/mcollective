@@ -52,6 +52,8 @@ This describes parts of a service agent, you will notice this includes all the h
 
 Additionally, and most importantly, if you make a DDL file for your agents and distribute it to clients the client library will automatically validate your input and only make requests it thinks matches your DDL.
 
+The creation of SimpleRPC agents now has an optional new syntax that looks a lot like above, the meta data section is a verbatim copy and the action creation is a simplified version of above.  This will make the connection between DDL and Agent clearer.  See [SimpleRPCAgents#Meta_Data_and_Initialization SimpleRPCAgents] for examples
+
 Full details of this feature can be found on the wiki [SimpleRPCDDL]
 
 === CLI Utilities changes ===
