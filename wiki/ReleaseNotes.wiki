@@ -48,7 +48,7 @@ action "status", :description => "Gets the status of a service" do
 end
 }}}
 
-This describes parts of a service agent, you will notice this includes all the human friendly information about an agent, enough so that user interfaces and help can be generated on the fly.
+This describes parts of a service agent, you will notice this includes all the human friendly information about an agent, enough so that user interfaces and help can be generated on the fly.  You can see a video of such a auto generated ui [http://www.youtube.com/watch?v=ffqEIvHaOhE here].
 
 Additionally, and most importantly, if you make a DDL file for your agents and distribute it to clients the client library will automatically validate your input and only make requests it thinks matches your DDL.
 
