@@ -57,10 +57,10 @@ The creation of SimpleRPC agents now has an optional new syntax that looks a lot
 Full details of this feature can be found on the wiki [SimpleRPCDDL]
 
 === CLI Utilities changes ===
-  * mc-facts now take all the standard filters so you can make reports for just subsets of machines
-  * A new utility mc-inventory has been added, it will show agents, facts and classes for a node
-  * mc-rpc has a new option _--agent-help_ that will use the DDL and display auto generated documentation for an agent.
-  * mc-facts output is sorted for better readability
+  * _mc-facts_ now take all the standard filters so you can make reports for just subsets of machines
+  * A new utility _mc-inventory_ has been added, it will show agents, facts and classes for a node
+  * _mc-rpc_ has a new option _--agent-help_ that will use the DDL and display auto generated documentation for an agent.
+  * _mc-facts_ output is sorted for better readability
 
 === Changes ===
 || *Date* || *Descriptions* ||
