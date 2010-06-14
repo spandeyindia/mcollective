@@ -62,6 +62,9 @@ Full details of this feature can be found on the wiki [SimpleRPCDDL]
   * _mc-rpc_ has a new option _--agent-help_ that will use the DDL and display auto generated documentation for an agent.
   * _mc-facts_ output is sorted for better readability
 
+=== Backwards Compatibility ===
+This release will be backward compatible with older releases, the new Stomp features though require the newer Ruby Gem.
+
 === Changes ===
 || *Date* || *Descriptions* ||
 || 2010/06/12 || Qualify the Process class to avoid clashes in the discovery agent - #88||
