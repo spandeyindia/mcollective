@@ -1,4 +1,4 @@
-#summary SimpleRPC Data Description Language
+#summary SimpleRPC Data Definition Language
 #labels Phase-Implementation,SimpleRPC
 
 <wiki:toc max_depth="3" />
