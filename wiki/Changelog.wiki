@@ -3,6 +3,8 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/06/15 || Avoid duplicate topic subscribes in complex clients - #95||
+|| 2010/06/15 || Catch some unhandled exceptions in RPC Agents - #96||
 || 2010/06/15 || Fix missing help template file from RPM - #90||
 || *2010/06/14* || *Release version 0.4.6* || 
 || 2010/06/12 || Qualify the Process class to avoid clashes in the discovery agent - #88||
