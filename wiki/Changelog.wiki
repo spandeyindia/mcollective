@@ -3,6 +3,8 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/06/15 || Fix missing help template file from RPM - #90||
+|| *2010/06/14* || *Release version 0.4.6* || 
 || 2010/06/12 || Qualify the Process class to avoid clashes in the discovery agent - #88||
 || 2010/06/12 || Add mc-inventory which shows agents, classes and facts for a node - #87||
 || 2010/06/11 || mc-facts now supports standard filters - #86||
