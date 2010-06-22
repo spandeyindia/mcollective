@@ -33,6 +33,12 @@ The server configuration file should be root only readable
 ||rpcauthorization||1||Enables [SimpleRPCAuthorization] globally||
 ||rpcauthprovider||action_policy||Use the MCollective::Util::ActionPolicy plugin to manage authorization||
 
+== Client Configuration ==
+The client configuration file should be readable by everyone, it's not advised to put PSK's or client SSL certs in a world readable file, see below how to do that per user.
+
+|| *Key* || *Sample* || *Description* ||
+|| color || 0 || Disables the use of color in RPC results||
+
 == Plugin Configuration ==
 You can add free form config options for plugins, they take the general form like:
 
