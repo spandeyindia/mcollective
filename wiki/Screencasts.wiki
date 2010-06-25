@@ -3,6 +3,12 @@
 
 <wiki:toc max_depth="2" />
 
+Our movies are slowly moving to [http://mcollective.blip.tv/ mcollective.blip.tv] please follow there.
+
+= Blip.tv videos =
+
+ * [http://mcollective.blip.tv/file/3799653/ SimpleRPC Data Definition Language]
+
 = Introduction and Concepts =
 Introduction to MCollective, shows features present in the upcoming 0.4 version and onward.
 
