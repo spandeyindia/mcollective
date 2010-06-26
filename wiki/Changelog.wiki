@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/06/26 || DDL based help now works better with Symbols in in/output - #105||
 || 2010/06/23 || Whitespace at the end of config lines are now stripped - #100||
 || 2010/06/22 || printrpc will now inject some colors into results - #99||
 || 2010/06/22 || Recover from syntax and other errors in agents - #98||
