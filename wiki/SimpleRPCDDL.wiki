@@ -135,6 +135,8 @@ The string type validates initially that the input is infact a String, then it v
 
 Both _:validation_ and _:maxlength_ are required arguments for the string type of input.
 
+If you want to allow unlimited length text you can make _:maxlength => 0_ but use this with care.
+
 == :list type ==
 List types provide a list of valid options and only those will be allowed, see an example below:
 
