@@ -15,6 +15,8 @@ We've extended the use of the DDL in the RPC client.  We've integrated the DDL i
 
 We're also using color to improve the display of the results, the color display can be disabled with the new _color_ configuration option.
 
+A [http://mcollective.blip.tv/file/3799653 screencast of the DDL integration] and color usage has been recorded.
+
 === Bug Fixes ===
 A serious issue has been fixed wrt complex agents.  If you attempted to use multiple agents from the same script errors such as duplicate discovery results or simply not working.  
 
