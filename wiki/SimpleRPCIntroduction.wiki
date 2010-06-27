@@ -3,11 +3,11 @@
 
 = Introduction =
 
-MCollective is a framework for writing feature full agents and clients and provides a [WritingAgents rich system to do that].  MCollective's native Client though is very low lever, a bit like TCP/IP is to HTTP.  
+MCollective is a framework for writing feature full agents and clients and provides a [WritingAgents rich system to do that].  MCollective's native Client though is very low level, a bit like TCP/IP is to HTTP.  Like TCP/IP the native client does not provide any Authentication, Authorization etc.
 
-MCollective Simple RPC is a framework on top of the standard client that abstracts away a lot of the complexity, provides a lot of convention and standards.  It's a bit like using HTTP ontop of TCP/IP to create REST services.
+MCollective Simple RPC is a framework on top of the standard client that abstracts away a lot of the complexity and provides a lot of convention and standards.  It's a bit like using HTTP ontop of TCP/IP to create REST services.
 
-SimpleRPC does the following:
+SimpleRPC is a framework that provides the following:
 
  * Provide simple conventions for writing [SimpleRPCAgents agents] and [SimpleRPCClients clients], favoring convention over custom design
  * Very easy to write agents including input validation and a sensible feedback mechanism in case of error
