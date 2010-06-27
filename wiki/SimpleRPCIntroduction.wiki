@@ -3,17 +3,20 @@
 
 = Introduction =
 
-MCollective is a framework for writing feature full agents and clients and provides a [WritingAgents rich system to do that].  Sometimes though you just have simpler needs than the full Client provides or need to prototype something quickly.  MCollective Simple RPC is a framework ontop of the standard client that abstracts away a lot of the complexity.
+MCollective is a framework for writing feature full agents and clients and provides a [WritingAgents rich system to do that].  MCollective's native Client though is very low lever, a bit like TCP/IP is to HTTP.  
 
-We've written a simple to use framework that is integrated into MCollective that aims to tick all of these boxes:
+MCollective Simple RPC is a framework on top of the standard client that abstracts away a lot of the complexity, provides a lot of convention and standards.  It's a bit like using HTTP ontop of TCP/IP to create REST services.
+
+SimpleRPC does the following:
 
  * Provide simple conventions for writing [SimpleRPCAgents agents] and [SimpleRPCClients clients], favoring convention over custom design
  * Very easy to write agents including input validation and a sensible feedback mechanism in case of error
  * Provide [SimpleRPCAuditing audit logging] abilities of calls to agents
  * Provide the ability to do [SimpleRPCAuthorization fine grain Authorization] of calls to agents and actions.
+ * Has a [SimpleRPCDDL Data Definition Language] used to describe agents and assist in giving hints to auto generating user interfaces.
  * The provided generic calling tool should be able to speak to most compliant agents
  * Should you need to you can still write your own clients, this should be very easy too
- * Return data should be easy to print, in most cases the framework should be able to print a sensible output with a single, provided, function
+ * Return data should be easy to print, in most cases the framework should be able to print a sensible output with a single, provided, function.  The [SimpleRPCDDL] is used here to improve the standard one-size-fits-all methods.
  * The full capabilities of the standard Client classes should still be exposed in case you want to write advanced agents and clients
 
 
@@ -21,7 +24,7 @@ We've written a simple to use framework that is integrated into MCollective that
 
 We've provided full tutorials on [SimpleRPCAgents Writing Simple RPC Agents] and [SimpleRPCClients Clients].
 
-A bit of code probably says more than lots of english, so here's a simple hello world Agent, it just echo's back everything you send it in the _:msg_ argument:
+A bit of code probably says more than lots of English, so here's a simple hello world Agent, it just echo's back everything you send it in the _:msg_ argument:
 
 {{{
 module MCollective
