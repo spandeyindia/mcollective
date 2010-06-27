@@ -7,8 +7,8 @@ Our movies are slowly moving to [http://mcollective.blip.tv/ mcollective.blip.tv
 
 = Blip.tv videos =
 
- * [http://mcollective.blip.tv/file/3827581/ Introductin to The Marionette Collective]
- * [http://mcollective.blip.tv/file/3799653/ SimpleRPC Data Definition Language]
+ * [http://mcollective.blip.tv/file/3808541 Introductin to The Marionette Collective]
+ * [http://mcollective.blip.tv/file/3799653 SimpleRPC Data Definition Language]
 
 = Introduction and Concepts =
 Introduction to MCollective, shows features present in the upcoming 0.4 version and onward.
