@@ -22,7 +22,7 @@ SimpleRPC does the following:
 
 *NOTE: This feature is available from version 0.4 of MCollective*
 
-We've provided full tutorials on [SimpleRPCAgents Writing Simple RPC Agents] and [SimpleRPCClients Clients].  There is also a [http://mcollective.blip.tv/file/3808928/ tutorial that will give you a quick look at what is involved in writing agents].
+We've provided full tutorials on [SimpleRPCAgents Writing Simple RPC Agents] and [SimpleRPCClients Clients].  There is also a [http://mcollective.blip.tv/file/3808928/ screencast that will give you a quick look at what is involved in writing agents].
 
 
 A bit of code probably says more than lots of English, so here's a simple hello world Agent, it just echo's back everything you send it in the _:msg_ argument:
