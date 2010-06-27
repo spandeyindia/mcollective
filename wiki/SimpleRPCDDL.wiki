@@ -46,6 +46,8 @@ Defining inputs and outputs is the hardest part, below first the _status_ action
 
 {{{
 action "status", :description => "Gets the status of a service" do
+    display :always
+
     input :service, 
           :prompt      => "Service Name",
           :description => "The service to get the status for",
@@ -61,6 +63,8 @@ end
 }}}
 
 As you see we can define all the major components of input and output parameters.  _:type_ can be one of various values and each will have different parameters, more on that later.
+
+By default mcollective only show data from actions that failed, the _display_ line above tells it to always show the results.  Possible values are _:ok_, _:failed_ (the default behavior) and _:always_.
 
 Finally the service agent has 3 almost identical actions - _start_, _stop_ and _restart_ - below we use a simple loop to define them all in one go.
 
