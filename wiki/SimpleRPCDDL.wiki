@@ -19,6 +19,8 @@ The DDL is used in various scenarios:
 
 *Note:* This feature was introduced as part of version _0.4.6_.
 
+We've created [http://mcollective.blip.tv/file/3799653 a screencast showing the capabilities of the DDL] that might help give you a better overview.
+
 = Examples =
 We'll start with a few examples as I think it's pretty simple what they do, and later on show what other permutations are allowed for defining inputs and outputs.
 
