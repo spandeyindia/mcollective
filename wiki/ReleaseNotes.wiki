@@ -6,6 +6,39 @@
 This is a list of release notes for various releases, you should review these before upgrading as any potential problems and backward incompatible changes will be highlighted here.
 
 <wiki:toc max_depth="3" />
+== 0.4.7 - not yet released ==
+=== Release Focus and Notes ===
+This is a bug fix and incremental improvement release focusing on small improvements in the DDL mostly.
+
+=== Data Definition Language ===
+We've extended the use of the DDL in the RPC client.  We've integrated the DDL into _printrpc_ helper.  The output is dynamic showing field names in human readable format rather than hash dumps.
+
+We're also using color to improve the display of the results, the color display can be disabled with the new _color_ configuration option.
+
+=== Bug Fixes ===
+A serious issue has been fixed wrt complex agents.  If you attempted to use multiple agents from the same script errors such as duplicate discovery results or simply not working.  
+
+The default fact source has been changed to Yaml, it was inadvertently set to Facter int he past.
+
+Some previously unhandled exceptions are now being handled correctly and passed onto the clients as failed requests rather than no responses at all.
+
+=== Backwards Compatibility ===
+This release will be backward compatible with older releases.  The change to Yaml fact source by default might impact you if you did not previously specify a fact source in the configuration files.
+
+=== Changes ===
+|| *Date* || *Descriptions* ||
+|| 2010/06/27 || Change default factsource to Yaml - #106||
+|| 2010/06/27 || Added VIM snippets to create DDLs and Agents - #102||
+|| 2010/06/26 || DDL based help now works better with Symbols in in/output - #105||
+|| 2010/06/23 || Whitespace at the end of config lines are now stripped - #100||
+|| 2010/06/22 || printrpc will now inject some colors into results - #99||
+|| 2010/06/22 || Recover from syntax and other errors in agents - #98||
+|| 2010/06/17 || The agent a MC::RPC::Client is working on is now available - #97||
+|| 2010/06/17 || Integrate the DDL with data display helpers like printrpc - #92||
+|| 2010/06/15 || Avoid duplicate topic subscribes in complex clients - #95||
+|| 2010/06/15 || Catch some unhandled exceptions in RPC Agents - #96||
+|| 2010/06/15 || Fix missing help template file from RPM - #90||
+
 == 0.4.6 - 2010/06/14 ==
 === Release Focus and Notes ===
 This release is a major feature release.
