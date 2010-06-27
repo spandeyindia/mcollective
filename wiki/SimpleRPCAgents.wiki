@@ -7,6 +7,8 @@
 
 Simple RPC works because it makes a lot of assumptions about how you write agents, we'll try to capture those assumptions here and show you how to apply them to our Helloworld agent.
 
+We've recorded a [http://mcollective.blip.tv/file/3808928/ tutorial that will give you a quick look at what is involved in writing agents].
+
 *NOTE: This feature is available from version 0.4 of MCollective*
 
 == Conventions regarding Incoming Data ==
