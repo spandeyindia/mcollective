@@ -25,6 +25,8 @@ I've tested against ActiveMQ 5.2 and 5.3.
 
 A spec file can be found in the _ext_ directory in SVN that can be used to build RPMs for RedHat/CentOS/Fedora you need _tanukiwrapper_ which you can find from _jpackage_, it runs fine under OpenJDK that comes with recent versions of these Operating Systems.  I've uploaded some RPMs and SRPMs [http://www.marionette-collective.org/activemq/ here].
 
+For Debian systems you'd be better off using OpenJDK than Sun JDK, there's a known issue [http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=562954 #562954].
+
 === Configuring Stomp ===
 First you should configure ActiveMQ to listen on the Stomp protocol
 
@@ -72,6 +74,8 @@ And then you should add a user or two, to keep it simple we'll just add one user
 This creates a user _mcollective_ with the password _marionette_ and give it access to read/write/admin _/topic/mcollective.`*`_.
 
 For further info about ActiveMQ settings you might need see [SecurityWithActiveMQ] and [http://www.devco.net/archives/2009/11/10/activemq_clustering.php ActiveMQ Clustering].
+
+There are also a few known to work and tested [http://github.com/mcollective/marionette-collective/tree/master/ext/activemq/examples/ configs in git].
 
 == mcollective ==
 === Download and Extract ===
