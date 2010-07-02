@@ -18,10 +18,17 @@ This includes facts pushed out with [http://reductivelabs.com/trac/puppet/wiki/P
 = Class Filters =
 Puppet provides a list of classes applied to a node by default in _/var/lib/puppet/classes.txt_ or _/var/lib/puppet/state/classes.txt_ (depending on which Puppet version you are using. The latter is true for 0.23.0 onwards) , we'll use this data with _--with-class_ filters.
 
-You should configure MCollective to use this file by putting the following in your _server.cfg_
+You should configure MCollective to use this file by putting the following in your _server.cfg_ 
+
 
 {{{
 classesfile = /var/lib/puppet/classes.txt
+}}}
+
+or if using Puppet 0.23.0 and onwards
+
+{{{
+classesfile = /var/lib/puppet/state/classes.txt
 }}}
 
 You can now use your classes lists in filters:
