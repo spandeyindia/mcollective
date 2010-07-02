@@ -19,9 +19,25 @@ We try to keep the requirements on external Gems to a minimum, you only need:
 == ActiveMQ ==
 I've developed this against ActiveMQ.  It should work against other Stomp servers but I suspect if you choose one without username and password support you might have problems, please let me know if that's the case and I'll refactor the code around that.
 
-Full details on setting up and configuring ActiveMQ is out of scope for this, below should help you get stomp and a user going though. For their excellent full docs please see  http://activemq.apache.org/
+Full details on setting up and configuring ActiveMQ is out of scope for this, but you can follow these simple setup instructions for initial testing (make sure JDK is installed, see below for Debian specific issue regarding JDK):
 
-<editing this>
+1) Download the ActiveMQ "binary" package (for Unix) from http://activemq.apache.org/download.html
+
+2) Extract the contents of the archive:
+
+{{{tar xvzf activemq-x.x.x.tar.gz}}}
+
+
+3) cd into the activemq directory
+
+{{{cd activemq-x.x.x}}}
+
+4) Execute the activemq binary 
+
+{{{bin/activemq}}}
+
+
+Below should help you get stomp and a user going. For their excellent full docs please see  http://activemq.apache.org/
 
 I've tested against ActiveMQ 5.2 and 5.3.
 
@@ -73,9 +89,15 @@ And then you should add a user or two, to keep it simple we'll just add one user
 </beans>
 }}}
 
+
+Save the above code as mcollective.xml and run activemq as:
+
+{{{activemq xbean:/path/to/mcollective.xml}}}
+
 This creates a user _mcollective_ with the password _marionette_ and give it access to read/write/admin _/topic/mcollective.`*`_.
 
-For further info about ActiveMQ settings you might need see [SecurityWithActiveMQ] and [http://www.devco.net/archives/2009/11/10/activemq_clustering.php ActiveMQ Clustering].
+For further info about ActiveMQ settings you might need see [SecurityWithActiveMQ] and 
+[http://www.devco.net/archives/2009/11/10/activemq_clustering.php ActiveMQ Clustering].
 
 There are also a few known to work and tested [http://github.com/mcollective/marionette-collective/tree/master/ext/activemq/examples/ configs in git].
 
