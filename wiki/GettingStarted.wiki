@@ -89,12 +89,13 @@ And then you should add a user or two, to keep it simple we'll just add one user
 </beans>
 }}}
 
+This creates a user _mcollective_ with the password _marionette_ and give it access to read/write/admin _/topic/mcollective.`*`_.
 
 Save the above code as mcollective.xml and run activemq as:
 
 {{{activemq xbean:/path/to/mcollective.xml}}}
 
-This creates a user _mcollective_ with the password _marionette_ and give it access to read/write/admin _/topic/mcollective.`*`_.
+Note: Before executing the above activemq process, make sure there is no already running instance of activemq. If there is one, you can stop it by doing {{{kill -9 <pid of activemq instance>}}} and then run the above mentioned process.
 
 For further info about ActiveMQ settings you might need see [SecurityWithActiveMQ] and 
 [http://www.devco.net/archives/2009/11/10/activemq_clustering.php ActiveMQ Clustering].
