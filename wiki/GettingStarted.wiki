@@ -37,6 +37,8 @@ Full details on setting up and configuring ActiveMQ is out of scope for this, bu
 {{{bin/activemq}}}
 
 
+Note: You can stop an instance of activemq by doing {{{kill -9 <pid of activemq instance>}}}
+
 Below should help you get stomp and a user going. For their excellent full docs please see  http://activemq.apache.org/
 
 I've tested against ActiveMQ 5.2 and 5.3.
@@ -95,7 +97,6 @@ Save the above code as mcollective.xml and run activemq as:
 
 {{{activemq xbean:/path/to/mcollective.xml}}}
 
-Note: Before executing the above activemq process, make sure there is no already running instance of activemq. If there is one, you can stop it by doing {{{kill -9 <pid of activemq instance>}}} and then run the above mentioned process.
 
 For further info about ActiveMQ settings you might need see [SecurityWithActiveMQ] and 
 [http://www.devco.net/archives/2009/11/10/activemq_clustering.php ActiveMQ Clustering].
