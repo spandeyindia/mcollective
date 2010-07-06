@@ -3,6 +3,8 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/07/06 || Removed 'rpm' from the default rake task - #109||
+|| 2010/07/06 || Add redhat-lsb to the server RPM dependencies - #108||
 || *2010/06/29* || *Release version 0.4.7* || 
 || 2010/06/27 || Change default factsource to Yaml - #106||
 || 2010/06/27 || Added VIM snippets to create DDLs and Agents - #102||
