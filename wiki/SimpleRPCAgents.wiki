@@ -65,8 +65,8 @@ Simple RPC agents still need meta data like in [WritingAgents], without it you'l
 module MCollective
     module Agent
         class Helloworld<RPC::Agent
-            metadata :name        => "SimpleRPC Service Agent",
-                     :description => "Agent to manage services using the Puppet service provider", 
+            metadata :name        => "SimpleRPC Sample Agent",
+                     :description => "Echo service for MCollective", 
                      :author      => "R.I.Pienaar",
                      :license     => "GPLv2",
                      :version     => "1.1",
