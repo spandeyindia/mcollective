@@ -117,8 +117,8 @@ Creates an action called "echo".  They don't and can't take any arguments.
 We have a separate file that goes together with an agent and is used to describe the agent in detail, a DDL file for the above echo agent can be seen below:
 
 {{{
-metadata :name        => "SimpleRPC Service Agent",
-         :description => "Agent to manage services using the Puppet service provider", 
+metadata :name        => "SimpleRPC Sample Agent",
+         :description => "Echo service for MCollective", 
          :author      => "R.I.Pienaar",
          :license     => "GPLv2",
          :version     => "1.1",
