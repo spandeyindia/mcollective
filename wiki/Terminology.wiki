@@ -13,7 +13,12 @@ The mcollective daemon, an app server for hosting Agents and managing the connec
 == Node ==
 The Computer or Operating System that the Server runs on.
 
-== Plugins or Agents ==
+== Agent == 
+A block of Ruby code that performs a specific role, the main reason for mcollective's existence is to host agents.  Agents can perform tasks like manipulate firewalls, services, packages etc. See [http://en.wikipedia.org/wiki/Software_agent Wikpedia].
+
+Docs to write your own can be seen in [WritingAgents]
+
+== Plugins ==
 Ruby code that lives inside the server and takes on roles like security, connection handling, agents and so forth.  See [http://en.wikipedia.org/wiki/Plugin Wikipedia]
 
 == Middleware ==
@@ -36,11 +41,6 @@ Multiple collectives can be built sharing the same Middleware but kept separate 
 
 == Simple RPC ==
 A Remote Procedure Call system built ontop of MCollective that makes it very simple to write feature full agents and clients.  See [SimpleRPCIntroduction].
-
-== Agent == 
-A block of Ruby code that performs a specific role, the main reason for mcollective's existence is to host agents.  Agents can perform tasks like manipulate firewalls, services, packages etc. See [http://en.wikipedia.org/wiki/Software_agent Wikpedia].
-
-Docs to write your own can be seen in [WritingAgents]
 
 == Action == 
 Agents expose tasks, we call these tasks actions.  Each agent like a exim queue management agent might expose many tasks like _mailq_, _rm_, _retry_ etc.  These are al actions provided by an agent.
