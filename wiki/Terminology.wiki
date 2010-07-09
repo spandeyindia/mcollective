@@ -13,7 +13,7 @@ The mcollective daemon, an app server for hosting Agents and managing the connec
 == Node ==
 The Computer or Operating System that the Server runs on.
 
-== Plugins ==
+== Plugins or Agents ==
 Ruby code that lives inside the server and takes on roles like security, connection handling, agents and so forth.  See [http://en.wikipedia.org/wiki/Plugin Wikipedia]
 
 == Middleware ==
