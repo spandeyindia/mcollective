@@ -49,7 +49,7 @@ $ mc-rpc --agent helloworld --action echo --arg msg="Welcome to MCollective Simp
 Determining the amount of hosts matching filter for 2 seconds .... 1
                                         
 devel.your.com                          : OK
-    "hello world"
+    "Welcome to MCollective Simple RPC"
 
 
 
