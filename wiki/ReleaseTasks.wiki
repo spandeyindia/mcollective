@@ -41,4 +41,4 @@ Boot up an instance of _ami-0db89079_ and do more or less the following:
 # rake deb
 }}}
 
-Copy do test installs on the machine make sure it looks fine and ship them off the AMI, shut it.
+Copy do test installs on the machine make sure it looks fine and ship them off the AMI, shut it.  Make sure to copy the source deb as well.
