@@ -7,8 +7,9 @@ Our movies are slowly moving to [http://mcollective.blip.tv/ mcollective.blip.tv
 
 = Blip.tv videos =
 
- * [http://mcollective.blip.tv/file/3808541 Introductin to The Marionette Collective]
- * [http://mcollective.blip.tv/file/3799653 SimpleRPC Data Definition Language]
+ * [http://mcollective.blip.tv/file/3808541 Introductin to The Marionette Collective].
+ * [http://mcollective.blip.tv/file/3935110 Message Flow, Terminology and Components].
+ * [http://mcollective.blip.tv/file/3799653 SimpleRPC Data Definition Language].
  * [http://mcollective.blip.tv/file/3808928 How to write an Agent, DDL and Client].
 
 = Introduction and Concepts =
