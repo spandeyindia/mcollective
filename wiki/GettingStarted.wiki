@@ -6,6 +6,8 @@ Below find a rough guide to get you going, this assumes the client and server is
 
 For an even quicker intro to how it all works you can try our [EC2Demo EC2 based demo]
 
+Look at the [Screencasts] page, there are some screen casts dealing with basic architecture, terminology and so forth that you might find helpful before getting started.
+
 == Requirements ==
 We try to keep the requirements on external Gems to a minimum, you only need:
 
