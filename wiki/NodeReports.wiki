@@ -6,7 +6,7 @@ As we have all facts, classes and agents for nodes we can do some custom reporti
 
 We've added a tool - _mc-inventory_ - that has a very simple scriptable report language.
 
- * Note: This is an emerging feature, the scripting language is likely to change *
+* Note: This is an emerging feature, the scripting language is likely to change *
 
 = Details =
 
