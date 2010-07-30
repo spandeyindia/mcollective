@@ -18,6 +18,8 @@ We try to keep the requirements on external Gems to a minimum, you only need:
 
 RPMs for these are available [http://www.marionette-collective.org/activemq/ here].
 
+Information on installing mcollective and stomp from within Gentoo's portage are available [Gentoo here].
+
 *NOTE: You need version Stomp Gem 1.1 for mcollective up to 0.4.5.  mcollective 0.4.6 onward supports 1.1 and 1.1.6 and newer*
 
 
