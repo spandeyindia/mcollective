@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/07/31 || Add basic report scripting support to mc-inventory - #111||
 || 2010/07/06 || Removed 'rpm' from the default rake task - #109||
 || 2010/07/06 || Add redhat-lsb to the server RPM dependencies - #108||
 || *2010/06/29* || *Release version 0.4.7* || 
