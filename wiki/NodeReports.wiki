@@ -6,7 +6,7 @@ As we have all facts, classes and agents for nodes we can do some custom reporti
 
 We've added a tool - _mc-inventory_ - that has a very simple scriptable report language.
 
- *Note: This is an emerging feature, the scripting language is likely to change*
+ * Note: This is an emerging feature, the scripting language is likely to change *
 
 = Details =
 
@@ -34,6 +34,8 @@ Inventory for your.node.com:
 }}}
 
 This gives you a good idea of all the details available for a node.
+
+From version _1.0.0_ onward you can also do some basic scripting to build custom reports:
 
 Lets say you now need a report of all your IBM hardware listing hostname, serial number and product name you can write a scriptlet like this:
 
