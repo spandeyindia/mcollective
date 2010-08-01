@@ -8,7 +8,7 @@ We've added a tool - _mc-inventory_ - that has a very simple scriptable report l
 
 * Note: This is an emerging feature, the scripting language is likely to change *
 
-= Details =
+= printf style =
 
 To obtain a full inventory for a given node you can run mc-inventory like this:
 
@@ -60,3 +60,50 @@ xx5:            99xxx85         IBM eServer BladeCenter HS21 -[8853GLG]-
 }}}
 
 We'll add more capabilities in the future, for now you can access _facts_ as a hash, _agents_ and _classes_ as arrays as well as _identity_ as a string.
+
+
+= Perl Format Style =
+To use this you need to install the _formatr_ gem, once that's installed you can create a report scriptlet like below:
+
+{{{
+formatted_inventory do
+    page_length 20
+
+    page_heading <<TOP
+
+            Node Report @<<<<<<<<<<<<<<<<<<<<<<<<<
+                        time
+
+Hostname:         Customer:     Distribution:
+-------------------------------------------------------------------------
+TOP
+
+    page_body <<BODY
+
+@<<<<<<<<<<<<<<<< @<<<<<<<<<<<< @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+identity,    facts["customer"], facts["lsbdistdescription"]
+                                @<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                                facts["processor0"]
+BODY
+end
+}}}
+
+Here we create a paged report - 20 nodes per page - with a heading section and a 2 line report per node with identity, customer, distribution and processor.
+
+The output looks like this:
+
+{{{
+
+            Node Report Sun Aug 01 10:30:57 +0100
+
+Hostname:         Customer:     Distribution:
+-------------------------------------------------------------------------
+
+dev1.one.net      rip           CentOS release 5.5 (Final)
+                                AMD Athlon(tm) 64 X2 Dual Core Processor
+
+dev1.two.net      xxxxxxx       CentOS release 5.5 (Final)
+                                AMD Athlon(tm) 64 X2 Dual Core Processor
+}}}
+
+Writing these reports are pretty ugly I freely admit, however it avoids designing our own reporting engine and it's pretty good for kicking out simple reports.  You can see the _perlform_ man page for details of the reporting layouts, ours is pretty close to that thanks to Formatr
