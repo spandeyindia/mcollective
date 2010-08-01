@@ -34,7 +34,19 @@ Inventory for your.node.com:
 
 This gives you a good idea of all the details available for a node.
 
-= printf style reports =
+= Custom Reports =
+
+You can create little scriptlets and pass them into _mc-inventory_ with the _--script_ option.
+
+You have the following data available to your reports:
+
+||time||The time the report was started, normal Ruby Time object||
+||identity||The sender id||
+||facts||A hash of facts||
+||agents||An array of agents||
+||classes||An array of CF Classes||
+
+== printf style reports ==
 
 From version _1.0.0_ onward you can also do some basic scripting to build custom reports:
 
@@ -63,7 +75,7 @@ xx5:            99xxx85         IBM eServer BladeCenter HS21 -[8853GLG]-
 We'll add more capabilities in the future, for now you can access _facts_ as a hash, _agents_ and _classes_ as arrays as well as _identity_ as a string.
 
 
-= Perl format style reports =
+== Perl format style reports ==
 To use this you need to install the _formatr_ gem, once that's installed you can create a report scriptlet like below:
 
 {{{
