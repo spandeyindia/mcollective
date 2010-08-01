@@ -23,6 +23,7 @@ Inventory for your.node.com:
    Configuration Management Classes:
       aliases                        apache
       <snip>
+
    Facts:
       architecture => i386
       country => de
