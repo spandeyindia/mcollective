@@ -8,8 +8,7 @@ We've added a tool - _mc-inventory_ - that has a very simple scriptable report l
 
 * Note: This is an emerging feature, the scripting language is likely to change *
 
-= printf style =
-
+= Node View =
 To obtain a full inventory for a given node you can run mc-inventory like this:
 
 {{{
@@ -34,6 +33,8 @@ Inventory for your.node.com:
 }}}
 
 This gives you a good idea of all the details available for a node.
+
+= printf style reports =
 
 From version _1.0.0_ onward you can also do some basic scripting to build custom reports:
 
@@ -62,7 +63,7 @@ xx5:            99xxx85         IBM eServer BladeCenter HS21 -[8853GLG]-
 We'll add more capabilities in the future, for now you can access _facts_ as a hash, _agents_ and _classes_ as arrays as well as _identity_ as a string.
 
 
-= Perl Format Style =
+= Perl format style reports =
 To use this you need to install the _formatr_ gem, once that's installed you can create a report scriptlet like below:
 
 {{{
