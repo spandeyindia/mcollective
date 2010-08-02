@@ -49,8 +49,6 @@ You have the following data available to your reports:
 
 == printf style reports ==
 
-From version _1.0.0_ onward you can also do some basic scripting to build custom reports:
-
 Lets say you now need a report of all your IBM hardware listing hostname, serial number and product name you can write a scriptlet like this:
 
 {{{
