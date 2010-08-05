@@ -37,6 +37,8 @@ This gives you a good idea of all the details available for a node.
 
 = Custom Reports =
 
+*NOTE: This feature will only be in version 1.0.0*
+
 You can create little scriptlets and pass them into _mc-inventory_ with the _--script_ option.
 
 You have the following data available to your reports:
