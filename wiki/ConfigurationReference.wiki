@@ -55,7 +55,7 @@ Common plugin options are:
 ||plugin.stomp.port||6163||Port to connecto too||
 ||plugin.stomp.user||mcollective||User to connect as||
 ||plugin.stomp.password||password||Password to use||
-||plugin.yaml||/etc/mcollective/facts.yaml||Where the yaml fact source finds facts from||
+||plugin.yaml||/etc/mcollective/facts.yaml:/other/facts.yaml||Where the yaml fact source finds facts from, multiples get merged||
 ||plugin.psk||123456789||The pre-shared key to use for the Psk security provider||
 
 == Client Setup ==
