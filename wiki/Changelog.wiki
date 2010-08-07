@@ -3,6 +3,7 @@
 
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
+|| 2010/08/07 || SSL security plugin can use either YAML or Marshal - #94||
 || 2010/08/06 || Multiple YAML files can now be used as fact source - #112||
 || 2010/08/06 || Allow log level to be adjusted at run time with USR2 - #113||
 || 2010/07/31 || Add basic report scripting support to mc-inventory - #111||
