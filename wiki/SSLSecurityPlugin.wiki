@@ -12,7 +12,7 @@ The design goal of the plugin is two fold:
  * give different security credentials to clients and servers to avoid a compromised server from sending new client requests.
  * create a token that uniquely identify the client - based on the filename of the public key.  This creates a strong identity token for [SimpleRPCAuthorization].
 
-Serialization uses Marshal, which means data types in and out of mcollective
+Serialization uses Marshal or YAML, which means data types in and out of mcollective
 will be preserved from client to server and reverse.
 
 Validation is as default and is provided by MCollective::Security::Base
@@ -90,4 +90,13 @@ with the public/private keys you can set the following environment variables:
 {{{
   export MCOLLECTIVE_SSL_PRIVATE=/home/john/.mc/john-private.pem   
   export MCOLLECTIVE_SSL_PUBLIC=/home/john/.mc/john-public.pem   
+}}}
+
+=== Serialization Method ===
+You can choose either YAML or Marshal, the default is Marshal.  The view with optional Marshal encoding is to have a serializer supported by other languages other than Ruby to enable future integration with those.
+
+To use YAML set this in both _client.cfg_ and _server.cfg_:
+
+{{{
+plugin.ssl_serializer = yaml
 }}}
