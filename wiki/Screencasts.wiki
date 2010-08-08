@@ -19,11 +19,6 @@ Introduction to MCollective, shows features present in the upcoming 0.4 version 
 
 <wiki:video url="http://www.youtube.com/watch?v=WBJDOE6zhko  width=878 height=444>
 
-= EC2 based Demo System =
-See [EC2Demo] for more information about the EC2 based demo of mcollective
-
-<wiki:video url="http://www.youtube.com/watch?v=MgDnmkhNpE0" width=878 height=526 />
-
 = Custom Deployment Tools = 
 A demonstration of a deployment tool built for to customer needs using mcollective.  This is a sample of the consulting work you can contract the project authors for.
 
