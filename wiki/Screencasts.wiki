@@ -11,7 +11,6 @@ Our movies are slowly moving to [http://mcollective.blip.tv/ mcollective.blip.tv
  * [http://mcollective.blip.tv/file/3935110 Message Flow, Terminology and Components] ([http://www.slideshare.net/mcollective/mcollective-message-flow-terminology-and-components Slideshare slides]).
  * [http://mcollective.blip.tv/file/3799653 SimpleRPC Data Definition Language].
  * [http://mcollective.blip.tv/file/3808928 How to write an Agent, DDL and Client].
- * [http://mcollective.blip.tv/file/3935110 Message, Terminology and Components].
  * [http://mcollective.blip.tv/file/3979781 EC2 Demo].
 
 = Introduction and Concepts =
