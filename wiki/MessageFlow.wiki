@@ -1,4 +1,5 @@
 #summary Message flow through MCollective
+#labels migrated
 
 = Message Flow =
 The diagram below shows basic message flow on a MCollective system.
