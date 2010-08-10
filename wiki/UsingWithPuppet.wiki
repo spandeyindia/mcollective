@@ -1,4 +1,5 @@
 #summary Using Puppet with MCollective
+#labels migrated
 
 = Introduction =
 
