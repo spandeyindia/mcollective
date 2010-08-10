@@ -1,4 +1,5 @@
 #summary Generate custom reports from nodes
+#labels migrated
 
 = Introduction =
 
