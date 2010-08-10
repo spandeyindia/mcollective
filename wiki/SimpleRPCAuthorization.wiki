@@ -1,5 +1,5 @@
 #summary SimpleRPC Authorization
-#labels SimpleRPC,Phase-Reference
+#labels SimpleRPC,Phase-Reference,migrated
 = Introduction =
 
 *Note: This feature is available from 0.4.5 onward*
