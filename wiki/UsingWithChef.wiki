@@ -1,4 +1,5 @@
 #summary Using Chef with MCollective
+#labels migrated
 
 = Introduction =
 
