@@ -1,4 +1,5 @@
 #summary Details about the STOMP connector
+#labels migrated
 
 = Introduction =
 
