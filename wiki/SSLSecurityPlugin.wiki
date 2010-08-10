@@ -1,5 +1,5 @@
 #summary Overview and usage of the SSL security plugin
-#labels Phase-Reference,Phase-Deploy
+#labels Phase-Reference,Phase-Deploy,migrated
 
 = OpenSSL based Security Plugin =
 
