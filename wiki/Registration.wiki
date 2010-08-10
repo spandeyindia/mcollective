@@ -1,5 +1,5 @@
 ﻿#summary Registering nodes to a central inventory
-#labels registration
+#labels registration,migrated
 
 = Introduction =
 
