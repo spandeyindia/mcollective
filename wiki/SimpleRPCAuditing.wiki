@@ -19,7 +19,7 @@ rpcauditprovider = Logfile
 
 This sets it up to use _MCollective::Audit::Logfile_ plugin for logging evens.
 
-The client will embed the Unix UID of the program running it in requests which you can find in the _request_ object.
+The client will embed a caller id - the Unix UID of the program running it or SSL cert - in requests which you can find in the _request_ object.
 
 = Logfile plugin =
 
