@@ -1,4 +1,5 @@
 #summary How to interact with a running mcollectived
+#labels migrated
 
 = Introduction =
 
