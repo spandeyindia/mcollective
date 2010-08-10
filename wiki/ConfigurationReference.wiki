@@ -1,4 +1,5 @@
 ﻿#summary Reference for the config file
+#labels migrated
 
 = Configuration Files =
 There are 2 configuration files, one for the client and one for the server, these default to _/etc/mcollective/server.cfg_ and _/etc/mcollective/client.cfg_.
