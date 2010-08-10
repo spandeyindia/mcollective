@@ -1,5 +1,5 @@
 ﻿#summary Introduction to using Simple RPC
-#labels Phase-Reference,SimpleRPC
+#labels Phase-Reference,SimpleRPC,migrated
 
 = Introduction =
 
