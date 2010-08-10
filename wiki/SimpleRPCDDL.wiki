@@ -1,5 +1,5 @@
 #summary SimpleRPC Data Definition Language
-#labels Phase-Implementation,SimpleRPC
+#labels Phase-Implementation,SimpleRPC,migrated
 
 <wiki:toc max_depth="3" />
 
