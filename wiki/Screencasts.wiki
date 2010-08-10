@@ -1,5 +1,5 @@
 #summary Various screencasts related to mcollective
-#labels Featured
+#labels Featured,migrated
 
 <wiki:toc max_depth="2" />
 
