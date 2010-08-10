@@ -1,5 +1,5 @@
 #summary Test out mcollective using Amazon EC2
-#labels Featured
+#labels Featured,migrated
 
 = Introduction =
 
