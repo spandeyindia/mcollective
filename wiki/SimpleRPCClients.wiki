@@ -1,5 +1,5 @@
 ﻿#summary Writing Simple RPC Client
-#labels Phase-Reference,SimpleRPC
+#labels Phase-Reference,SimpleRPC,migrated
 
 <wiki:toc max_depth="3" />
 
