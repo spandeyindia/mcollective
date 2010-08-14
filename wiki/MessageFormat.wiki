@@ -1,5 +1,5 @@
 ﻿#summary Details of the encoded message format
-#labels Phase-Implementation
+#labels Phase-Implementation,migrated
 
 <wiki:toc max_depth="3" />
 
