@@ -1,5 +1,5 @@
 #summary Full Release History
-#labels Featured
+#labels Featured,migrated
 
 = Introduction =
 
