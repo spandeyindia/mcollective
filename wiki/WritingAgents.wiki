@@ -1,3 +1,3 @@
 ﻿#summary Writing a simple agent
 
-= This wiki has migrated to [http://marionette-collective.org/reference/basic/basic_agent_and_client.html] = 
+== Wiki migrated to [http://marionette-collective.org/reference/basic/basic_agent_and_client.html marionette-collective.org] ==

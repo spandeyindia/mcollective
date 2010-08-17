@@ -1,3 +1,3 @@
 ﻿#summary Table of Contents
 
-= This wiki has migrated to [http://marionette-collective.org/] = 
+== Wiki migrated to [http://marionette-collective.org/ marionette-collective.org] ==

@@ -1,3 +1,3 @@
 ﻿#summary Creating your own facts plugin
 
-= This wiki has migrated to [http://marionette-collective.org/reference/plugins/facts.html] = 
+== Wiki migrated to [http://marionette-collective.org/reference/plugins/facts.html marionette-collective.org] ==

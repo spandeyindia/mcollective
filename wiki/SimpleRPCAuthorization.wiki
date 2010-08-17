@@ -1,4 +1,4 @@
 ﻿#summary SimpleRPC Authorization
 #labels SimpleRPC,Phase-Reference,migrated
 
-= This wiki has migrated to [http://marionette-collective.org/simplerpc/authorization.html] = 
+== Wiki migrated to [http://marionette-collective.org/simplerpc/authorization.html marionette-collective.org] ==

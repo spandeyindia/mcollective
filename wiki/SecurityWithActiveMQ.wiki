@@ -1,3 +1,3 @@
 ﻿#summary Creating a secure collective with ActiveMQ
 
-= This wiki has migrated to [http://marionette-collective.org/reference/integration/activemq_security.html] = 
+== Wiki migrated to [http://marionette-collective.org/reference/integration/activemq_security.html marionette-collective.org] ==

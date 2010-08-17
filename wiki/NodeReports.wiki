@@ -1,3 +1,3 @@
 ﻿#summary Generate custom reports from nodes
 
-= This wiki has migrated to [http://marionette-collective.org/reference/ui/nodereports.html] = 
+== Wiki migrated to [http://marionette-collective.org/reference/ui/nodereports.html marionette-collective.org] ==

@@ -1,4 +1,4 @@
 ﻿#summary Writing Simple RPC Client
 #labels Phase-Reference,SimpleRPC,migrated
 
-= This wiki has migrated to [http://marionette-collective.org/simplerpc/clients.html] = 
+== Wiki migrated to [http://marionette-collective.org/simplerpc/clients.html marionette-collective.org] ==

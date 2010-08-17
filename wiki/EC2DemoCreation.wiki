@@ -1,3 +1,3 @@
 ﻿#summary Notes on how the EC2 demo is created
 
-= This wiki has migrated to [http://marionette-collective.org/reference/development/ec2_demo.html] = 
+== Wiki migrated to [http://marionette-collective.org/reference/development/ec2_demo.html marionette-collective.org] ==

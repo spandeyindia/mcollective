@@ -1,3 +1,3 @@
 ﻿#summary Clustering with ActiveMQ
 
-= This wiki has migrated to [http://marionette-collective.org/reference/integration/activemq_clusters.html] = 
+== Wiki migrated to [http://marionette-collective.org/reference/integration/activemq_clusters.html marionette-collective.org] ==

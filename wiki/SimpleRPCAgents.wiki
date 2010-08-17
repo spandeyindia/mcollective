@@ -1,3 +1,3 @@
 ﻿#summary Writing Simple RPC agents
 
-= This wiki has migrated to [http://marionette-collective.org/simplerpc/agents.html] = 
+== Wiki migrated to [http://marionette-collective.org/simplerpc/agents.html marionette-collective.org] ==

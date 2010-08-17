@@ -1,3 +1,3 @@
 ﻿#summary Introducing MCollective
 
-= This wiki has migrated to [http://marionette-collective.org/introduction/] = 
+== Wiki migrated to [http://marionette-collective.org/introduction/ marionette-collective.org] ==
