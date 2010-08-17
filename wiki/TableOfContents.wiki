@@ -1,22 +1,3 @@
 ﻿#summary Table of Contents
-#labels Phase-Reference
 
 = This wiki has migrated to [http://marionette-collective.org/] = 
-
-
- * Users Documentation
-   * [GettingStarted Getting Started]
-   * [ConfigurationReference Configuration Guide]
-   * [Terminology]
- * Simple RPC Reference
-   * [SimpleRPCIntroduction Introduction]
-   * [SimpleRPCAgents Writing Agents]
-   * [SimpleRPCDDL Data Description Language]
-   * [SimpleRPCClients Writing Clients]
-   * [SimpleRPCAuthorization Authorization]
-   * [SimpleRPCAuditing Auditing]
- * Developer Documentation
-   * [WritingAgents Writing Agents]
-   * [WritingFactsPlugins Writing Facts Plugins]
-   * [Registration] with a central node
-   * [MessageFormat Message Format]

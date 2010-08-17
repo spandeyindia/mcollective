@@ -1,38 +1,3 @@
 ﻿#summary Various screencasts related to mcollective
-#labels migrated
 
-= This wiki has migrated to [http://marionette-collective.org/] = 
-
-
-<wiki:toc max_depth="2" />
-
-Our movies are slowly moving to [http://mcollective.blip.tv/ mcollective.blip.tv] please follow there.
-
-= Blip.tv videos =
-
- * [http://mcollective.blip.tv/file/3808541 Introduction to The Marionette Collective].
- * [http://mcollective.blip.tv/file/3935110 Message Flow, Terminology and Components] ([http://www.slideshare.net/mcollective/mcollective-message-flow-terminology-and-components Slideshare slides]).
- * [http://mcollective.blip.tv/file/3799653 SimpleRPC Data Definition Language].
- * [http://mcollective.blip.tv/file/3808928 How to write an Agent, DDL and Client].
- * [http://mcollective.blip.tv/file/3979781 EC2 Demo].
-
-= Introduction and Concepts =
-Introduction to MCollective, shows features present in the upcoming 0.4 version and onward.
-
-<wiki:video url="http://www.youtube.com/watch?v=WBJDOE6zhko  width=878 height=444>
-
-= Custom Deployment Tools = 
-A demonstration of a deployment tool built for to customer needs using mcollective.  This is a sample of the consulting work you can contract the project authors for.
-
-<wiki:video url="http://www.youtube.com/watch?v=Fqt2SgnQn3k"width=878 />
-
-= Interactive management of clusters =
-Demonstrating managing a cluster of Exim servers spread over 3 continents.  The main idea behind this cast is to show the high performance of mcollective and the kind of system it could potentially enable you to create
-
-<wiki:video url="http://www.youtube.com/watch?v=kNvoQCpJ1V4" width=878 height=526 />
-
-= Old Videos =
-
-General introduction to the concepts behind mcollective, this is an old video from before the tool was open source but the concepts still apply.
-
-<wiki:video url="http://www.youtube.com/watch?v=C8vobjgrW4E" width=878 height=526 />
+= This wiki has migrated to [http://marionette-collective.org/introduction/screencasts.html] = 
