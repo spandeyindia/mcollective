@@ -1,5 +1,5 @@
 ﻿#summary Introducing MCollective
-#labels Featured,migrated
+#labels migrated
 
 = This wiki has migrated to [http://marionette-collective.org/] = 
 

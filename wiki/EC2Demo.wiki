@@ -1,5 +1,5 @@
 ﻿#summary Test out mcollective using Amazon EC2
-#labels Featured,migrated
+#labels migrated
 
 = This wiki has migrated to [http://marionette-collective.org/] = 
 
