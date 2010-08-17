@@ -1,6 +1,9 @@
 ﻿#summary Registering nodes to a central inventory
 #labels registration,migrated
 
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
+
 = Introduction =
 
 We support the ability for each node to register with a central inventory, we don't use the inventory internally for anything it's there are a framework to enable you to build inventory systems or WebUI's.

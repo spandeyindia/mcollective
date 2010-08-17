@@ -1,5 +1,7 @@
-#summary Mcollective with Gentoo
+﻿#summary Mcollective with Gentoo
 #labels migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
 
 = Introduction =
 

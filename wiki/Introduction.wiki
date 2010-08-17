@@ -1,5 +1,8 @@
 ﻿#summary Introducing MCollective
 #labels Featured,migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 = Introduction =
 
 The Marionette Collective aka. mcollective is a framework to build server orchestration or parallel job execution systems.

@@ -1,6 +1,8 @@
 ﻿#summary Changelog
 #labels Phase-Implementation,migrated
 
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 == Version 0.4.x ==
 || *Date* || *Descriptions* ||
 || 2010/08/07 || SSL security plugin can use either YAML or Marshal - #94||

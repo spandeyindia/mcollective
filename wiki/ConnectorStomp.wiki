@@ -1,5 +1,7 @@
-#summary Details about the STOMP connector
+﻿#summary Details about the STOMP connector
 #labels migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
 
 = Introduction =
 

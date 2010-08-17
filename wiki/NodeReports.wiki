@@ -1,5 +1,8 @@
-#summary Generate custom reports from nodes
+﻿#summary Generate custom reports from nodes
 #labels migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 
 = Introduction =
 

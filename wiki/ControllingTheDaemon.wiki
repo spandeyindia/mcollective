@@ -1,5 +1,7 @@
-#summary How to interact with a running mcollectived
+﻿#summary How to interact with a running mcollectived
 #labels migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
 
 = Introduction =
 

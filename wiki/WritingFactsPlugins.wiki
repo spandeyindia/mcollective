@@ -1,6 +1,9 @@
 ﻿#summary Creating your own facts plugin
 #labels facts,Phase-Reference,plugins,migrated
 
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
+
 = Introduction =
 
 The default setup uses a YAML file typically stored in _/etc/mcollective/facts.yaml_ to read facts.  There are however many fact systems like Reductive Labs Facter and Opscode Ohai or you can come up with your own.  The facts plugin type lets you write code to access these tools.

@@ -1,6 +1,9 @@
 ﻿#summary Introduction to using Simple RPC
 #labels Phase-Reference,SimpleRPC,migrated
 
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
+
 = Introduction =
 
 MCollective is a framework for writing feature full agents and clients and provides a [WritingAgents rich system to do that].  MCollective's native Client though is very low level, a bit like TCP/IP is to HTTP.  Like TCP/IP the native client does not provide any Authentication, Authorization etc.

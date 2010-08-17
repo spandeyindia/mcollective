@@ -1,6 +1,9 @@
 ﻿#summary Auditing for SimpleRPC requests
 #labels SimpleRPC
 
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
+
 = Introduction =
 
 *Note: This feature is available from 0.4.3 onwards*

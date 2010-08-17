@@ -1,5 +1,8 @@
-#summary Using Chef with MCollective
+﻿#summary Using Chef with MCollective
 #labels migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 
 = Introduction =
 

@@ -1,6 +1,9 @@
 ﻿#summary Details of the encoded message format
 #labels Phase-Implementation,migrated
 
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
+
 <wiki:toc max_depth="3" />
 
 = Introduction =

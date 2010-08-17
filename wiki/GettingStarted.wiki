@@ -1,6 +1,8 @@
 ﻿#summary Getting started guide for initial release
 #labels migrated
 
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 = Getting Started =
 
 Below find a rough guide to get you going, this assumes the client and server is on the same node, but servers don't need the client code installed.

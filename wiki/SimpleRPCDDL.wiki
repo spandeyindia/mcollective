@@ -1,5 +1,8 @@
-#summary SimpleRPC Data Definition Language
+﻿#summary SimpleRPC Data Definition Language
 #labels Phase-Implementation,SimpleRPC,migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 
 <wiki:toc max_depth="3" />
 

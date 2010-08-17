@@ -1,5 +1,8 @@
-#summary Various screencasts related to mcollective
+﻿#summary Various screencasts related to mcollective
 #labels Featured,migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 
 <wiki:toc max_depth="2" />
 

@@ -1,5 +1,8 @@
-#summary Message flow through MCollective
+﻿#summary Message flow through MCollective
 #labels migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 
 = Message Flow =
 The diagram below shows basic message flow on a MCollective system.

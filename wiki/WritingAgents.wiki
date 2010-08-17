@@ -1,6 +1,9 @@
 ﻿#summary Writing a simple agent
 #labels migrated
 
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
+
 = Introduction =
 *We recommend you use [SimpleRPCIntroduction Simple RPC] to write agents and clients*, sometimes though you need to do something Simple RPC can't this guide explains how to write agents without the help of the Simple RPC framework.
 

@@ -1,5 +1,7 @@
-#summary Clustering with ActiveMQ
+﻿#summary Clustering with ActiveMQ
 #labels activemq,migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
 
 <wiki:toc max_depth="3" />
 

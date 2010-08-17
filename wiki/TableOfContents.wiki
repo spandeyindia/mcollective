@@ -1,6 +1,9 @@
 ﻿#summary Table of Contents
 #labels Phase-Reference
 
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
+
  * Users Documentation
    * [GettingStarted Getting Started]
    * [ConfigurationReference Configuration Guide]

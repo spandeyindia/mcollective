@@ -1,5 +1,7 @@
-#summary Notes on how the EC2 demo is created
+﻿#summary Notes on how the EC2 demo is created
 #labels migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
 
 = TODO =
 Things to improve in next build:

@@ -1,5 +1,8 @@
-#summary Tasks to do for each release
+﻿#summary Tasks to do for each release
 #labels migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 
 = Introduction =
 

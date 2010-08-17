@@ -1,5 +1,8 @@
-#summary Writing Simple RPC agents
+﻿#summary Writing Simple RPC agents
 #labels Phase-Reference,SimpleRPC,migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 
 <wiki:toc max_depth="3" />
 

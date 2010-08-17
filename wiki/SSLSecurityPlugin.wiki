@@ -1,5 +1,8 @@
-#summary Overview and usage of the SSL security plugin
+﻿#summary Overview and usage of the SSL security plugin
 #labels Phase-Reference,Phase-Deploy,migrated
+
+= This wiki has migrated to [http://marionette-collective.org/] = 
+
 
 = OpenSSL based Security Plugin =
 
